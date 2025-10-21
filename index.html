@@ -8,34 +8,44 @@
     <title>Sparkling Car Care</title>
 
     <!-- SEO -->
-    <meta name="description" content="Premium car detailing in Sydney — paint correction, interior deep clean, ceramic coating and more. Book Sparkling Car Care today." />
+    <meta
+      name="description"
+      content="Premium car detailing in Sydney — paint correction, interior deep clean, ceramic coating and more. Book Sparkling Car Care today."
+    />
     <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Sparkling Car Care" />
-    <meta property="og:description" content="Premium car detailing in Sydney — paint correction, interior deep clean, ceramic coating and more." />
+    <meta
+      property="og:description"
+      content="Premium car detailing in Sydney — paint correction, interior deep clean, ceramic coating and more."
+    />
     <meta property="og:url" content="https://www.sparklingcarcare.com.au/" />
     <meta property="og:type" content="website" />
 
-    <!-- Fonts: non-blocking load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts: non-blocking load (preload as style, then swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'">
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      />
     </noscript>
 
-    <!-- Hero preload (safe if you only have hero-1280.webp) -->
-    <link rel="preload" as="image" href="/hero-1280.webp">
-    <!-- If/when you add 768/1920 versions, replace the line above with:
+    <!-- Hero image preload (works even if you only have hero-1280.webp) -->
+    <link rel="preload" as="image" href="/hero-1280.webp" />
+    <!-- If you later add /hero-768.webp and /hero-1920.webp, you can switch to:
     <link rel="preload" as="image"
           href="/hero-1280.webp"
           imagesrcset="/hero-768.webp 768w, /hero-1280.webp 1280w, /hero-1920.webp 1920w"
-          imagesizes="100vw">
+          imagesizes="100vw" />
     -->
   </head>
   <body>
