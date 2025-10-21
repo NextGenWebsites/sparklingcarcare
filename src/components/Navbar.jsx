@@ -49,7 +49,7 @@ const Navbar = () => {
           {/* Desktop Navigation with shine effect */}
           <div className="hidden md:flex md:items-center t md:space-x-8 xl:items-center p-5 text-amber-50">
             <NavLink href="/" text="HOME" />
-            <NavLink href="/services" text="SERVICE" />
+            <NavLink href="/services" text="SERVICES" />
             <NavLink href="/packages" text="PACKAGES" />
             <NavLink href="/contact" text="CONTACT" />
           </div>
