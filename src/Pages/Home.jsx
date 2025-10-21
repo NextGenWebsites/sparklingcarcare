@@ -13,7 +13,7 @@ import {
   SprayCan,
 } from "lucide-react";
 
-import BackIMg from "../images/background/homepage-image-2.webp";
+//import BackIMg from "../images/background/homepage-image-2.webp";
 
 import ReviewBack from "../images/background/review_back.jpg";
 
