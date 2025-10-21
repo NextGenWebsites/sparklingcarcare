@@ -70,10 +70,13 @@ const Home = () => {
         {/* Background image with overlay */}
         <div className="absolute inset-0 bg-black/50 z-10">
           <img
-            src={BackIMg}
-            alt="Luxury car being detailed"
-            className="w-full h-full object-cover opacity-60"
-          />
+          src="/hero-1280.webp"
+          alt="Luxury car being detailed"
+          width="1920" height="1080"
+          fetchPriority="high"
+          decoding="async"
+          className="w-full h-full object-cover opacity-60"
+        />
         </div>
 
         {/* Hero content */}
