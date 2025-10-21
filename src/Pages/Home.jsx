@@ -11,7 +11,7 @@ import ReviewBack from "../images/background/review_back.jpg";
 
 import ReviewsSection from "../components/ReviewsSection";
 import SlidingGallery from "../components/SlidingGallery";
-import LocationSection from "../components/LocationSection"; // (removed stray space)
+import LocationSection from "../components/LocationSection"; 
 import AboutUsSection from "../components/AboutUsSection";
 
 const Home = () => {
