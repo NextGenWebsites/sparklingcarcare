@@ -101,7 +101,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail className="text-red-600 mr-2" size={18} />
-                <span> sparklingcarcare1@gmail.com </span>
+                <span> info@sparklingcarcare.com.au </span>
               </div>
               <div className="flex items-center">
                 <Clock className="text-red-600 mr-2" size={18} />
