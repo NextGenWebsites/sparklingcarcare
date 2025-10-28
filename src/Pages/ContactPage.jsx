@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaTiktok } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
+import ReviewBack from "../images/background/review_back.jpg";
+
 const ContactPage = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
@@ -246,7 +248,7 @@ const ContactPage = () => {
                   </div>
                 </div>
                 <img
-                  src="https://carcarereviews.net/wp-content/uploads/2020/12/importance-of-car-detailing.jpg"
+                  src= {ReviewBack}
                   alt="Luxury car detailing"
                   className="h-full w-full object-cover object-center"
                 />
