@@ -33,7 +33,7 @@ const LocationSection = () => {
                 </h3>
                 <p className="text-gray-600 text-xl">(02) 9438 4988</p>
                 <p className="text-gray-600 text-xl">
-                  sparklingcarcare1@gmail.com
+                  info@sparklingcarcare.com.au
                 </p>
               </div>
             </div>

@@ -1,1 +1,8 @@
-/* /index.html 200
+# 1) Force HTTPS everywhere (optional if Enforce HTTPS is ON, but safe to keep)
+http://*                           https://www.sparklingcarcare.com.au/:splat  301!
+
+# 2) Canonicalize apex -> www
+https://sparklingcarcare.com.au/*  https://www.sparklingcarcare.com.au/:splat  301!
+
+# 3) SPA fallback (keep this LAST)
+ /*                                /index.html                               200
