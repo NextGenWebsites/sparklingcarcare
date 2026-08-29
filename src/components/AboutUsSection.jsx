@@ -1,135 +1,107 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  MapPin,
-  Users,
-  Sparkles,
-  Eye,
-  Leaf,
-  ThumbsUp,
-  ArrowRight,
-} from "lucide-react";
+import { Clock, Wrench, Shield, Eye, Leaf, MapPin, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
-  {
-    icon: <MapPin size={24} className="text-[#2F6FED]" />,
-    title: "Locally Run",
-    description:
-      "Based in Artarmon, NSW - we're part of the community and proud to serve Sydney car owners.",
-  },
-  {
-    icon: <Users size={24} className="text-[#2F6FED]" />,
-    title: "Expert Team",
-    description:
-      "Experienced detailers passionate about delivering showroom-quality results on every vehicle.",
-  },
-  {
-    icon: <Sparkles size={24} className="text-[#2F6FED]" />,
-    title: "Premium Products",
-    description:
-      "We use only professional-grade chemicals and tools for lasting protection and a brilliant finish.",
-  },
-  {
-    icon: <Eye size={24} className="text-[#2F6FED]" />,
-    title: "Attention to Detail",
-    description:
-      "Every inch of your vehicle is treated with meticulous care - inside, outside, and everything between.",
-  },
-  {
-    icon: <Leaf size={24} className="text-[#2F6FED]" />,
-    title: "Eco-Conscious",
-    description:
-      "We use water-efficient techniques and biodegradable products wherever possible.",
-  },
-  {
-    icon: <ThumbsUp size={24} className="text-[#2F6FED]" />,
-    title: "Satisfaction Guaranteed",
-    description:
-      "Hundreds of 5-star Google reviews back our commitment to outstanding service, every time.",
-  },
+  { icon: <MapPin size={22} />, title: "Locally Owned", desc: "Artarmon-based, Sydney-proud. Part of the community since day one." },
+  { icon: <Wrench size={22} />, title: "Expert Detailers", desc: "Experienced professionals passionate about delivering flawless results." },
+  { icon: <Shield size={22} />, title: "Premium Products", desc: "Professional-grade chemicals and equipment for lasting protection." },
+  { icon: <Eye size={22} />, title: "Meticulous Finish", desc: "Every inch treated with obsessive care — nothing is overlooked." },
+  { icon: <Leaf size={22} />, title: "Eco Conscious", desc: "Water-efficient methods and biodegradable products where possible." },
+  { icon: <Clock size={22} />, title: "Reliable & On-Time", desc: "We respect your schedule and deliver on our promises, every time." },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const AboutUsSection = () => {
   return (
-    <section className="py-24 bg-[#0A0C10]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-16"
-        >
-          <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">
-            About Sparkling Car Care
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#F7F8FA] mb-6 font-['Space_Grotesk']">
-            Passionate About Every Vehicle
-          </h2>
-          <p className="text-[#8B93A1] text-lg leading-relaxed">
-            At{" "}
-            <span className="text-[#F7F8FA] font-medium">
-              Sparkling Car Care
-            </span>
-            , we're a locally run car detailing business dedicated to restoring
-            and protecting your car - inside and out - with meticulous care and
-            attention to detail. Whether it's a deep interior clean, flawless
-            exterior finish, or specialised services like paint correction and
-            odour removal, we treat every vehicle as if it were our own.
-          </p>
+    <section className="py-24 bg-surface overflow-hidden" id="about">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
 
-          <div className="flex flex-wrap gap-4 mt-8">
-            <a
-              href="/services"
-              className="inline-flex items-center gap-2 bg-[#0B3D91] hover:bg-[#2F6FED] text-[#F7F8FA] px-6 py-3 rounded font-semibold text-sm transition-colors font-['Space_Grotesk']"
-            >
-              Our Services
-              <ArrowRight size={16} />
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white/5 border border-white/10 hover:border-[#2F6FED]/50 text-[#F7F8FA] px-6 py-3 rounded font-semibold text-sm transition-colors font-['Space_Grotesk']"
-            >
-              Book Now
-            </a>
-          </div>
-        </motion.div>
+        {/* Top split: text + stats */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
 
-        {/* Feature Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {features.map((f) => (
+          {/* Left text */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span className="section-label">Who We Are</span>
+            <div className="flex items-start gap-5 mt-4 mb-6">
+              <span className="gold-bar mt-1" />
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+                Passionate About<br />Every Vehicle
+              </h2>
+            </div>
+            <p className="text-mist leading-relaxed mb-6 max-w-md">
+              At Sparkling Car Care, we're a locally run detailing studio in Artarmon dedicated to
+              restoring and protecting your car inside and out. Whether it's a deep interior clean,
+              flawless exterior finish, or specialised paint correction — we treat every vehicle as
+              if it were our own.
+            </p>
+            <p className="text-mist leading-relaxed mb-10 max-w-md">
+              With hundreds of 5-star Google reviews and a loyal base of returning clients, our
+              reputation speaks for itself. Come in and experience the difference.
+            </p>
+            <div className="flex gap-3">
+              <Link to="/services" className="btn-gold text-xs">Our Services <ArrowRight size={14} /></Link>
+              <Link to="/contact" className="btn-outline text-xs">Book Now</Link>
+            </div>
+          </motion.div>
+
+          {/* Right: large stat numbers */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            {[
+              { num: "500+", label: "Happy Clients" },
+              { num: "5★", label: "Google Rating" },
+              { num: "8+", label: "Expert Services" },
+              { num: "100%", label: "Satisfaction" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="bg-raised border border-white/6 rounded-xl p-6 hover:border-gold/30 transition-colors duration-300"
+              >
+                <p className="text-gradient-gold font-display font-black text-4xl md:text-5xl mb-1">
+                  {stat.num}
+                </p>
+                <p className="text-mist text-sm">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {features.map((f, i) => (
             <motion.div
               key={f.title}
-              variants={itemVariants}
-              className="group bg-[#14161B] border border-white/5 rounded-xl p-6 hover:border-[#2F6FED]/40 hover:shadow-lg hover:shadow-[#2F6FED]/5 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="card p-6 flex gap-4 items-start"
             >
-              <div className="mb-4">{f.icon}</div>
-              <h3 className="text-[#F7F8FA] font-bold text-lg mb-2 font-['Space_Grotesk']">
-                {f.title}
-              </h3>
-              <p className="text-[#8B93A1] text-sm leading-relaxed">
-                {f.description}
-              </p>
+              <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center text-gold shrink-0">
+                {f.icon}
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-snow mb-1.5">{f.title}</h3>
+                <p className="text-mist text-sm leading-relaxed">{f.desc}</p>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
