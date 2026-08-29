@@ -1,249 +1,230 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import {
-  Car, Shield, Sparkles, Clock, Award, Star, Check, ArrowRight,
-} from "lucide-react";
-
+import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
 import ServiceBack from "@/images/others/serviceBack.webp";
 import { PACKAGES_LIST, BUSINESS_INFO } from "../data/content";
 
-const tierBadge = {
-  entry: null,
-  mid: null,
-  premium: { label: "Premium", color: "text-[#2F6FED] border-[#2F6FED]/30 bg-[#2F6FED]/10" },
+/* Tier configuration */
+const tierConfig = {
+  entry:   { label: "Essential",  ring: "border-white/10",             badge: "text-mist bg-raised" },
+  mid:     { label: "Popular",    ring: "border-white/15",             badge: "text-snow bg-raised" },
+  premium: { label: "Premium",    ring: "border-gold/50 shadow-gold-glow", badge: "text-deep bg-gold" },
 };
 
-const packageIcon = (tier) => {
-  if (tier === "premium") return <Car className="w-7 h-7 text-[#2F6FED]" />;
-  if (tier === "mid") return <Shield className="w-7 h-7 text-[#2F6FED]" />;
-  return <Sparkles className="w-7 h-7 text-[#2F6FED]" />;
+const TierIcon = ({ tier }) => {
+  if (tier === "premium") return <Sparkles size={20} className="text-gold" />;
+  if (tier === "mid")     return <Shield   size={20} className="text-snow" />;
+  return                         <Car      size={20} className="text-mist" />;
 };
 
 const processSteps = [
-  { icon: <Car size={32} />, title: "Inspection", description: "Complete evaluation of your vehicle's condition" },
-  { icon: <Clock size={32} />, title: "Preparation", description: "Pre-cleaning and setup of specialised tools" },
-  { icon: <Sparkles size={32} />, title: "Detailing", description: "Thorough cleaning and treatment of all surfaces" },
-  { icon: <Award size={32} />, title: "Quality Check", description: "Final inspection to ensure perfection" },
+  { n: "01", icon: <Car size={28} />,    title: "Inspection",     desc: "We assess your vehicle's condition and identify areas needing attention." },
+  { n: "02", icon: <Wrench size={28} />, title: "Preparation",    desc: "Pre-cleaning, product selection and setup of professional equipment." },
+  { n: "03", icon: <Sparkles size={28}/>,title: "Detailing",      desc: "Meticulous treatment of every surface, inside and out." },
+  { n: "04", icon: <Check size={28} />,  title: "Quality Check",  desc: "Final inspection to ensure everything meets our premium standard." },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-const itemVariants = {
-  hidden: { y: 24, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-};
+const Package = () => (
+  <>
+    <Helmet>
+      <title>Car Detailing Packages & Pricing | Sparkling Car Care Artarmon</title>
+      <meta name="description" content="Transparent car detailing packages in Artarmon, Sydney. Express Wash from $30, Full Detail from $298. Sedan and SUV pricing available. Book today." />
+      <link rel="canonical" href="https://www.sparklingcarcare.com.au/packages" />
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.sparklingcarcare.com.au/" },
+          { "@type": "ListItem", "position": 2, "name": "Packages", "item": "https://www.sparklingcarcare.com.au/packages" }
+        ]
+      })}</script>
+    </Helmet>
 
-const packagePage = () => {
-  return (
-    <>
-      <Helmet>
-        <title>Car Detailing Packages & Pricing | Sparkling Car Care Artarmon</title>
-        <meta
-          name="description"
-          content="Transparent car detailing packages and pricing in Artarmon, Sydney. Express Wash from $30, Full Detail from $298. Sedan and SUV pricing available."
-        />
-        <link rel="canonical" href="https://www.sparklingcarcare.com.au/packages" />
-        <meta property="og:title" content="Car Detailing Packages & Pricing | Sparkling Car Care" />
-        <meta property="og:url" content="https://www.sparklingcarcare.com.au/packages" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sparklingcarcare.com.au/" },
-            { "@type": "ListItem", "position": 2, "name": "Packages", "item": "https://www.sparklingcarcare.com.au/packages" }
-          ]
-        })}</script>
-      </Helmet>
+    <div className="bg-deep text-snow">
 
-      <div className="min-h-screen bg-[#0A0C10]">
-        {/* Hero */}
-        <div className="relative h-80 md:h-96 overflow-hidden">
-          <img
-            src={ServiceBack}
-            alt="Car detailing packages and pricing Artarmon Sydney"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0A0C10]/70" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0C10]/90 via-[#0A0C10]/60 to-transparent" />
-          <div className="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">
-                Pricing
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#F7F8FA] mb-4 font-['Space_Grotesk']">
-                Packages & Pricing
-              </h1>
-              <p className="text-[#8B93A1] text-lg max-w-xl">
-                Transparent pricing for every budget - restore your vehicle to showroom condition.
-              </p>
-            </motion.div>
-          </div>
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <div className="relative h-72 md:h-80 overflow-hidden">
+        <img src={ServiceBack} alt="Car detailing packages pricing Artarmon" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/65 to-deep/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep/85 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-12 pt-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="section-label">Pricing</span>
+            <h1 className="text-4xl md:text-6xl font-display font-black text-snow mt-2">
+              Packages & Pricing
+            </h1>
+          </motion.div>
         </div>
+      </div>
 
-        {/* Packages Grid */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8FA] mb-4 font-['Space_Grotesk']">
+      {/* ── Pricing notice ───────────────────────────────────────────── */}
+      <div className="bg-surface border-b border-white/6 py-5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
+          <Clock size={14} className="text-gold shrink-0" />
+          <p className="text-mist text-sm">
+            All prices are indicative and may vary based on vehicle size and condition.
+            <span className="text-gold ml-1 font-medium">We'll confirm your exact quote before starting.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* ── Package grid ─────────────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="section-label block mb-4">Choose Your Package</span>
+          <div className="flex items-center justify-center gap-4">
+            <span className="gold-bar" style={{ height: 32 }} />
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
               Our Detailing Packages
             </h2>
-            <p className="text-[#8B93A1] text-lg">
-              From a quick refresh to a full transformation - choose the package that suits your needs.
-            </p>
-            <p className="text-[#2F6FED] text-sm mt-3 font-medium">
-              * All prices may vary depending on vehicle condition.
-            </p>
-          </motion.div>
+            <span className="gold-bar" style={{ height: 32 }} />
+          </div>
+        </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {PACKAGES_LIST.map((pkg) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {PACKAGES_LIST.map((pkg, i) => {
+            const tc = tierConfig[pkg.tier];
+            return (
               <motion.div
                 key={pkg.id}
-                variants={itemVariants}
-                className={`group relative bg-[#14161B] border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#2F6FED]/10 ${
-                  pkg.popular
-                    ? "border-[#2F6FED]/50 shadow-lg shadow-[#2F6FED]/10"
-                    : "border-white/8 hover:border-[#2F6FED]/40"
-                }`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`relative bg-surface border rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${tc.ring} ${pkg.popular ? "shadow-lg shadow-gold/10" : ""}`}
               >
+                {/* Popular banner */}
                 {pkg.popular && (
-                  <div className="bg-[#0B3D91] text-[#F7F8FA] text-xs font-bold uppercase tracking-widest text-center py-1.5 font-['Space_Grotesk']">
-                    Most Popular
+                  <div className="bg-gold text-deep text-[10px] font-display font-black uppercase tracking-[0.2em] text-center py-1.5">
+                    ★ Most Popular
                   </div>
                 )}
 
-                {/* Card image */}
-                <div className="h-44 overflow-hidden">
+                {/* Image */}
+                <div className="h-40 overflow-hidden shrink-0">
                   <img
                     src={pkg.image}
-                    alt={`${pkg.title} car detailing service`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={`${pkg.title} car detailing Artarmon`}
                     loading="lazy"
                     decoding="async"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Header */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className="bg-[#0A0C10] p-2.5 rounded-lg">
-                      {packageIcon(pkg.tier)}
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[#2F6FED] font-bold font-['JetBrains_Mono',_monospace] text-sm leading-tight block">
-                        {pkg.price}
-                      </span>
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-lg bg-raised border border-white/8 flex items-center justify-center">
+                        <TierIcon tier={pkg.tier} />
+                      </div>
+                      <div>
+                        <p className="font-display font-bold text-snow text-base">{pkg.title}</p>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded font-display uppercase tracking-wider ${tc.badge}`}>
+                          {tc.label}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#F7F8FA] mb-2 font-['Space_Grotesk']">{pkg.title}</h3>
-                  <p className="text-[#8B93A1] text-sm mb-5 leading-relaxed">{pkg.description}</p>
+                  {/* Price */}
+                  <div className="mb-4 pb-4 border-b border-white/6">
+                    <p className="font-mono text-gold font-bold text-lg">{pkg.price}</p>
+                  </div>
 
-                  <ul className="space-y-2 mb-6">
-                    {pkg.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2.5 text-[#8B93A1] text-sm">
-                        <Check size={14} className="text-[#2F6FED] flex-shrink-0" />
-                        {feature}
+                  <p className="text-mist text-sm leading-relaxed mb-5">{pkg.description}</p>
+
+                  {/* Features */}
+                  <ul className="space-y-2 mb-7 flex-1">
+                    {pkg.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2.5 text-sm text-snow/80">
+                        <Check size={13} className="text-gold shrink-0" />
+                        {f}
                       </li>
                     ))}
                   </ul>
 
-                  <a
-                    href="/contact"
-                    className="block w-full text-center py-3 px-4 bg-[#0B3D91] hover:bg-[#2F6FED] text-[#F7F8FA] rounded font-semibold text-sm transition-colors font-['Space_Grotesk']"
+                  <Link
+                    to="/contact"
+                    className={pkg.tier === "premium" ? "btn-gold w-full justify-center text-xs" : "btn-outline w-full justify-center text-xs"}
                   >
                     Book This Package
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
+            );
+          })}
         </div>
+      </div>
 
-        {/* Process Section */}
-        <div className="bg-[#14161B] border-y border-white/5 py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-16"
-            >
-              <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">How It Works</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8FA] font-['Space_Grotesk']">Our Detailing Process</h2>
-            </motion.div>
+      {/* ── Process section ──────────────────────────────────────────── */}
+      <div className="bg-surface border-y border-white/6 py-20">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="text-center mb-16">
+            <span className="section-label block mb-3">Our Approach</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+              The Detailing Process
+            </h2>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {processSteps.map((step, index) => (
+          {/* Horizontal timeline */}
+          <div className="relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {processSteps.map((step, i) => (
                 <motion.div
-                  key={step.title}
-                  initial={{ opacity: 0, y: 30 }}
+                  key={step.n}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                  className="bg-[#0A0C10] border border-white/8 p-6 rounded-xl text-center hover:border-[#2F6FED]/40 transition-all duration-300"
+                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  className="flex flex-col items-center text-center relative"
                 >
-                  <div className="w-16 h-16 rounded-full bg-[#0B3D91]/30 border border-[#2F6FED]/30 flex items-center justify-center mx-auto mb-5 text-[#2F6FED]">
+                  {/* Number circle */}
+                  <div className="w-16 h-16 rounded-full bg-raised border-2 border-gold/30 flex items-center justify-center text-gold mb-5 relative z-10 hover:border-gold hover:shadow-lg hover:shadow-gold/15 transition-all duration-300">
                     {step.icon}
                   </div>
-                  <div className="text-xs font-bold text-[#2F6FED] uppercase tracking-widest mb-2 font-['Space_Grotesk']">
-                    Step {index + 1}
-                  </div>
-                  <h3 className="text-lg font-bold text-[#F7F8FA] mb-2 font-['Space_Grotesk']">{step.title}</h3>
-                  <p className="text-[#8B93A1] text-sm leading-relaxed">{step.description}</p>
+                  <p className="font-mono text-gold-dim text-xs mb-2 tracking-widest">{step.n}</p>
+                  <h3 className="font-display font-bold text-snow mb-2">{step.title}</h3>
+                  <p className="text-mist text-xs leading-relaxed">{step.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* CTA */}
-        <div className="bg-[#0A0C10] py-20">
-          <div className="max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8FA] mb-4 font-['Space_Grotesk']">
-              Ready to Transform Your Vehicle?
-            </h2>
-            <p className="text-[#8B93A1] mb-10 text-lg">
-              Book your appointment today and experience our premium detailing services.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#0B3D91] hover:bg-[#2F6FED] text-[#F7F8FA] px-10 py-4 rounded font-bold text-lg transition-colors font-['Space_Grotesk']"
-              >
-                Book an Appointment
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href={`tel:${BUSINESS_INFO.phoneTel}`}
-                className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 hover:border-[#2F6FED]/50 text-[#F7F8FA] px-10 py-4 rounded font-bold text-lg transition-colors font-['Space_Grotesk']"
-              >
-                {BUSINESS_INFO.phone}
-              </a>
-            </div>
+      {/* ── CTA ──────────────────────────────────────────────────────── */}
+      <div className="py-20">
+        <div className="max-w-3xl mx-auto px-5 text-center">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-5">
+            Ready to Get Started?
+          </h2>
+          <p className="text-mist mb-10 text-lg max-w-lg mx-auto">
+            Book your preferred package today. We'll confirm your appointment and prep everything before you arrive.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-gold text-sm px-10 py-4">
+              Book an Appointment <ArrowRight size={16} />
+            </Link>
+            <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline text-sm px-10 py-4">
+              {BUSINESS_INFO.phone}
+            </a>
           </div>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+  </>
+);
 
-export default packagePage;
+export default Package;
