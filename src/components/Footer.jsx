@@ -71,10 +71,12 @@ const Footer = () => {
             <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Services</h3>
             <ul className="space-y-3">
               {[
+                "Ceramic Coating",
+                "Scratch & Dent Repair",
                 "Exterior Detailing",
                 "Interior Detailing",
                 "Paint Correction",
-                "Ceramic Coating",
+                "Odour Removal",
                 "Headlight Restoration",
                 "Engine Bay Wash",
               ].map((s) => (
