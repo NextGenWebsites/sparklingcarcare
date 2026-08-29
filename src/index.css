@@ -252,4 +252,15 @@
     .animate-float,
     .btn-brand { animation: none; }
   }
+
+  /* ─── Anti-Badge Overrides ────────────────────────────────────────────────── */
+  a[href*="netlify.com"],
+  .netlify-badge,
+  #netlify-badge,
+  #netlify-identity-widget {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
