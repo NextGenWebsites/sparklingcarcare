@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers } from "lucide-react";
+import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers, Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceBack from "@/images/others/serviceBack.webp";
 import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
@@ -22,7 +22,7 @@ const TierIcon = ({ tier }) => {
 const processSteps = [
   { n: "01", icon: <Car size={28} />,    title: "Inspection",     desc: "We assess your vehicle's condition and identify areas needing attention." },
   { n: "02", icon: <Wrench size={28} />, title: "Preparation",    desc: "Pre-cleaning, product selection and setup of professional equipment." },
-  { n: "03", icon: <Sparkles size={28}/>,title: "Detailing",      desc: "Meticulous treatment of every surface, inside and out." },
+  { n: "03", icon: <Droplets size={28}/>,title: "Detailing",      desc: "Meticulous treatment of every surface, inside and out." },
   { n: "04", icon: <Check size={28} />,  title: "Quality Check",  desc: "Final inspection to ensure everything meets our premium standard." },
 ];
 

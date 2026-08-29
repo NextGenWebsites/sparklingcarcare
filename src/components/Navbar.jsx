@@ -73,7 +73,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`relative text-sm font-medium tracking-wide transition-colors duration-200 group ${
+                  className={`relative text-lg font-medium tracking-wide transition-colors duration-200 group ${
                     isActive(link.path) ? "text-brand" : "text-snow/70 hover:text-snow"
                   }`}
                 >
