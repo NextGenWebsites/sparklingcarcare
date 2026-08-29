@@ -2,307 +2,272 @@ import React, { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { FaTiktok } from "react-icons/fa";
-import { Instagram, Facebook, MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { Instagram, Facebook, MapPin, Phone, Mail, Clock, ArrowRight, Send } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import ReviewBack from "../images/background/review_back.jpg";
 import { BUSINESS_INFO } from "../data/content";
 
 const services = [
-  "Exterior Detailing",
-  "Interior Detailing",
-  "Paint Correction",
-  "Ceramic Coating",
-  "Headlight Restoration",
-  "Engine Bay Wash",
-  "Odour Removal",
-  "Minor Dent Removal",
+  "Exterior Detailing", "Interior Detailing", "Paint Correction",
+  "Ceramic Coating", "Headlight Restoration", "Engine Bay Wash",
+  "Odour Removal", "Minor Dent Removal",
+];
+
+const socialLinks = [
+  { href: BUSINESS_INFO.facebook,  icon: <Facebook size={15} />, label: "Facebook" },
+  { href: BUSINESS_INFO.instagram, icon: <Instagram size={15} />, label: "Instagram" },
+  { href: BUSINESS_INFO.tiktok,    icon: <FaTiktok size={13} />, label: "TikTok" },
 ];
 
 const ContactPage = () => {
   const form = useRef();
-  const [formData, setFormData] = useState({
+  const [data, setData] = useState({
     name: "", email: "", phone: "", vehicleType: "",
     service: "", message: "", preferredDate: "", preferredTime: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const onChange = (e) => setData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-
+    setStatus("loading");
     emailjs
       .sendForm("service_h5nm6us", "template_rwj8y3o", form.current, "nZf_MUQp8PdIr3djs")
-      .then((result) => {
-        console.log("Email sent successfully:", result.text);
-        setSubmitted(true);
-        setLoading(false);
+      .then(() => {
+        setStatus("success");
         setTimeout(() => {
-          setFormData({ name: "", email: "", phone: "", vehicleType: "", service: "", message: "", preferredDate: "", preferredTime: "" });
-          setSubmitted(false);
+          setData({ name:"",email:"",phone:"",vehicleType:"",service:"",message:"",preferredDate:"",preferredTime:"" });
+          setStatus("idle");
         }, 4000);
       })
-      .catch((err) => {
-        console.error("Failed to send email:", err);
-        setError("Failed to send your request. Please try again or contact us directly.");
-        setLoading(false);
-      });
+      .catch(() => setStatus("error"));
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-  };
-  const itemVariants = {
-    hidden: { y: 16, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.4 } },
-  };
-
-  const inputClass = "w-full bg-[#0A0C10] border border-white/10 rounded-lg px-4 py-3 text-[#F7F8FA] text-sm placeholder-[#8B93A1] focus:outline-none focus:border-[#2F6FED] focus:ring-1 focus:ring-[#2F6FED]/30 transition-all";
-  const labelClass = "block text-xs text-[#8B93A1] uppercase tracking-wider mb-2 font-['Space_Grotesk']";
+  const labelCls = "block text-[10px] font-display font-bold text-mist uppercase tracking-widest mb-1.5";
 
   return (
     <>
       <Helmet>
         <title>Book Car Detailing Artarmon Sydney | Sparkling Car Care Contact</title>
-        <meta
-          name="description"
-          content="Book your car detailing appointment with Sparkling Car Care in Artarmon, Sydney. Call (02) 9438 4988 or use our online booking form. Mon–Fri 10AM–6PM, Sat 10AM–3PM."
-        />
+        <meta name="description" content="Book your car detailing appointment with Sparkling Car Care in Artarmon, Sydney. Call (02) 9438 4988 or use our online form. Mon–Fri 10AM–6PM, Sat 10AM–3PM." />
         <link rel="canonical" href="https://www.sparklingcarcare.com.au/contact" />
-        <meta property="og:title" content="Book Car Detailing Artarmon | Sparkling Car Care" />
-        <meta property="og:url" content="https://www.sparklingcarcare.com.au/contact" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sparklingcarcare.com.au/" },
-            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.sparklingcarcare.com.au/contact" }
-          ]
-        })}</script>
       </Helmet>
 
-      <div className="min-h-screen bg-[#0A0C10] pt-24 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">Get In Touch</p>
-            <h1 className="text-4xl md:text-6xl font-bold text-[#F7F8FA] font-['Space_Grotesk']">
-              Book Your <span className="text-[#2F6FED]">Detail</span>
-            </h1>
-            <p className="text-[#8B93A1] text-lg mt-4 max-w-2xl mx-auto">
-              Ready to give your car the care it deserves? Fill in the form below or give us a call to schedule your appointment.
-            </p>
-          </motion.div>
+      <div className="bg-deep text-snow min-h-screen pt-20">
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="bg-[#14161B] border border-white/8 rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <div className="flex flex-col md:flex-row">
-              {/* Left - Contact Info + Image */}
-              <motion.div variants={itemVariants} className="w-full md:w-5/12 relative min-h-80">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0A0C10]/30 via-[#0A0C10]/60 to-[#0A0C10]/95 z-10" />
-                <img
-                  src={ReviewBack}
-                  alt="Luxury car detailing Artarmon"
-                  className="h-full w-full object-cover object-center"
-                />
-                <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 text-[#F7F8FA]">
-                  <h3 className="text-2xl font-bold mb-6 font-['Space_Grotesk']">Sparkling Car Care</h3>
+        {/* ── Page header ───────────────────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-14 md:py-20"
+        >
+          <span className="section-label">Get In Touch</span>
+          <div className="flex items-start gap-5 mt-3">
+            <span className="gold-bar mt-1" />
+            <div>
+              <h1 className="text-4xl md:text-6xl font-display font-black text-snow">
+                Book Your Appointment
+              </h1>
+              <p className="text-mist mt-4 max-w-xl text-base leading-relaxed">
+                Fill in the form and we'll be in touch to confirm your booking. Alternatively, call us
+                directly for same-day inquiries.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
-                  <div className="space-y-4 text-sm">
-                    <div className="flex items-start gap-3">
-                      <MapPin size={16} className="text-[#2F6FED] shrink-0 mt-0.5" />
-                      <span className="text-[#F7F8FA]/80">{BUSINESS_INFO.address}</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Phone size={16} className="text-[#2F6FED] shrink-0 mt-0.5" />
-                      <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-[#F7F8FA]/80 hover:text-[#2F6FED] transition-colors">
-                        {BUSINESS_INFO.phone}
-                      </a>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Mail size={16} className="text-[#2F6FED] shrink-0 mt-0.5" />
-                      <a href={`mailto:${BUSINESS_INFO.email}`} className="text-[#F7F8FA]/80 hover:text-[#2F6FED] transition-colors">
-                        {BUSINESS_INFO.email}
-                      </a>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Clock size={16} className="text-[#2F6FED] shrink-0 mt-0.5" />
-                      <span className="text-[#F7F8FA]/80">Mon–Fri: 10AM–6PM<br />Sat: 10AM–3PM</span>
-                    </div>
-                  </div>
+        {/* ── Main content ─────────────────────────────────────────── */}
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-20">
+          <div className="grid lg:grid-cols-5 gap-6">
 
-                  {/* Social Icons */}
-                  <div className="flex gap-3 mt-8">
-                    {[
-                      { href: BUSINESS_INFO.facebook, icon: <Facebook size={16} />, label: "Facebook" },
-                      { href: BUSINESS_INFO.instagram, icon: <Instagram size={16} />, label: "Instagram" },
-                      { href: BUSINESS_INFO.tiktok, icon: <FaTiktok size={14} />, label: "TikTok" },
-                    ].map((s) => (
+            {/* ── Left panel ─── 2/5 */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="lg:col-span-2 bg-surface rounded-xl border border-white/6 overflow-hidden"
+            >
+              {/* Image + dark overlay */}
+              <div className="relative h-52 overflow-hidden">
+                <img src={ReviewBack} alt="Sparkling Car Care Artarmon" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-deep/20 to-surface" />
+              </div>
+
+              <div className="p-8 space-y-6">
+                <div>
+                  <div className="gold-rule mb-6" />
+                  <h2 className="font-display font-bold text-snow text-xl mb-1">Sparkling Car Care</h2>
+                  <p className="text-mist text-sm">Premium Detailing · Artarmon, Sydney</p>
+                </div>
+
+                {/* Contact details */}
+                <div className="space-y-4">
+                  {[
+                    { icon: <MapPin size={15} />, label: "Address", value: BUSINESS_INFO.address, href: null },
+                    { icon: <Phone size={15} />,  label: "Phone",   value: BUSINESS_INFO.phone,   href: `tel:${BUSINESS_INFO.phoneTel}` },
+                    { icon: <Mail size={15} />,   label: "Email",   value: BUSINESS_INFO.email,   href: `mailto:${BUSINESS_INFO.email}` },
+                    { icon: <Clock size={15} />,  label: "Hours",   value: "Mon–Fri 10AM–6PM · Sat 10AM–3PM", href: null },
+                  ].map((c) => (
+                    <div key={c.label} className="flex items-start gap-3.5">
+                      <div className="w-8 h-8 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 text-gold">
+                        {c.icon}
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-ghost uppercase tracking-wider mb-0.5">{c.label}</p>
+                        {c.href ? (
+                          <a href={c.href} className="text-snow text-sm hover:text-gold transition-colors">{c.value}</a>
+                        ) : (
+                          <p className="text-snow text-sm">{c.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Socials */}
+                <div className="pt-4 border-t border-white/5">
+                  <p className="text-[10px] text-ghost uppercase tracking-widest mb-3">Follow Us</p>
+                  <div className="flex gap-2">
+                    {socialLinks.map((s) => (
                       <a
                         key={s.label}
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#2F6FED] flex items-center justify-center text-white transition-colors"
+                        className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-gold hover:border-gold/40 transition-all"
                       >
                         {s.icon}
                       </a>
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
+            </motion.div>
 
-              {/* Right - Form */}
-              <motion.div variants={itemVariants} className="w-full md:w-7/12 p-8 md:p-12 bg-[#14161B]">
-                <h2 className="text-2xl font-bold text-[#F7F8FA] mb-8 font-['Space_Grotesk']">
-                  Schedule Your Detail
-                </h2>
+            {/* ── Form ─── 3/5 */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-3 bg-surface rounded-xl border border-white/6 p-8 md:p-10"
+            >
+              <h2 className="font-display font-bold text-snow text-2xl mb-8">Schedule Your Detail</h2>
 
-                {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-emerald-900/30 border border-emerald-500/30 p-8 rounded-xl text-center"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+              {status === "success" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="h-64 flex flex-col items-center justify-center text-center gap-4"
+                >
+                  <div className="w-16 h-16 rounded-full bg-gold/15 border-2 border-gold/40 flex items-center justify-center text-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display font-bold text-snow text-xl">Request Sent!</h3>
+                  <p className="text-mist text-sm max-w-xs">We'll contact you shortly to confirm your appointment. Thank you!</p>
+                </motion.div>
+              ) : (
+                <form ref={form} onSubmit={onSubmit} className="space-y-5">
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className={labelCls}>Full Name *</label>
+                      <input id="name" name="name" type="text" required value={data.name} onChange={onChange} placeholder="Your name" className="field" />
                     </div>
-                    <h3 className="text-xl font-bold text-emerald-300 mb-2 font-['Space_Grotesk']">Thank You!</h3>
-                    <p className="text-emerald-400/80 text-sm">We've received your request and will contact you shortly to confirm your appointment.</p>
-                  </motion.div>
-                ) : (
-                  <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-                    {/* Name + Email */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="name" className={labelClass}>Full Name *</label>
-                        <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" className={inputClass} />
-                      </motion.div>
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="email" className={labelClass}>Email Address *</label>
-                        <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" className={inputClass} />
-                      </motion.div>
+                    <div>
+                      <label htmlFor="email" className={labelCls}>Email Address *</label>
+                      <input id="email" name="email" type="email" required value={data.email} onChange={onChange} placeholder="you@example.com" className="field" />
                     </div>
+                  </div>
 
-                    {/* Phone + Vehicle */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="phone" className={labelClass}>Phone Number</label>
-                        <input id="phone" type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="(02) XXXX XXXX" className={inputClass} />
-                      </motion.div>
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="vehicleType" className={labelClass}>Vehicle Make / Model</label>
-                        <input id="vehicleType" type="text" name="vehicleType" value={formData.vehicleType} onChange={handleChange} placeholder="e.g. Toyota Camry" className={inputClass} />
-                      </motion.div>
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="phone" className={labelCls}>Phone Number</label>
+                      <input id="phone" name="phone" type="tel" value={data.phone} onChange={onChange} placeholder="(02) XXXX XXXX" className="field" />
                     </div>
+                    <div>
+                      <label htmlFor="vehicleType" className={labelCls}>Vehicle Make / Model</label>
+                      <input id="vehicleType" name="vehicleType" type="text" value={data.vehicleType} onChange={onChange} placeholder="e.g. Toyota Camry" className="field" />
+                    </div>
+                  </div>
 
-                    {/* Service */}
-                    <motion.div variants={itemVariants}>
-                      <label htmlFor="service" className={labelClass}>Service Requested</label>
-                      <select id="service" name="service" value={formData.service} onChange={handleChange} className={inputClass}>
-                        <option value="">Select a service</option>
-                        {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                  <div>
+                    <label htmlFor="service" className={labelCls}>Service Required</label>
+                    <select id="service" name="service" value={data.service} onChange={onChange} className="field">
+                      <option value="">Select a service…</option>
+                      {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                    </select>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="preferredDate" className={labelCls}>Preferred Date</label>
+                      <input id="preferredDate" name="preferredDate" type="date" value={data.preferredDate} onChange={onChange} className="field" />
+                    </div>
+                    <div>
+                      <label htmlFor="preferredTime" className={labelCls}>Preferred Time</label>
+                      <select id="preferredTime" name="preferredTime" value={data.preferredTime} onChange={onChange} className="field">
+                        <option value="">Select a time…</option>
+                        <option value="Morning (10AM-12PM)">Morning (10AM–12PM)</option>
+                        <option value="Midday (12PM-2PM)">Midday (12PM–2PM)</option>
+                        <option value="Afternoon (2PM-4PM)">Afternoon (2PM–4PM)</option>
+                        <option value="Evening (4PM-6PM)">Evening (4PM–6PM)</option>
                       </select>
-                    </motion.div>
-
-                    {/* Date + Time */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="preferredDate" className={labelClass}>Preferred Date</label>
-                        <input id="preferredDate" type="date" name="preferredDate" value={formData.preferredDate} onChange={handleChange} className={inputClass} />
-                      </motion.div>
-                      <motion.div variants={itemVariants}>
-                        <label htmlFor="preferredTime" className={labelClass}>Preferred Time</label>
-                        <select id="preferredTime" name="preferredTime" value={formData.preferredTime} onChange={handleChange} className={inputClass}>
-                          <option value="">Select a time</option>
-                          <option value="Morning (10AM-12PM)">Morning (10AM–12PM)</option>
-                          <option value="Midday (12PM-2PM)">Midday (12PM–2PM)</option>
-                          <option value="Afternoon (2PM-4PM)">Afternoon (2PM–4PM)</option>
-                          <option value="Evening (4PM-6PM)">Evening (4PM–6PM)</option>
-                        </select>
-                      </motion.div>
                     </div>
+                  </div>
 
-                    {/* Message */}
-                    <motion.div variants={itemVariants}>
-                      <label htmlFor="message" className={labelClass}>Additional Information</label>
-                      <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows="4" placeholder="Tell us anything else about your vehicle or the service you need..." className={`${inputClass} resize-none`} />
-                    </motion.div>
+                  <div>
+                    <label htmlFor="message" className={labelCls}>Additional Notes</label>
+                    <textarea id="message" name="message" rows={4} value={data.message} onChange={onChange} placeholder="Anything else we should know about your vehicle…" className="field resize-none" />
+                  </div>
 
-                    {error && (
-                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-sm bg-red-900/20 border border-red-500/30 p-3 rounded-lg">
-                        {error}
-                      </motion.div>
+                  {status === "error" && (
+                    <p className="text-red-400 text-sm bg-red-900/20 border border-red-500/30 px-4 py-3 rounded-lg">
+                      Something went wrong. Please try again or call us directly.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="btn-gold w-full justify-center text-sm py-4 disabled:opacity-50"
+                  >
+                    {status === "loading" ? (
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                    ) : (
+                      <>Send Booking Request <Send size={15} /></>
                     )}
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </div>
 
-                    <motion.button
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      disabled={loading}
-                      className="w-full py-4 bg-[#0B3D91] hover:bg-[#2F6FED] disabled:bg-[#0B3D91]/50 text-[#F7F8FA] font-bold rounded-lg transition-colors flex items-center justify-center gap-2 font-['Space_Grotesk']"
-                    >
-                      {loading ? (
-                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                        </svg>
-                      ) : (
-                        <>
-                          Schedule Appointment
-                          <ArrowRight size={18} />
-                        </>
-                      )}
-                    </motion.button>
-                  </form>
-                )}
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Map */}
+          {/* ── Map ─────────────────────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-16"
+            className="mt-6 rounded-xl overflow-hidden border border-white/6 shadow-2xl h-72 md:h-80"
           >
-            <h2 className="text-2xl font-bold text-[#F7F8FA] mb-6 font-['Space_Grotesk'] text-center">Find Us</h2>
-            <div className="rounded-xl overflow-hidden border border-white/8 shadow-2xl h-80">
-              <iframe
-                src={BUSINESS_INFO.googleMapsEmbed}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Sparkling Car Care location – 77/81 Reserve Rd, Artarmon NSW 2064"
-                className="w-full h-full"
-              />
-            </div>
+            <iframe
+              src={BUSINESS_INFO.googleMapsEmbed}
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Sparkling Car Care — 77/81 Reserve Rd, Artarmon NSW 2064"
+              className="w-full h-full"
+            />
           </motion.div>
         </div>
       </div>
