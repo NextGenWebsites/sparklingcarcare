@@ -121,7 +121,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden fixed inset-0 z-40 bg-deep/98 backdrop-blur-xl flex flex-col"
+            className="md:hidden fixed inset-0 z-[100] bg-deep/98 backdrop-blur-xl flex flex-col"
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
@@ -150,7 +150,7 @@ const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block py-5 border-b border-white/5 font-display font-bold uppercase tracking-[0.1em] text-3xl transition-colors ${
+                    className={`block py-5 border-b border-white/5 font-display font-bold uppercase tracking-[0.1em] text-1xl transition-colors ${
                       isActive(link.path) ? "text-brand" : "text-snow/60 hover:text-white"
                     }`}
                   >

@@ -220,7 +220,7 @@ const Home = () => (
                 {/* Watermark number */}
                 <span
                   className="absolute -top-2 -right-3 font-display font-black text-8xl select-none pointer-events-none"
-                  style={{ color: "transparent", WebkitTextStroke: "1px rgba(200,145,26,0.1)" }}
+                  style={{ color: "transparent", WebkitTextStroke: "1px rgba(232 237 245 / 0.1)" }}
                 >
                   {s.num}
                 </span>
