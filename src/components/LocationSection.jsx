@@ -1,59 +1,130 @@
 import React from "react";
-import { MapPin, Phone } from "lucide-react";
-import MapBack from "../images/background/MapBack.webp";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { BUSINESS_INFO } from "../data/content";
 
 const LocationSection = () => {
   return (
-    <section className="py-20 px-4 bg-white" id="location">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl text-gray-800  text-center mb-5">
-          Locate Us
-        </h2>
-        <div className="w-20 h-1 bg-gray-600 mx-auto mb-8"></div>
+    <section className="py-20 bg-[#0A0C10] border-t border-white/5" id="location">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">
+            Find Us
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8FA] font-['Space_Grotesk']">
+            Visit Our Workshop
+          </h2>
+        </motion.div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Info Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-[#14161B] border border-white/8 rounded-xl p-8 flex flex-col gap-8 justify-center"
+          >
+            <div>
+              <h3 className="text-xl font-bold text-[#F7F8FA] mb-6 font-['Space_Grotesk']">
+                Sparkling Car Care
+              </h3>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className=" p-6 rounded-lg shadow-md h-full  bg-gray-300">
-            <div className="flex items-start gap-4 mb-6 ">
-              <MapPin size={38} className="text-blue-600 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className=" text-3xl mb-2 text-blue-700">
-                  Our Location
-                </h3>
-                <p className="text-gray-600 text-xl">77/81 Reserve Rd,</p>
-                <p className="text-gray-600 text-xl">Artarmon NSW 2064</p>
+              <div className="space-y-5">
+                <div className="flex items-start gap-4">
+                  <MapPin size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Address</p>
+                    <p className="text-[#F7F8FA] text-sm leading-relaxed">
+                      {BUSINESS_INFO.address}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Phone size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Phone</p>
+                    <a
+                      href={`tel:${BUSINESS_INFO.phoneTel}`}
+                      className="text-[#F7F8FA] hover:text-[#2F6FED] transition-colors text-sm font-medium"
+                    >
+                      {BUSINESS_INFO.phone}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <Mail size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Email</p>
+                    <a
+                      href={`mailto:${BUSINESS_INFO.email}`}
+                      className="text-[#F7F8FA] hover:text-[#2F6FED] transition-colors text-sm font-medium"
+                    >
+                      {BUSINESS_INFO.email}
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
-              <Phone size={38} className="text-blue-600 mt-1 flex-shrink-0" />
-              <div>
-                <h3 className=" text-3xl mb-2 text-blue-700">
-                  Contact Us
-                </h3>
-                <p className="text-gray-600 text-xl">(02) 9438 4988</p>
-                <p className="text-gray-600 text-xl">
-                  info@sparklingcarcare.com.au
-                </p>
+            <div className="pt-6 border-t border-white/5">
+              <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-3">Opening Hours</p>
+              <div className="space-y-1.5 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-[#8B93A1]">Monday – Friday</span>
+                  <span className="text-[#F7F8FA]">10:00 AM – 6:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[#8B93A1]">Saturday</span>
+                  <span className="text-[#F7F8FA]">10:00 AM – 3:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-[#8B93A1]">Sunday</span>
+                  <span className="text-[#8B93A1]">Closed</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="rounded-lg overflow-hidden shadow-lg w-full h-full">
-            <div className="aspect-video w-full h-full min-h-96">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4130.627978734494!2d151.1870256!3d-33.8158916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12aed8a0f7fcb9%3A0x75b682048520f614!2sSparkling%20Car%20Care!5e0!3m2!1sen!2slk!4v1743506974028!5m2!1sen!2slk"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps"
-                className="w-full h-full"
-              ></iframe>
-            </div>
-          </div>
+            <a
+              href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS_INFO.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[#2F6FED] hover:text-[#F7F8FA] text-sm font-medium transition-colors"
+            >
+              Get Directions
+              <ExternalLink size={14} />
+            </a>
+          </motion.div>
+
+          {/* Map */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-xl overflow-hidden border border-white/8 shadow-2xl min-h-80"
+          >
+            <iframe
+              src={BUSINESS_INFO.googleMapsEmbed}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: 320 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Sparkling Car Care location – 77/81 Reserve Rd, Artarmon NSW 2064"
+              className="w-full h-full"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
