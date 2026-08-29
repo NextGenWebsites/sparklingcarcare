@@ -10,7 +10,7 @@ import LocationSection from "../components/LocationSection";
 import AboutUsSection from "../components/AboutUsSection";
 import { BUSINESS_INFO } from "../data/content";
 
-import featuredBg from "@/images/service_img/featured_services_bg.png";
+import featuredBg from "@/images/background/featured_services_bg.png";
 import heroBg from "@/images/background/hero_bg.png";
 
 /* ── Service preview data ───────────────────────────────────────────────── */
