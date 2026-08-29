@@ -37,7 +37,7 @@ const Navbar = () => {
       <motion.nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-deep/95 backdrop-blur-lg shadow-xl shadow-black/40 border-b border-white/5"
+            ? "bg-deep/95 backdrop-blur-lg shadow-xl shadow-black/40"
             : "bg-deep/45"
         }`}
         initial={{ y: -80 }}
@@ -79,7 +79,7 @@ const Navbar = () => {
                 >
                   {link.name}
                   <span
-                    className={`absolute -bottom-1 left-0 h-px bg-brand transition-all duration-300 ${
+                    className={`absolute -bottom-1.5 left-0 h-[2px] rounded-full bg-brand transition-all duration-300 ${
                       isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
