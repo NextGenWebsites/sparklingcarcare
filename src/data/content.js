@@ -30,7 +30,7 @@ export const REVIEWS = [
     id: 2,
     name: "Nicole B.",
     rating: 5,
-    text: "Completely satisfied and impressed with the thorough internal and external cleaning done on my car today. Thank you. Nicole Bannister — BDU 73H - Impreza RX.",
+    text: "Completely satisfied and impressed with the thorough internal and external cleaning done on my car today. Thank you. Nicole Bannister - BDU 73H - Impreza RX.",
     date: "5 months ago",
   },
   {
@@ -93,7 +93,7 @@ export const SERVICES_LIST = [
     id: "odour-removal",
     title: "Odour Removal",
     description:
-      "Say goodbye to stubborn smells with our professional odour removal service. Whether it's smoke, pet, food, or mildew, we target and neutralise the source — not just mask it.",
+      "Say goodbye to stubborn smells with our professional odour removal service. Whether it's smoke, pet, food, or mildew, we target and neutralise the source - not just mask it.",
   },
   {
     id: "headlight-restoration",

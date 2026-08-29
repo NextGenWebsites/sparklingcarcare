@@ -114,7 +114,7 @@ const ContactPage = () => {
             className="bg-[#14161B] border border-white/8 rounded-2xl overflow-hidden shadow-2xl"
           >
             <div className="flex flex-col md:flex-row">
-              {/* Left — Contact Info + Image */}
+              {/* Left - Contact Info + Image */}
               <motion.div variants={itemVariants} className="w-full md:w-5/12 relative min-h-80">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0A0C10]/30 via-[#0A0C10]/60 to-[#0A0C10]/95 z-10" />
                 <img
@@ -170,7 +170,7 @@ const ContactPage = () => {
                 </div>
               </motion.div>
 
-              {/* Right — Form */}
+              {/* Right - Form */}
               <motion.div variants={itemVariants} className="w-full md:w-7/12 p-8 md:p-12 bg-[#14161B]">
                 <h2 className="text-2xl font-bold text-[#F7F8FA] mb-8 font-['Space_Grotesk']">
                   Schedule Your Detail

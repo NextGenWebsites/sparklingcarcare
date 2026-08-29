@@ -15,7 +15,7 @@ const features = [
     icon: <MapPin size={24} className="text-[#2F6FED]" />,
     title: "Locally Run",
     description:
-      "Based in Artarmon, NSW — we're part of the community and proud to serve Sydney car owners.",
+      "Based in Artarmon, NSW - we're part of the community and proud to serve Sydney car owners.",
   },
   {
     icon: <Users size={24} className="text-[#2F6FED]" />,
@@ -33,7 +33,7 @@ const features = [
     icon: <Eye size={24} className="text-[#2F6FED]" />,
     title: "Attention to Detail",
     description:
-      "Every inch of your vehicle is treated with meticulous care — inside, outside, and everything between.",
+      "Every inch of your vehicle is treated with meticulous care - inside, outside, and everything between.",
   },
   {
     icon: <Leaf size={24} className="text-[#2F6FED]" />,
@@ -83,7 +83,7 @@ const AboutUsSection = () => {
               Sparkling Car Care
             </span>
             , we're a locally run car detailing business dedicated to restoring
-            and protecting your car — inside and out — with meticulous care and
+            and protecting your car - inside and out - with meticulous care and
             attention to detail. Whether it's a deep interior clean, flawless
             exterior finish, or specialised services like paint correction and
             odour removal, we treat every vehicle as if it were our own.

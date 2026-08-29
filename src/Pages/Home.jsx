@@ -18,7 +18,7 @@ const trustStats = [
 
 const servicePreview = [
   { title: "Exterior Detailing", desc: "Full hand wash, chamois dry, polish and tyre shine.", href: "/services#exterior-detailing" },
-  { title: "Interior Detailing", desc: "Deep clean every surface — seats, carpets, dash and vents.", href: "/services#interior-detailing" },
+  { title: "Interior Detailing", desc: "Deep clean every surface - seats, carpets, dash and vents.", href: "/services#interior-detailing" },
   { title: "Paint Correction", desc: "Remove swirl marks, scratches and oxidation for a flawless finish.", href: "/services#paint-correction" },
 ];
 
@@ -29,7 +29,7 @@ const Home = () => {
         <title>Car Detailing Artarmon Sydney | Sparkling Car Care</title>
         <meta
           name="description"
-          content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today — (02) 9438 4988."
+          content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today - (02) 9438 4988."
         />
         <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
         <meta property="og:title" content="Car Detailing Artarmon Sydney | Sparkling Car Care" />
@@ -111,7 +111,7 @@ const Home = () => {
                 </div>
               </motion.div>
 
-              {/* Right side review cards — desktop only */}
+              {/* Right side review cards - desktop only */}
               <div className="hidden lg:flex flex-col gap-6 w-full justify-center lg:pl-8">
                 {[
                   { name: "Ben Hoskins", text: "Just picked up my car and it genuinely looks brand new. Service, attention to detail and value for money all outstanding!" },
@@ -128,7 +128,7 @@ const Home = () => {
                       {[...Array(5)].map((_, j) => <Star key={j} className="fill-yellow-400 text-yellow-400" size={14} />)}
                     </div>
                     <p className="text-[#F7F8FA] mb-3 leading-relaxed italic text-sm">"{r.text}"</p>
-                    <p className="text-[#2F6FED] font-semibold text-xs uppercase tracking-wider font-['Space_Grotesk']">— {r.name}</p>
+                    <p className="text-[#2F6FED] font-semibold text-xs uppercase tracking-wider font-['Space_Grotesk']">- {r.name}</p>
                   </motion.div>
                 ))}
               </div>

@@ -81,7 +81,7 @@ const packagePage = () => {
                 Packages & Pricing
               </h1>
               <p className="text-[#8B93A1] text-lg max-w-xl">
-                Transparent pricing for every budget — restore your vehicle to showroom condition.
+                Transparent pricing for every budget - restore your vehicle to showroom condition.
               </p>
             </motion.div>
           </div>
@@ -100,7 +100,7 @@ const packagePage = () => {
               Our Detailing Packages
             </h2>
             <p className="text-[#8B93A1] text-lg">
-              From a quick refresh to a full transformation — choose the package that suits your needs.
+              From a quick refresh to a full transformation - choose the package that suits your needs.
             </p>
             <p className="text-[#2F6FED] text-sm mt-3 font-medium">
               * All prices may vary depending on vehicle condition.
