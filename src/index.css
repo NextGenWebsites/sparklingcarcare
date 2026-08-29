@@ -1,18 +1,158 @@
+/* ─── Google Fonts ──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ─── Tailwind ──────────────────────────────────────────────────────────────── */
 @import "tailwindcss";
 
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+@theme {
+  --color-ink-black: #0A0C10;
+  --color-deep-blue: #0B3D91;
+  --color-electric-edge: #2F6FED;
+  --color-paper-white: #F7F8FA;
+  --color-steel: #8B93A1;
+  --color-carbon: #14161B;
 
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-.overflow-x-hidden::-webkit-scrollbar {
-    display: none;}
-
-html{
-    scroll-behavior: smooth;
-    
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-
-body {
-    font-family: 'Inter', sans-serif;
+/* ─── Base Styles ───────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0C10;
+    color: #F7F8FA;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #F7F8FA;
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0C10; }
+  ::-webkit-scrollbar-thumb { background: #2F6FED; border-radius: 3px; }
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────────────────── */
+@keyframes slide-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slide-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes scroll-reviews {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes sheen {
+  0%   { left: -150%; }
+  15%  { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Page wrapper for transitions */
+  .page-wrapper {
+    min-height: calc(100vh - 80px);
+  }
+
+  /* Gallery rows */
+  .animate-slide-left {
+    animation: slide-left 40s linear infinite;
+  }
+
+  .animate-slide-right {
+    animation: slide-right 40s linear infinite;
+  }
+
+  .gallery-row:hover .animate-slide-left,
+  .gallery-row:hover .animate-slide-right {
+    animation-play-state: paused;
+  }
+
+  /* Reviews auto-scroll */
+  .animate-scroll-reviews {
+    animation: scroll-reviews 30s linear infinite;
+  }
+
+  .reviews-track:hover .animate-scroll-reviews {
+    animation-play-state: paused;
+  }
+
+  /* Sheen sweep */
+  .sheen-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sheen-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: sheen 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-scroll-reviews,
+    .sheen-sweep::after {
+      animation: none;
+    }
+  }
+
+  /* Electric border glow on hover */
+  .hover-glow:hover {
+    border-color: rgba(47, 111, 237, 0.5);
+    box-shadow: 0 0 20px rgba(47, 111, 237, 0.1);
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: rgba(20, 22, 27, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
