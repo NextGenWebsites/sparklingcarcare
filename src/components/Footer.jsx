@@ -1,86 +1,74 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
 import { FaTiktok } from "react-icons/fa";
 import { BUSINESS_INFO } from "../data/content";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 bg-[#0A0C10] border-t border-white/5 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
+    <footer className="bg-overlay border-t border-white/5">
+      {/* Gold rule */}
+      <div className="gold-rule" />
 
-          {/* Brand Column */}
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold text-[#F7F8FA] font-['Space_Grotesk'] mb-2">
-                Sparkling<br />Car Care
-              </h2>
-              <p className="text-[#8B93A1] text-sm leading-relaxed max-w-xs">
-                Premium automotive detailing services delivering exceptional results for discerning car owners across Sydney.
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <a
-                href={BUSINESS_INFO.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#0A0C10] border border-white/10 flex items-center justify-center text-[#F7F8FA] hover:border-[#2F6FED] hover:text-[#2F6FED] transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href={BUSINESS_INFO.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#0A0C10] border border-white/10 flex items-center justify-center text-[#F7F8FA] hover:border-[#2F6FED] hover:text-[#2F6FED] transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href={BUSINESS_INFO.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#0A0C10] border border-white/10 flex items-center justify-center text-[#F7F8FA] hover:border-[#2F6FED] hover:text-[#2F6FED] transition-colors"
-                aria-label="TikTok"
-              >
-                <FaTiktok size={16} />
-              </a>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-14">
+
+          {/* Brand — 4 cols */}
+          <div className="md:col-span-4 space-y-6">
+            <Link to="/" className="flex items-center gap-3">
+              <img src="/logo.png" alt="Sparkling Car Care" className="h-14 w-14 rounded-full object-cover ring-1 ring-gold/30" />
+              <div>
+                <p className="font-display font-bold text-snow text-lg leading-snug">Sparkling Car Care</p>
+                <p className="text-mist text-xs uppercase tracking-widest">Artarmon, NSW 2064</p>
+              </div>
+            </Link>
+            <p className="text-mist text-sm leading-relaxed max-w-xs">
+              Premium automotive detailing for discerning car owners across Sydney. Showroom results, guaranteed.
+            </p>
+            <div className="flex gap-2">
+              {[
+                { href: BUSINESS_INFO.instagram, icon: <Instagram size={16} />, label: "Instagram" },
+                { href: BUSINESS_INFO.facebook, icon: <Facebook size={16} />, label: "Facebook" },
+                { href: BUSINESS_INFO.tiktok, icon: <FaTiktok size={14} />, label: "TikTok" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-gold hover:border-gold/40 transition-all duration-200"
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Sitemap Column */}
-          <div>
-            <h3 className="font-bold text-[#F7F8FA] mb-6 uppercase tracking-wider text-xs font-['Space_Grotesk']">
-              Sitemap
-            </h3>
+          {/* Quick Links — 2 cols */}
+          <div className="md:col-span-2">
+            <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Navigate</h3>
             <ul className="space-y-3">
               {[
-                { label: "Home", href: "/" },
-                { label: "Our Services", href: "/services" },
-                { label: "Packages & Pricing", href: "/packages" },
-                { label: "Book an Appointment", href: "/contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-[#8B93A1] hover:text-[#2F6FED] transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
+                { label: "Home", to: "/" },
+                { label: "Services", to: "/services" },
+                { label: "Packages", to: "/packages" },
+                { label: "Book Now", to: "/contact" },
+              ].map((l) => (
+                <li key={l.to}>
+                  <Link to={l.to} className="text-mist hover:text-gold text-sm transition-colors">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services Column */}
-          <div>
-            <h3 className="font-bold text-[#F7F8FA] mb-6 uppercase tracking-wider text-xs font-['Space_Grotesk']">
-              Our Services
-            </h3>
+          {/* Services — 3 cols */}
+          <div className="md:col-span-3">
+            <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Services</h3>
             <ul className="space-y-3">
               {[
                 "Exterior Detailing",
@@ -89,74 +77,58 @@ const Footer = () => {
                 "Ceramic Coating",
                 "Headlight Restoration",
                 "Engine Bay Wash",
-                "Odour Removal",
-              ].map((service) => (
-                <li key={service}>
-                  <a
-                    href="/services"
-                    className="text-[#8B93A1] hover:text-[#2F6FED] transition-colors text-sm"
-                  >
-                    {service}
-                  </a>
+              ].map((s) => (
+                <li key={s}>
+                  <Link to="/services" className="text-mist hover:text-gold text-sm transition-colors">
+                    {s}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Column */}
-          <div>
-            <h3 className="font-bold text-[#F7F8FA] mb-6 uppercase tracking-wider text-xs font-['Space_Grotesk']">
-              Contact Info
-            </h3>
+          {/* Contact — 3 cols */}
+          <div className="md:col-span-3">
+            <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="text-[#2F6FED] shrink-0 mt-0.5" size={16} />
-                <span className="text-[#8B93A1] text-sm leading-relaxed">
-                  {BUSINESS_INFO.address}
-                </span>
+                <MapPin size={15} className="text-gold shrink-0 mt-0.5" />
+                <span className="text-mist text-sm leading-snug">{BUSINESS_INFO.address}</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="text-[#2F6FED] shrink-0 mt-0.5" size={16} />
-                <a
-                  href={`tel:${BUSINESS_INFO.phoneTel}`}
-                  className="text-[#8B93A1] hover:text-[#2F6FED] transition-colors text-sm"
-                >
+                <Phone size={15} className="text-gold shrink-0 mt-0.5" />
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-mist hover:text-gold text-sm transition-colors">
                   {BUSINESS_INFO.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="text-[#2F6FED] shrink-0 mt-0.5" size={16} />
-                <a
-                  href={`mailto:${BUSINESS_INFO.email}`}
-                  className="text-[#8B93A1] hover:text-[#2F6FED] transition-colors text-sm"
-                >
+                <Mail size={15} className="text-gold shrink-0 mt-0.5" />
+                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-mist hover:text-gold text-sm transition-colors">
                   {BUSINESS_INFO.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="text-[#2F6FED] shrink-0 mt-0.5" size={16} />
-                <span className="text-[#8B93A1] text-sm leading-relaxed">
-                  Mon–Fri: 10AM–6PM<br />Sat: 10AM–3PM<br />Sun: Closed
+                <Clock size={15} className="text-gold shrink-0 mt-0.5" />
+                <span className="text-mist text-sm leading-snug">
+                  Mon–Fri 10AM–6PM<br />Sat 10AM–3PM · Sun Closed
                 </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#8B93A1] text-xs text-center md:text-left">
-            &copy; {currentYear} Sparkling Car Care. All rights reserved.
-            <span className="hidden md:inline"> | </span>
-            <span className="block md:inline">Car Detailing Artarmon, Sydney NSW</span>
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-ghost text-xs text-center sm:text-left">
+            &copy; {year} Sparkling Car Care · Car Detailing Artarmon, Sydney NSW
           </p>
-          <p className="text-[#8B93A1] text-xs">
+          <p className="text-ghost text-xs">
             Website by{" "}
             <a
               href="https://www.nextgenwebsites.info/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2F6FED] hover:text-white transition-colors font-medium"
+              className="text-gold hover:text-gold-light transition-colors"
             >
               NextGen Websites
             </a>
