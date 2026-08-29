@@ -10,11 +10,11 @@ import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
 const tierConfig = {
   entry:   { label: "Essential",  ring: "border-white/10",             badge: "text-mist bg-raised" },
   mid:     { label: "Popular",    ring: "border-white/15",             badge: "text-snow bg-raised" },
-  premium: { label: "Premium",    ring: "border-gold/50 shadow-gold-glow", badge: "text-deep bg-gold" },
+  premium: { label: "Premium",    ring: "border-brand/50 shadow-brand-glow", badge: "text-deep bg-brand" },
 };
 
 const TierIcon = ({ tier }) => {
-  if (tier === "premium") return <Sparkles size={20} className="text-gold" />;
+  if (tier === "premium") return <Sparkles size={20} className="text-brand" />;
   if (tier === "mid")     return <Shield   size={20} className="text-snow" />;
   return                         <Car      size={20} className="text-mist" />;
 };
@@ -62,10 +62,10 @@ const Package = () => (
       {/* ── Pricing notice ───────────────────────────────────────────── */}
       <div className="bg-surface border-b border-white/6 py-5">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
-          <Clock size={14} className="text-gold shrink-0" />
+          <Clock size={14} className="text-brand shrink-0" />
           <p className="text-mist text-sm">
             All prices are indicative and may vary based on vehicle size and condition.
-            <span className="text-gold ml-1 font-medium">We'll confirm your exact quote before starting.</span>
+            <span className="text-brand ml-1 font-medium">We'll confirm your exact quote before starting.</span>
           </p>
         </div>
       </div>
@@ -81,11 +81,11 @@ const Package = () => (
         >
           <span className="section-label block mb-4">Specialist Services</span>
           <div className="flex items-center justify-center gap-4">
-            <span className="gold-bar" style={{ height: 32 }} />
+            <span className="brand-bar" style={{ height: 32 }} />
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
               Protection & Repair
             </h2>
-            <span className="gold-bar" style={{ height: 32 }} />
+            <span className="brand-bar" style={{ height: 32 }} />
           </div>
         </motion.div>
 
@@ -101,11 +101,11 @@ const Package = () => (
               className="bg-surface border border-white/6 rounded-xl overflow-hidden shadow-2xl relative"
             >
               {/* Premium accent bar */}
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-50" />
               
               <div className="p-8">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 text-gold">
+                  <div className="w-12 h-12 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0 text-brand">
                     {key === "ceramicCoating" ? <Sparkles size={24} /> : <Wrench size={24} />}
                   </div>
                   <div>
@@ -118,10 +118,10 @@ const Package = () => (
                   {service.tiers.map((tier) => (
                     <div key={tier.label} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 group">
                       <div>
-                        <p className="text-snow text-sm font-medium group-hover:text-gold transition-colors">{tier.label}</p>
+                        <p className="text-snow text-sm font-medium group-hover:text-brand transition-colors">{tier.label}</p>
                         <p className="text-ghost text-xs mt-0.5">{tier.note}</p>
                       </div>
-                      <span className="font-mono text-gold font-bold text-right shrink-0 ml-4">{tier.price}</span>
+                      <span className="font-mono text-brand font-bold text-right shrink-0 ml-4">{tier.price}</span>
                     </div>
                   ))}
                 </div>
@@ -147,11 +147,11 @@ const Package = () => (
         >
           <span className="section-label block mb-4">Wash & Detail Packages</span>
           <div className="flex items-center justify-center gap-4">
-            <span className="gold-bar" style={{ height: 32 }} />
+            <span className="brand-bar" style={{ height: 32 }} />
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
               Our Detailing Packages
             </h2>
-            <span className="gold-bar" style={{ height: 32 }} />
+            <span className="brand-bar" style={{ height: 32 }} />
           </div>
         </motion.div>
 
@@ -165,11 +165,11 @@ const Package = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={`relative bg-surface border rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${tc.ring} ${pkg.popular ? "shadow-lg shadow-gold/10" : ""}`}
+                className={`relative bg-surface border rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${tc.ring} ${pkg.popular ? "shadow-lg shadow-brand/10" : ""}`}
               >
                 {/* Popular banner */}
                 {pkg.popular && (
-                  <div className="bg-gold text-deep text-[10px] font-display font-black uppercase tracking-[0.2em] text-center py-1.5">
+                  <div className="bg-brand text-deep text-[10px] font-display font-black uppercase tracking-[0.2em] text-center py-1.5">
                     ★ Most Popular
                   </div>
                 )}
@@ -203,7 +203,7 @@ const Package = () => (
 
                   {/* Price */}
                   <div className="mb-4 pb-4 border-b border-white/6">
-                    <p className="font-mono text-gold font-bold text-lg">{pkg.price}</p>
+                    <p className="font-mono text-brand font-bold text-lg">{pkg.price}</p>
                   </div>
 
                   <p className="text-mist text-sm leading-relaxed mb-5">{pkg.description}</p>
@@ -212,7 +212,7 @@ const Package = () => (
                   <ul className="space-y-2 mb-7 flex-1">
                     {pkg.features.map((f) => (
                       <li key={f} className="flex items-center gap-2.5 text-sm text-snow/80">
-                        <Check size={13} className="text-gold shrink-0" />
+                        <Check size={13} className="text-brand shrink-0" />
                         {f}
                       </li>
                     ))}
@@ -220,7 +220,7 @@ const Package = () => (
 
                   <Link
                     to="/contact"
-                    className={pkg.tier === "premium" ? "btn-gold w-full justify-center text-xs" : "btn-outline w-full justify-center text-xs"}
+                    className={pkg.tier === "premium" ? "btn-brand w-full justify-center text-xs" : "btn-outline w-full justify-center text-xs"}
                   >
                     Book This Package
                   </Link>
@@ -244,7 +244,7 @@ const Package = () => (
           {/* Horizontal timeline */}
           <div className="relative">
             {/* Connecting line */}
-            <div className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+            <div className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent" />
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {processSteps.map((step, i) => (
@@ -257,10 +257,10 @@ const Package = () => (
                   className="flex flex-col items-center text-center relative"
                 >
                   {/* Number circle */}
-                  <div className="w-16 h-16 rounded-full bg-raised border-2 border-gold/30 flex items-center justify-center text-gold mb-5 relative z-10 hover:border-gold hover:shadow-lg hover:shadow-gold/15 transition-all duration-300">
+                  <div className="w-16 h-16 rounded-full bg-raised border-2 border-brand/30 flex items-center justify-center text-brand mb-5 relative z-10 hover:border-brand hover:shadow-lg hover:shadow-brand/15 transition-all duration-300">
                     {step.icon}
                   </div>
-                  <p className="font-mono text-gold-dim text-xs mb-2 tracking-widest">{step.n}</p>
+                  <p className="font-mono text-brand-dim text-xs mb-2 tracking-widest">{step.n}</p>
                   <h3 className="font-display font-bold text-snow mb-2">{step.title}</h3>
                   <p className="text-mist text-xs leading-relaxed">{step.desc}</p>
                 </motion.div>
@@ -280,7 +280,7 @@ const Package = () => (
             Book your preferred package today. We'll confirm your appointment and prep everything before you arrive.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-gold text-sm px-10 py-4">
+            <Link to="/contact" className="btn-brand text-sm px-10 py-4">
               Book an Appointment <ArrowRight size={16} />
             </Link>
             <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline text-sm px-10 py-4">

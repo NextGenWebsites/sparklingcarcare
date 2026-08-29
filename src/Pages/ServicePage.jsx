@@ -76,7 +76,7 @@ const ServicePage = () => (
             tailored to any vehicle, any condition, any budget.
           </p>
           <div className="shrink-0">
-            <Link to="/packages" className="btn-gold text-xs whitespace-nowrap">
+            <Link to="/packages" className="btn-brand text-xs whitespace-nowrap">
               View Pricing <ArrowRight size={14} />
             </Link>
           </div>
@@ -105,22 +105,22 @@ const ServicePage = () => (
                 className="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* service number badge */}
-              <div className="absolute top-4 left-4 w-11 h-11 rounded-lg bg-deep/80 backdrop-blur border border-gold/30 flex items-center justify-center">
-                <span className="font-mono text-gold text-xs font-bold">{s.num}</span>
+              <div className="absolute top-4 left-4 w-11 h-11 rounded-lg bg-deep/80 backdrop-blur border border-brand/30 flex items-center justify-center">
+                <span className="font-mono text-brand text-xs font-bold">{s.num}</span>
               </div>
             </div>
 
             {/* Text */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="gold-rule flex-1" />
-                <span className="font-mono text-gold-dim text-xs tracking-widest">{s.num}</span>
+                <div className="brand-rule flex-1" />
+                <span className="font-mono text-brand-dim text-xs tracking-widest">{s.num}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-snow mb-5">
                 {s.title}
               </h2>
               <p className="text-mist leading-relaxed mb-8 text-base">{s.desc}</p>
-              <Link to="/packages" className="btn-gold text-xs">
+              <Link to="/packages" className="btn-brand text-xs">
                 View Pricing <ArrowRight size={14} />
               </Link>
             </div>
@@ -139,7 +139,7 @@ const ServicePage = () => (
             Book your appointment today and experience our premium detailing services in Artarmon.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-gold text-sm px-10 py-4">
+            <Link to="/contact" className="btn-brand text-sm px-10 py-4">
               Book an Appointment <ArrowRight size={16} />
             </Link>
             <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline text-sm px-10 py-4">

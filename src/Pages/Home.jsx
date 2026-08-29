@@ -88,14 +88,14 @@ const Home = () => (
             >
               {/* Location pill */}
               <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-white/8 backdrop-blur border border-white/15 rounded-full text-xs text-snow/80 uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
                 Artarmon, Sydney NSW
               </div>
 
               {/* Heading */}
               <h1 className="font-display font-black text-snow mb-6" style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.04 }}>
                 Protect & <br />
-                <span className="text-gradient-gold">Restore.</span>
+                <span className="text-gradient-brand">Restore.</span>
               </h1>
 
               <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
@@ -103,7 +103,7 @@ const Home = () => (
               </p>
 
               <div className="flex flex-wrap gap-3">
-                <Link to="/contact" className="btn-gold">
+                <Link to="/contact" className="btn-brand">
                   <Calendar size={16} />
                   Book Appointment
                 </Link>
@@ -157,7 +157,7 @@ const Home = () => (
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="px-6 py-4 first:pl-0 last:pr-0 text-center sm:text-left"
               >
-                <p className="text-gradient-gold font-display font-black text-3xl md:text-4xl mb-1">{s.num}</p>
+                <p className="text-gradient-brand font-display font-black text-3xl md:text-4xl mb-1">{s.num}</p>
                 <p className="text-mist text-xs uppercase tracking-wider">{s.label}</p>
               </motion.div>
             ))}
@@ -180,7 +180,7 @@ const Home = () => (
             <div>
               <span className="section-label">What We Offer</span>
               <div className="flex items-start gap-4 mt-3">
-                <span className="gold-bar" />
+                <span className="brand-bar" />
                 <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
                   Featured Services
                 </h2>
@@ -188,7 +188,7 @@ const Home = () => (
             </div>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-medium transition-colors shrink-0"
+              className="inline-flex items-center gap-2 text-brand hover:text-brand-light text-sm font-medium transition-colors shrink-0"
             >
               View all services <ArrowRight size={15} />
             </Link>
@@ -214,7 +214,7 @@ const Home = () => (
                 </span>
 
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:bg-gold/20 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand mb-6 group-hover:bg-brand/20 transition-colors duration-300">
                   {s.icon}
                 </div>
 
@@ -223,7 +223,7 @@ const Home = () => (
 
                 <Link
                   to={s.href}
-                  className="inline-flex items-center gap-1.5 text-gold hover:text-gold-light text-xs font-medium uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center gap-1.5 text-brand hover:text-brand-light text-xs font-medium uppercase tracking-wider transition-colors"
                 >
                   Learn More <ArrowRight size={12} />
                 </Link>
@@ -247,7 +247,7 @@ const Home = () => (
         {/* Diagonal gold glow */}
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, #C8911A, transparent)" }}
+          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, #2F6FED, transparent)" }}
         />
         <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
           <span className="section-label mb-4 block">Ready to Book?</span>
@@ -259,7 +259,7 @@ const Home = () => (
             and experience the Sparkling difference.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-gold text-base px-10 py-4">
+            <Link to="/contact" className="btn-brand text-base px-10 py-4">
               <Calendar size={18} />
               Book Now
             </Link>

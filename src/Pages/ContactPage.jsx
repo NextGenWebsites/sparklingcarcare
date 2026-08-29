@@ -65,7 +65,7 @@ const ContactPage = () => {
         >
           <span className="section-label">Get In Touch</span>
           <div className="flex items-start gap-5 mt-3">
-            <span className="gold-bar mt-1" />
+            <span className="brand-bar mt-1" />
             <div>
               <h1 className="text-4xl md:text-6xl font-display font-black text-snow">
                 Book Your Appointment
@@ -97,7 +97,7 @@ const ContactPage = () => {
 
               <div className="p-8 space-y-6">
                 <div>
-                  <div className="gold-rule mb-6" />
+                  <div className="brand-rule mb-6" />
                   <h2 className="font-display font-bold text-snow text-xl mb-1">Sparkling Car Care</h2>
                   <p className="text-mist text-sm">Premium Detailing · Artarmon, Sydney</p>
                 </div>
@@ -111,13 +111,13 @@ const ContactPage = () => {
                     { icon: <Clock size={15} />,  label: "Hours",   value: "Mon–Fri 10AM–6PM · Sat 10AM–3PM", href: null },
                   ].map((c) => (
                     <div key={c.label} className="flex items-start gap-3.5">
-                      <div className="w-8 h-8 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 text-gold">
+                      <div className="w-8 h-8 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0 text-brand">
                         {c.icon}
                       </div>
                       <div>
                         <p className="text-[10px] text-ghost uppercase tracking-wider mb-0.5">{c.label}</p>
                         {c.href ? (
-                          <a href={c.href} className="text-snow text-sm hover:text-gold transition-colors">{c.value}</a>
+                          <a href={c.href} className="text-snow text-sm hover:text-brand transition-colors">{c.value}</a>
                         ) : (
                           <p className="text-snow text-sm">{c.value}</p>
                         )}
@@ -137,7 +137,7 @@ const ContactPage = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={s.label}
-                        className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-gold hover:border-gold/40 transition-all"
+                        className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-brand hover:border-brand/40 transition-all"
                       >
                         {s.icon}
                       </a>
@@ -162,7 +162,7 @@ const ContactPage = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="h-64 flex flex-col items-center justify-center text-center gap-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-gold/15 border-2 border-gold/40 flex items-center justify-center text-gold">
+                  <div className="w-16 h-16 rounded-full bg-brand/15 border-2 border-brand/40 flex items-center justify-center text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
@@ -233,7 +233,7 @@ const ContactPage = () => {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="btn-gold w-full justify-center text-sm py-4 disabled:opacity-50"
+                    className="btn-brand w-full justify-center text-sm py-4 disabled:opacity-50"
                   >
                     {status === "loading" ? (
                       <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

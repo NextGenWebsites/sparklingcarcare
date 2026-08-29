@@ -20,16 +20,16 @@ const GoogleIcon = () => (
 );
 
 const ReviewCard = ({ review }) => (
-  <div className="flex-shrink-0 w-80 mx-3 bg-raised border border-white/6 rounded-xl p-6 relative group hover:border-gold/25 transition-all duration-300">
+  <div className="flex-shrink-0 w-80 mx-3 bg-raised border border-white/6 rounded-xl p-6 relative group hover:border-brand/25 transition-all duration-300">
     {/* Large quote mark */}
-    <span className="absolute top-4 right-5 text-6xl font-display font-black text-gold/10 leading-none select-none">
+    <span className="absolute top-4 right-5 text-6xl font-display font-black text-brand/10 leading-none select-none">
       "
     </span>
 
     {/* Stars */}
     <div className="flex gap-0.5 mb-4">
       {[...Array(review.rating)].map((_, i) => (
-        <Star key={i} size={13} className="fill-gold text-gold" />
+        <Star key={i} size={13} className="fill-gold text-brand" />
       ))}
     </div>
 
@@ -68,7 +68,7 @@ const ReviewsSection = () => (
         <div>
           <span className="section-label">Testimonials</span>
           <div className="flex items-start gap-4 mt-3">
-            <span className="gold-bar" />
+            <span className="brand-bar" />
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
               What Our Clients Say
             </h2>
@@ -77,7 +77,7 @@ const ReviewsSection = () => (
         <div className="flex items-center gap-3 shrink-0">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={18} className="fill-gold text-gold -ml-0.5" />
+              <Star key={i} size={18} className="fill-gold text-brand -ml-0.5" />
             ))}
           </div>
           <span className="text-snow font-display font-bold">5.0</span>

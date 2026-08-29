@@ -21,7 +21,7 @@ const LocationSection = () => (
       >
         <span className="section-label">Find Us</span>
         <div className="flex items-start gap-4 mt-3">
-          <span className="gold-bar" />
+          <span className="brand-bar" />
           <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
             Visit Our Workshop
           </h2>
@@ -39,8 +39,8 @@ const LocationSection = () => (
         >
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
-                <MapPin size={16} className="text-gold" />
+              <div className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0">
+                <MapPin size={16} className="text-brand" />
               </div>
               <div>
                 <p className="text-xs text-mist uppercase tracking-wider mb-1">Workshop Address</p>
@@ -48,23 +48,23 @@ const LocationSection = () => (
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
-                <Phone size={16} className="text-gold" />
+              <div className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0">
+                <Phone size={16} className="text-brand" />
               </div>
               <div>
                 <p className="text-xs text-mist uppercase tracking-wider mb-1">Phone</p>
-                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-snow text-sm hover:text-gold transition-colors font-medium">
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-snow text-sm hover:text-brand transition-colors font-medium">
                   {BUSINESS_INFO.phone}
                 </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
-                <Mail size={16} className="text-gold" />
+              <div className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0">
+                <Mail size={16} className="text-brand" />
               </div>
               <div>
                 <p className="text-xs text-mist uppercase tracking-wider mb-1">Email</p>
-                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-snow text-sm hover:text-gold transition-colors font-medium">
+                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-snow text-sm hover:text-brand transition-colors font-medium">
                   {BUSINESS_INFO.email}
                 </a>
               </div>
@@ -74,7 +74,7 @@ const LocationSection = () => (
           {/* Hours */}
           <div className="border-t border-white/5 pt-6">
             <div className="flex items-center gap-2 mb-4">
-              <Clock size={14} className="text-gold" />
+              <Clock size={14} className="text-brand" />
               <p className="text-xs text-mist uppercase tracking-wider">Opening Hours</p>
             </div>
             <div className="space-y-2">
@@ -91,7 +91,7 @@ const LocationSection = () => (
             href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS_INFO.address)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-medium transition-colors"
+            className="inline-flex items-center gap-2 text-brand hover:text-brand-light text-sm font-medium transition-colors"
           >
             Get Directions <ExternalLink size={14} />
           </a>

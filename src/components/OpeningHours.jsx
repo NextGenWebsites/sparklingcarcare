@@ -50,7 +50,7 @@ const OpeningHours = () => {
             className="mb-2.5 w-56 rounded-xl overflow-hidden border border-white/8 shadow-2xl"
           >
             {/* Header */}
-            <div className="flex items-center justify-between bg-gold px-4 py-2.5">
+            <div className="flex items-center justify-between bg-brand px-4 py-2.5">
               <div className="flex items-center gap-2 text-deep">
                 <Clock size={13} />
                 <span className="font-display font-bold text-xs uppercase tracking-widest">Hours</span>
@@ -67,7 +67,7 @@ const OpeningHours = () => {
                   key={item.day}
                   className={`flex justify-between items-center px-4 py-2 text-xs ${
                     item.day === today
-                      ? "text-gold font-semibold"
+                      ? "text-brand font-semibold"
                       : "text-mist"
                   }`}
                 >
@@ -87,13 +87,13 @@ const OpeningHours = () => {
         whileTap={{ scale: 0.97 }}
         className={`flex items-center gap-2.5 rounded-xl px-4 py-3 shadow-xl border transition-colors duration-200 ${
           status.open
-            ? "bg-gold border-gold text-deep"
-            : "bg-surface border-white/10 text-snow hover:border-gold/40"
+            ? "bg-brand border-brand text-deep"
+            : "bg-surface border-white/10 text-snow hover:border-brand/40"
         }`}
         aria-expanded={show}
         aria-label="Toggle opening hours"
       >
-        <Clock size={15} className={status.open ? "text-deep/80" : "text-gold"} />
+        <Clock size={15} className={status.open ? "text-deep/80" : "text-brand"} />
         <div className="text-left">
           <p className="font-display font-bold text-xs leading-none">{status.label}</p>
           <p className={`text-[10px] mt-0.5 ${status.open ? "text-deep/60" : "text-ghost"}`}>

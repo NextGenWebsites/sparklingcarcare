@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-overlay border-t border-white/5">
       {/* Gold rule */}
-      <div className="gold-rule" />
+      <div className="brand-rule" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-14">
@@ -39,7 +39,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-gold hover:border-gold/40 transition-all duration-200"
+                  className="w-9 h-9 rounded-full bg-raised border border-white/8 flex items-center justify-center text-mist hover:text-brand hover:border-brand/40 transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -58,7 +58,7 @@ const Footer = () => {
                 { label: "Book Now", to: "/contact" },
               ].map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-mist hover:text-gold text-sm transition-colors">
+                  <Link to={l.to} className="text-mist hover:text-brand text-sm transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -79,7 +79,7 @@ const Footer = () => {
                 "Engine Bay Wash",
               ].map((s) => (
                 <li key={s}>
-                  <Link to="/services" className="text-mist hover:text-gold text-sm transition-colors">
+                  <Link to="/services" className="text-mist hover:text-brand text-sm transition-colors">
                     {s}
                   </Link>
                 </li>
@@ -92,23 +92,23 @@ const Footer = () => {
             <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Contact</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin size={15} className="text-gold shrink-0 mt-0.5" />
+                <MapPin size={15} className="text-brand shrink-0 mt-0.5" />
                 <span className="text-mist text-sm leading-snug">{BUSINESS_INFO.address}</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={15} className="text-gold shrink-0 mt-0.5" />
-                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-mist hover:text-gold text-sm transition-colors">
+                <Phone size={15} className="text-brand shrink-0 mt-0.5" />
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-mist hover:text-brand text-sm transition-colors">
                   {BUSINESS_INFO.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={15} className="text-gold shrink-0 mt-0.5" />
-                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-mist hover:text-gold text-sm transition-colors">
+                <Mail size={15} className="text-brand shrink-0 mt-0.5" />
+                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-mist hover:text-brand text-sm transition-colors">
                   {BUSINESS_INFO.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Clock size={15} className="text-gold shrink-0 mt-0.5" />
+                <Clock size={15} className="text-brand shrink-0 mt-0.5" />
                 <span className="text-mist text-sm leading-snug">
                   Mon–Fri 10AM–6PM<br />Sat 10AM–3PM · Sun Closed
                 </span>
@@ -128,7 +128,7 @@ const Footer = () => {
               href="https://www.nextgenwebsites.info/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold hover:text-gold-light transition-colors"
+              className="text-brand hover:text-brand-light transition-colors"
             >
               NextGen Websites
             </a>

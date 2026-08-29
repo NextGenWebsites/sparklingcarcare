@@ -29,7 +29,7 @@ const AboutUsSection = () => {
           >
             <span className="section-label">Who We Are</span>
             <div className="flex items-start gap-5 mt-4 mb-6">
-              <span className="gold-bar mt-1" />
+              <span className="brand-bar mt-1" />
               <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
                 Passionate About<br />Every Vehicle
               </h2>
@@ -45,7 +45,7 @@ const AboutUsSection = () => {
               reputation speaks for itself. Come in and experience the difference.
             </p>
             <div className="flex gap-3">
-              <Link to="/services" className="btn-gold text-xs">Our Services <ArrowRight size={14} /></Link>
+              <Link to="/services" className="btn-brand text-xs">Our Services <ArrowRight size={14} /></Link>
               <Link to="/contact" className="btn-outline text-xs">Book Now</Link>
             </div>
           </motion.div>
@@ -70,9 +70,9 @@ const AboutUsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-raised border border-white/6 rounded-xl p-6 hover:border-gold/30 transition-colors duration-300"
+                className="bg-raised border border-white/6 rounded-xl p-6 hover:border-brand/30 transition-colors duration-300"
               >
-                <p className="text-gradient-gold font-display font-black text-4xl md:text-5xl mb-1">
+                <p className="text-gradient-brand font-display font-black text-4xl md:text-5xl mb-1">
                   {stat.num}
                 </p>
                 <p className="text-mist text-sm">{stat.label}</p>
@@ -92,7 +92,7 @@ const AboutUsSection = () => {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="card p-6 flex gap-4 items-start"
             >
-              <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center text-gold shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
                 {f.icon}
               </div>
               <div>

@@ -55,7 +55,7 @@ const Navbar = () => {
                   alt="Sparkling Car Care"
                   className="h-12 w-12 rounded-full object-cover ring-1 ring-gold/30 group-hover:ring-gold/70 transition-all duration-300"
                 />
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-gold rounded-full border-2 border-deep" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-brand rounded-full border-2 border-deep" />
               </div>
               <div className="hidden sm:block">
                 <p className="text-snow font-display font-bold text-base leading-tight tracking-wide">
@@ -74,12 +74,12 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   className={`relative text-sm font-medium tracking-wide transition-colors duration-200 group ${
-                    isActive(link.path) ? "text-gold" : "text-snow/70 hover:text-snow"
+                    isActive(link.path) ? "text-brand" : "text-snow/70 hover:text-snow"
                   }`}
                 >
                   {link.name}
                   <span
-                    className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-300 ${
+                    className={`absolute -bottom-1 left-0 h-px bg-brand transition-all duration-300 ${
                       isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -93,10 +93,10 @@ const Navbar = () => {
                 href={`tel:${BUSINESS_INFO.phoneTel}`}
                 className="flex items-center gap-2 text-mist hover:text-snow text-sm transition-colors"
               >
-                <Phone size={14} className="text-gold" />
+                <Phone size={14} className="text-brand" />
                 {BUSINESS_INFO.phone}
               </a>
-              <Link to="/contact" className="btn-gold text-xs py-2.5 px-5">
+              <Link to="/contact" className="btn-brand text-xs py-2.5 px-5">
                 Book Now
               </Link>
             </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-snow hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40 rounded"
+              className="md:hidden p-2 text-snow hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-gold/40 rounded"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -128,7 +128,7 @@ const Navbar = () => {
             <div className="flex justify-end p-5 pt-6">
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 text-mist hover:text-gold transition-colors"
+                className="p-2 text-mist hover:text-brand transition-colors"
                 aria-label="Close menu"
               >
                 <X size={28} />
@@ -148,7 +148,7 @@ const Navbar = () => {
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={`block py-5 border-b border-white/5 font-display font-bold text-4xl transition-colors ${
-                      isActive(link.path) ? "text-gold" : "text-snow/80 hover:text-snow"
+                      isActive(link.path) ? "text-brand" : "text-snow/80 hover:text-snow"
                     }`}
                   >
                     {link.name}
@@ -171,7 +171,7 @@ const Navbar = () => {
                 <Phone size={18} />
                 {BUSINESS_INFO.phone}
               </a>
-              <Link to="/contact" onClick={() => setIsOpen(false)} className="btn-gold w-full text-base py-4">
+              <Link to="/contact" onClick={() => setIsOpen(false)} className="btn-brand w-full text-base py-4">
                 Book Appointment
               </Link>
             </motion.div>

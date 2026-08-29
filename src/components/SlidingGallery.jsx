@@ -109,7 +109,7 @@ const SlidingGallery = () => (
         <div>
           <span className="section-label">Our Work</span>
           <div className="flex items-start gap-4 mt-3">
-            <span className="gold-bar" />
+            <span className="brand-bar" />
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
               A Closer Look
             </h2>
