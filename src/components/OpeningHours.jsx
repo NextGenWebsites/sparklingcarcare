@@ -2,86 +2,77 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ChevronUp, X } from "lucide-react";
 
-const hoursData = [
-  { day: "Monday", hours: "10:00 AM – 6:00 PM" },
-  { day: "Tuesday", hours: "10:00 AM – 6:00 PM" },
-  { day: "Wednesday", hours: "10:00 AM – 6:00 PM" },
-  { day: "Thursday", hours: "10:00 AM – 6:00 PM" },
-  { day: "Friday", hours: "10:00 AM – 6:00 PM" },
-  { day: "Saturday", hours: "10:00 AM – 3:00 PM" },
-  { day: "Sunday", hours: "Closed" },
+const HOURS = [
+  { day: "Monday",    h: "10:00 AM – 6:00 PM" },
+  { day: "Tuesday",   h: "10:00 AM – 6:00 PM" },
+  { day: "Wednesday", h: "10:00 AM – 6:00 PM" },
+  { day: "Thursday",  h: "10:00 AM – 6:00 PM" },
+  { day: "Friday",    h: "10:00 AM – 6:00 PM" },
+  { day: "Saturday",  h: "10:00 AM – 3:00 PM" },
+  { day: "Sunday",    h: "Closed" },
 ];
 
 const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-const getCurrentDay = () => DAYS[new Date().getDay()];
+const getStatus = () => {
+  const now  = new Date();
+  const day  = DAYS[now.getDay()];
+  const item = HOURS.find((h) => h.day === day);
+  if (!item || item.h === "Closed") return { label: "Closed", open: false };
 
-const getCurrentStatus = () => {
-  const now = new Date();
-  const day = getCurrentDay();
-  const entry = hoursData.find((d) => d.day === day);
-  if (!entry || entry.hours === "Closed") return "Closed";
-
-  const [open, close] = entry.hours.split(" – ");
-  const toMin = (str) => {
-    const [time, period] = str.trim().split(" ");
-    let [h, m] = time.split(":").map(Number);
-    if (period === "PM" && h !== 12) h += 12;
-    if (period === "AM" && h === 12) h = 0;
+  const toMins = (str) => {
+    const [t, p] = str.trim().split(" ");
+    let [h, m] = t.split(":").map(Number);
+    if (p === "PM" && h !== 12) h += 12;
+    if (p === "AM" && h === 12) h = 0;
     return h * 60 + m;
   };
-
+  const [open, close] = item.h.split(" – ");
   const cur = now.getHours() * 60 + now.getMinutes();
-  return cur >= toMin(open) && cur < toMin(close) ? "Open Now" : "Closed";
+  const isOpen = cur >= toMins(open) && cur < toMins(close);
+  return { label: isOpen ? "Open Now" : "Closed", open: isOpen };
 };
 
 const OpeningHours = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const status = getCurrentStatus();
-  const today = getCurrentDay();
+  const [show, setShow] = useState(false);
+  const today  = DAYS[new Date().getDay()];
+  const status = getStatus();
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-['Inter']">
+    <div className="fixed bottom-5 right-5 z-50 select-none">
       <AnimatePresence>
-        {isOpen && (
+        {show && (
           <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.95 }}
+            initial={{ opacity: 0, y: 12, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="mb-3 rounded-xl overflow-hidden border border-white/10 shadow-2xl"
-            style={{ minWidth: 240 }}
+            exit={{ opacity: 0, y: 12, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="mb-2.5 w-56 rounded-xl overflow-hidden border border-white/8 shadow-2xl"
           >
             {/* Header */}
-            <div className="bg-[#0B3D91] text-white px-4 py-3 flex justify-between items-center">
-              <h3 className="text-sm font-bold flex items-center gap-2 font-['Space_Grotesk'] tracking-wide uppercase">
-                <Clock size={15} />
-                Opening Hours
-              </h3>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-white/70 hover:text-white transition-colors"
-                aria-label="Close hours"
-              >
-                <X size={16} />
+            <div className="flex items-center justify-between bg-gold px-4 py-2.5">
+              <div className="flex items-center gap-2 text-deep">
+                <Clock size={13} />
+                <span className="font-display font-bold text-xs uppercase tracking-widest">Hours</span>
+              </div>
+              <button onClick={() => setShow(false)} className="text-deep/70 hover:text-deep transition-colors">
+                <X size={14} />
               </button>
             </div>
 
-            {/* Hours Grid */}
-            <div className="bg-[#14161B] px-4 py-3">
-              {hoursData.map((item, i) => (
+            {/* List */}
+            <div className="bg-surface divide-y divide-white/5">
+              {HOURS.map((item) => (
                 <div
                   key={item.day}
-                  className={`flex justify-between py-2 text-sm ${
-                    i < hoursData.length - 1 ? "border-b border-white/5" : ""
-                  } ${
+                  className={`flex justify-between items-center px-4 py-2 text-xs ${
                     item.day === today
-                      ? "text-[#2F6FED] font-semibold"
-                      : "text-[#8B93A1]"
+                      ? "text-gold font-semibold"
+                      : "text-mist"
                   }`}
                 >
                   <span>{item.day}</span>
-                  <span>{item.hours}</span>
+                  <span className={item.h === "Closed" ? "text-ghost" : ""}>{item.h}</span>
                 </div>
               ))}
             </div>
@@ -89,27 +80,29 @@ const OpeningHours = () => {
         )}
       </AnimatePresence>
 
-      {/* Toggle Button */}
+      {/* Toggle pill */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 rounded-lg shadow-xl px-4 py-3 text-white text-sm font-medium transition-colors ${
-          status === "Open Now"
-            ? "bg-[#0B3D91] hover:bg-[#2F6FED]"
-            : "bg-[#14161B] border border-white/10 hover:border-[#2F6FED]/50"
-        }`}
-        whileHover={{ scale: 1.03 }}
+        onClick={() => setShow(!show)}
+        whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}
-        aria-expanded={isOpen}
-        aria-label="View opening hours"
+        className={`flex items-center gap-2.5 rounded-xl px-4 py-3 shadow-xl border transition-colors duration-200 ${
+          status.open
+            ? "bg-gold border-gold text-deep"
+            : "bg-surface border-white/10 text-snow hover:border-gold/40"
+        }`}
+        aria-expanded={show}
+        aria-label="Toggle opening hours"
       >
-        <Clock size={16} className="text-[#2F6FED]" />
+        <Clock size={15} className={status.open ? "text-deep/80" : "text-gold"} />
         <div className="text-left">
-          <div className="text-xs font-bold font-['Space_Grotesk']">{status}</div>
-          <div className="text-xs text-white/60">{isOpen ? "Hide Hours" : "View Hours"}</div>
+          <p className="font-display font-bold text-xs leading-none">{status.label}</p>
+          <p className={`text-[10px] mt-0.5 ${status.open ? "text-deep/60" : "text-ghost"}`}>
+            {show ? "Hide hours" : "See hours"}
+          </p>
         </div>
         <ChevronUp
-          size={14}
-          className={`ml-1 transition-transform duration-300 ${isOpen ? "rotate-0" : "rotate-180"}`}
+          size={13}
+          className={`ml-0.5 transition-transform duration-200 ${show ? "rotate-0" : "rotate-180"}`}
         />
       </motion.button>
     </div>

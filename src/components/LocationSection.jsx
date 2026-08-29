@@ -1,134 +1,125 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, Clock } from "lucide-react";
 import { BUSINESS_INFO } from "../data/content";
 
-const LocationSection = () => {
-  return (
-    <section className="py-20 bg-[#0A0C10] border-t border-white/5" id="location">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">
-            Find Us
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#F7F8FA] font-['Space_Grotesk']">
+const hours = [
+  { day: "Monday – Friday", time: "10:00 AM – 6:00 PM" },
+  { day: "Saturday",         time: "10:00 AM – 3:00 PM" },
+  { day: "Sunday",           time: "Closed" },
+];
+
+const LocationSection = () => (
+  <section className="py-20 bg-deep" id="location">
+    <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
+        <span className="section-label">Find Us</span>
+        <div className="flex items-start gap-4 mt-3">
+          <span className="gold-bar" />
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
             Visit Our Workshop
           </h2>
+        </div>
+      </motion.div>
+
+      <div className="grid lg:grid-cols-5 gap-6 items-stretch">
+        {/* Info card — 2/5 */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-2 bg-surface border border-white/6 rounded-xl p-8 flex flex-col gap-8 justify-between"
+        >
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+                <MapPin size={16} className="text-gold" />
+              </div>
+              <div>
+                <p className="text-xs text-mist uppercase tracking-wider mb-1">Workshop Address</p>
+                <p className="text-snow text-sm leading-relaxed">{BUSINESS_INFO.address}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+                <Phone size={16} className="text-gold" />
+              </div>
+              <div>
+                <p className="text-xs text-mist uppercase tracking-wider mb-1">Phone</p>
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-snow text-sm hover:text-gold transition-colors font-medium">
+                  {BUSINESS_INFO.phone}
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+                <Mail size={16} className="text-gold" />
+              </div>
+              <div>
+                <p className="text-xs text-mist uppercase tracking-wider mb-1">Email</p>
+                <a href={`mailto:${BUSINESS_INFO.email}`} className="text-snow text-sm hover:text-gold transition-colors font-medium">
+                  {BUSINESS_INFO.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Hours */}
+          <div className="border-t border-white/5 pt-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Clock size={14} className="text-gold" />
+              <p className="text-xs text-mist uppercase tracking-wider">Opening Hours</p>
+            </div>
+            <div className="space-y-2">
+              {hours.map((h) => (
+                <div key={h.day} className="flex justify-between text-sm">
+                  <span className="text-mist">{h.day}</span>
+                  <span className={h.time === "Closed" ? "text-ghost" : "text-snow"}>{h.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <a
+            href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS_INFO.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-medium transition-colors"
+          >
+            Get Directions <ExternalLink size={14} />
+          </a>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          {/* Info Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-[#14161B] border border-white/8 rounded-xl p-8 flex flex-col gap-8 justify-center"
-          >
-            <div>
-              <h3 className="text-xl font-bold text-[#F7F8FA] mb-6 font-['Space_Grotesk']">
-                Sparkling Car Care
-              </h3>
-
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <MapPin size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Address</p>
-                    <p className="text-[#F7F8FA] text-sm leading-relaxed">
-                      {BUSINESS_INFO.address}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Phone size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Phone</p>
-                    <a
-                      href={`tel:${BUSINESS_INFO.phoneTel}`}
-                      className="text-[#F7F8FA] hover:text-[#2F6FED] transition-colors text-sm font-medium"
-                    >
-                      {BUSINESS_INFO.phone}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Mail size={20} className="text-[#2F6FED] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-1">Email</p>
-                    <a
-                      href={`mailto:${BUSINESS_INFO.email}`}
-                      className="text-[#F7F8FA] hover:text-[#2F6FED] transition-colors text-sm font-medium"
-                    >
-                      {BUSINESS_INFO.email}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-white/5">
-              <p className="text-xs text-[#8B93A1] uppercase tracking-wider mb-3">Opening Hours</p>
-              <div className="space-y-1.5 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-[#8B93A1]">Monday – Friday</span>
-                  <span className="text-[#F7F8FA]">10:00 AM – 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#8B93A1]">Saturday</span>
-                  <span className="text-[#F7F8FA]">10:00 AM – 3:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#8B93A1]">Sunday</span>
-                  <span className="text-[#8B93A1]">Closed</span>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href={`https://maps.google.com/?q=${encodeURIComponent(BUSINESS_INFO.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#2F6FED] hover:text-[#F7F8FA] text-sm font-medium transition-colors"
-            >
-              Get Directions
-              <ExternalLink size={14} />
-            </a>
-          </motion.div>
-
-          {/* Map */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-xl overflow-hidden border border-white/8 shadow-2xl min-h-80"
-          >
-            <iframe
-              src={BUSINESS_INFO.googleMapsEmbed}
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: 320 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Sparkling Car Care location – 77/81 Reserve Rd, Artarmon NSW 2064"
-              className="w-full h-full"
-            />
-          </motion.div>
-        </div>
+        {/* Map — 3/5 */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-3 rounded-xl overflow-hidden border border-white/6 shadow-2xl min-h-72"
+        >
+          <iframe
+            src={BUSINESS_INFO.googleMapsEmbed}
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: "block", minHeight: 320 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Sparkling Car Care — 77/81 Reserve Rd, Artarmon NSW 2064"
+            className="w-full h-full"
+          />
+        </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default LocationSection;
