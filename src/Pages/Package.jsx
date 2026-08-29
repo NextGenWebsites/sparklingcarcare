@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers, Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceBack from "@/images/background/pricing_bg.png";
+import processBg   from "@/images/background/pricing_process_bg.png";
 import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
 
 /* Tier configuration */
@@ -232,8 +233,14 @@ const Package = () => (
       </div>
 
       {/* ── Process section ──────────────────────────────────────────── */}
-      <div className="bg-surface border-y border-white/6 py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative border-y border-white/6 py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={processBg} alt="Our detailing process" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-deep/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-deep" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
             <span className="section-label block mb-3">Our Approach</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
