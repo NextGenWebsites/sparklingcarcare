@@ -11,7 +11,8 @@ import shampoo_carpet       from "@/images/service_img/shampoo_carpet.webp";
 import headlight_restoration from "@/images/service_img/headlight_restoration.webp";
 import car_dent_removal     from "@/images/service_img/car_dent_removal.webp";
 import paint_correction     from "@/images/service_img/paint_correction.webp";
-import ServiceBack          from "@/images/others/serviceBack.webp";
+import ServiceBack          from "@/images/background/service-page-bg.png";
+import ctaBg                from "@/images/background/service-cta-bg.png";
 import { BUSINESS_INFO }    from "../data/content";
 
 const services = [
@@ -129,8 +130,14 @@ const ServicePage = () => (
       </div>
 
       {/* ── Book CTA strip ───────────────────────────────────────────── */}
-      <div className="bg-surface border-t border-white/6 py-20">
-        <div className="max-w-3xl mx-auto px-5 text-center">
+      <div className="relative border-t border-white/6 py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={ctaBg} alt="Ready to transform your vehicle" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/80 to-deep/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep/90 via-deep/40 to-transparent" />
+        </div>
+        
+        <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
           <span className="section-label block mb-4">Get Started</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-5">
             Ready to Transform Your Vehicle?
