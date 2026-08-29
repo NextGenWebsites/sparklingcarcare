@@ -95,9 +95,8 @@ const Home = () => (
               {/* Heading */}
               <h1 className="font-display font-black text-snow mb-6" style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.04 }}>
                 Protect & <br />
-                <span className="text-gradient-brand">Restore.</span>
+                <span className="text-gradient-brand">Restore</span>
               </h1>
-
               <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
                 Sydney's specialists in professional Ceramic Coating, seamless Scratch & Dent Repair, and Premium Detailing. Flawless finishes, guaranteed.
               </p>

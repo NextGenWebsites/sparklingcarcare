@@ -12,11 +12,11 @@
   --color-raised:  #1A1E27;
   --color-overlay: #0D1018;
 
-  /* Gold Accent */
-  --color-gold:       #2F6FED;
-  --color-gold-light: #6092F3;
-  --color-gold-dim:   #6B4F0E;
-  --color-gold-glow:  rgba(47, 111, 237, 0.15);
+  /* Brand Accent */
+  --color-brand:       #2F6FED;
+  --color-brand-light: #6092F3;
+  --color-brand-dim:   #6B4F0E;
+  --color-brand-glow:  rgba(47, 111, 237, 0.15);
 
   /* Text */
   --color-snow: #F7F8FA;
