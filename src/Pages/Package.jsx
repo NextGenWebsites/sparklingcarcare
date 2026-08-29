@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers, Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
-import ServiceBack from "@/images/others/serviceBack.webp";
+import ServiceBack from "@/images/background/pricing_bg.png";
 import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
 
 /* Tier configuration */
