@@ -11,6 +11,7 @@ import AboutUsSection from "../components/AboutUsSection";
 import { BUSINESS_INFO } from "../data/content";
 
 import featuredBg from "@/images/service_img/featured_services_bg.png";
+import heroBg from "@/images/background/hero_bg.png";
 
 /* ── Service preview data ───────────────────────────────────────────────── */
 const serviceCards = [
@@ -64,16 +65,13 @@ const Home = () => (
       <section className="relative h-screen min-h-[640px] flex flex-col overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <picture>
-            <source type="image/webp" srcSet="/hero-1280.webp 1280w" sizes="100vw" />
-            <img
-              src="/hero-1280.webp"
-              alt="Ceramic coating and scratch repair in Artarmon Sydney"
-              fetchPriority="high"
-              decoding="sync"
-              className="w-full h-full object-cover object-center"
-            />
-          </picture>
+          <img
+            src={heroBg}
+            alt="Ceramic coating and scratch repair in Artarmon Sydney"
+            fetchPriority="high"
+            decoding="sync"
+            className="w-full h-full object-cover object-center"
+          />
           {/* Layered overlays: bottom-heavy, slight warm tint */}
           <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/60 to-deep/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/30 to-transparent" />
