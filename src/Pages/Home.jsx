@@ -1,7 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Phone, Calendar, ChevronDown, Shield, MapPin, Clock, Star, ArrowRight } from "lucide-react";
+import { Phone, Calendar, ChevronDown, ArrowRight, Wrench, Droplets, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import ReviewsSection from "../components/ReviewsSection";
 import SlidingGallery from "../components/SlidingGallery";
@@ -9,214 +10,283 @@ import LocationSection from "../components/LocationSection";
 import AboutUsSection from "../components/AboutUsSection";
 import { BUSINESS_INFO } from "../data/content";
 
-const trustStats = [
-  { icon: <Star size={24} className="text-[#2F6FED]" />, label: "5-Star Rated", sub: "Hundreds of Google reviews" },
-  { icon: <MapPin size={24} className="text-[#2F6FED]" />, label: "Artarmon, Sydney", sub: "Serving all of NSW" },
-  { icon: <Clock size={24} className="text-[#2F6FED]" />, label: "Mon–Sat Hours", sub: "10AM–6PM weekdays" },
-  { icon: <Shield size={24} className="text-[#2F6FED]" />, label: "Satisfaction Guaranteed", sub: "We take pride in every detail" },
+/* ── Service preview data ───────────────────────────────────────────────── */
+const serviceCards = [
+  {
+    num: "01",
+    icon: <Droplets size={24} />,
+    title: "Exterior Detailing",
+    desc: "Showroom shine from a full hand wash, clay bar, machine polish and protective wax.",
+    href: "/services#exterior-detailing",
+  },
+  {
+    num: "02",
+    icon: <Wrench size={24} />,
+    title: "Paint Correction",
+    desc: "Remove swirl marks, scratches and oxidation to reveal a flawless factory finish.",
+    href: "/services#paint-correction",
+  },
+  {
+    num: "03",
+    icon: <Sparkles size={24} />,
+    title: "Ceramic Coating",
+    desc: "Years of paint protection, hydrophobic water repellency, and an unreal gloss.",
+    href: "/services#ceramic-coating",
+  },
 ];
 
-const servicePreview = [
-  { title: "Exterior Detailing", desc: "Full hand wash, chamois dry, polish and tyre shine.", href: "/services#exterior-detailing" },
-  { title: "Interior Detailing", desc: "Deep clean every surface - seats, carpets, dash and vents.", href: "/services#interior-detailing" },
-  { title: "Paint Correction", desc: "Remove swirl marks, scratches and oxidation for a flawless finish.", href: "/services#paint-correction" },
+/* ── Trust stats ────────────────────────────────────────────────────────── */
+const stats = [
+  { num: "500+", label: "Satisfied Customers" },
+  { num: "5★",   label: "Google Rating" },
+  { num: "8+",   label: "Expert Services" },
+  { num: "100%", label: "Satisfaction Guaranteed" },
 ];
 
-const Home = () => {
-  return (
-    <>
-      <Helmet>
-        <title>Car Detailing Artarmon Sydney | Sparkling Car Care</title>
-        <meta
-          name="description"
-          content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today - (02) 9438 4988."
-        />
-        <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
-        <meta property="og:title" content="Car Detailing Artarmon Sydney | Sparkling Car Care" />
-        <meta property="og:url" content="https://www.sparklingcarcare.com.au/" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sparklingcarcare.com.au/" }]
-        })}</script>
-      </Helmet>
+const Home = () => (
+  <>
+    <Helmet>
+      <title>Car Detailing Artarmon Sydney | Sparkling Car Care</title>
+      <meta
+        name="description"
+        content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today — (02) 9438 4988."
+      />
+      <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
+    </Helmet>
 
-      <div className="min-h-screen bg-[#0A0C10]">
-        {/* ── Hero ─────────────────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
-          {/* Hero image */}
-          <div className="absolute inset-0 z-0">
-            <picture>
-              <source type="image/webp" srcSet="/hero-1280.webp 1280w" sizes="100vw" />
-              <img
-                src="/hero-1280.webp"
-                alt="Professional car detailing in Artarmon Sydney"
-                width="1920"
-                height="1080"
-                fetchPriority="high"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
-            </picture>
-          </div>
+    <main className="bg-deep text-snow">
 
-          {/* Overlays */}
-          <div className="absolute inset-0 bg-[#0A0C10]/75 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0C10]/95 via-[#0A0C10]/60 to-transparent z-0" />
+      {/* ══════════════════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="relative h-screen min-h-[640px] flex flex-col overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <picture>
+            <source type="image/webp" srcSet="/hero-1280.webp 1280w" sizes="100vw" />
+            <img
+              src="/hero-1280.webp"
+              alt="Premium car detailing in Artarmon Sydney"
+              fetchPriority="high"
+              decoding="sync"
+              className="w-full h-full object-cover object-center"
+            />
+          </picture>
+          {/* Layered overlays: bottom-heavy, slight warm tint */}
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/60 to-deep/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/30 to-transparent" />
+        </div>
 
-          {/* Content */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-32 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="max-w-2xl"
-              >
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-[#F7F8FA] text-sm font-medium mb-8">
-                  <span className="w-2 h-2 rounded-full bg-[#2F6FED]" />
-                  Artarmon, NSW · Est. Workshop · 5-Star Rated
-                </div>
-
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#F7F8FA] mb-6 leading-[1.05] font-['Space_Grotesk']">
-                  Professional<br />
-                  <span className="text-[#2F6FED]">Car Detailing</span>
-                </h1>
-
-                <p className="text-lg text-[#8B93A1] mb-10 leading-relaxed max-w-xl">
-                  Expert detailing services that restore your vehicle to showroom condition.
-                  Serving Artarmon and all of Sydney with premium results you can see.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.a
-                    href={`tel:${BUSINESS_INFO.phoneTel}`}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center justify-center gap-2 bg-[#F7F8FA] text-[#0A0C10] px-8 py-4 rounded font-bold text-lg hover:bg-white transition-colors font-['Space_Grotesk']"
-                  >
-                    <Phone size={20} />
-                    Call Now
-                  </motion.a>
-                  <motion.a
-                    href="/contact"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center justify-center gap-2 bg-[#0B3D91] hover:bg-[#2F6FED] text-[#F7F8FA] px-8 py-4 rounded font-bold text-lg transition-colors font-['Space_Grotesk']"
-                  >
-                    <Calendar size={20} />
-                    Book Now
-                  </motion.a>
-                </div>
-              </motion.div>
-
-              {/* Right side review cards - desktop only */}
-              <div className="hidden lg:flex flex-col gap-6 w-full justify-center lg:pl-8">
-                {[
-                  { name: "Ben Hoskins", text: "Just picked up my car and it genuinely looks brand new. Service, attention to detail and value for money all outstanding!" },
-                  { name: "Andrew Met.", text: "Wow. Eddie really is amazing at what he does! My 21 year old Landcruiser looked like a brand new 4WD when I picked it up." },
-                ].map((r, i) => (
-                  <motion.div
-                    key={r.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-                    className={`bg-[#0A0C10]/40 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-2xl ${i % 2 === 0 ? "translate-x-4" : "-translate-x-4"}`}
-                  >
-                    <div className="flex gap-1 mb-3">
-                      {[...Array(5)].map((_, j) => <Star key={j} className="fill-yellow-400 text-yellow-400" size={14} />)}
-                    </div>
-                    <p className="text-[#F7F8FA] mb-3 leading-relaxed italic text-sm">"{r.text}"</p>
-                    <p className="text-[#2F6FED] font-semibold text-xs uppercase tracking-wider font-['Space_Grotesk']">- {r.name}</p>
-                  </motion.div>
-                ))}
+        {/* Content — anchored bottom-left */}
+        <div className="relative z-10 flex-1 flex flex-col justify-end">
+          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 pb-20 md:pb-28">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl"
+            >
+              {/* Location pill */}
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-white/8 backdrop-blur border border-white/15 rounded-full text-xs text-snow/80 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                Artarmon, Sydney NSW
               </div>
-            </div>
-          </div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.8 }}
-          >
-            <ChevronDown size={28} className="text-[#F7F8FA]/50" />
-          </motion.div>
-        </section>
+              {/* Heading */}
+              <h1 className="font-display font-black text-snow mb-6" style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.04 }}>
+                Professionally<br />
+                <span className="text-gradient-gold">Detailed.</span>
+              </h1>
 
-        {/* ── Trust Bar ────────────────────────────────────────────────── */}
-        <section className="border-y border-white/5 bg-[#14161B] py-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {trustStats.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-4">
-                  {stat.icon}
-                  <div>
-                    <h3 className="font-bold text-sm text-[#F7F8FA] font-['Space_Grotesk']">{stat.label}</h3>
-                    <p className="text-[#8B93A1] text-xs mt-0.5">{stat.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+              <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
+                Premium car detailing services that restore your vehicle to showroom condition.
+                Trusted by hundreds of Sydney drivers — book your appointment today.
+              </p>
 
-        {/* ── About + Features ─────────────────────────────────────────── */}
-        <AboutUsSection />
-
-        {/* ── Services Preview ─────────────────────────────────────────── */}
-        <section className="py-24 bg-[#14161B] border-y border-white/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 md:flex md:justify-between md:items-end">
-              <div className="max-w-2xl">
-                <p className="text-[#2F6FED] text-xs uppercase tracking-widest font-semibold mb-3 font-['Space_Grotesk']">What We Offer</p>
-                <h2 className="text-3xl md:text-5xl font-bold text-[#F7F8FA] mb-4 font-['Space_Grotesk']">Our Services</h2>
-                <p className="text-[#8B93A1] text-lg">
-                  Comprehensive detailing solutions tailored to every vehicle's needs.
-                </p>
-              </div>
-              <div className="mt-6 md:mt-0">
-                <a
-                  href="/services"
-                  className="inline-flex items-center gap-2 text-[#2F6FED] font-medium hover:text-white transition-colors text-sm"
-                >
-                  View all services <ArrowRight size={16} />
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact" className="btn-gold">
+                  <Calendar size={16} />
+                  Book Appointment
+                </Link>
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline">
+                  <Phone size={16} />
+                  {BUSINESS_INFO.phone}
                 </a>
               </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {servicePreview.map((s) => (
-                <div
-                  key={s.title}
-                  className="group relative bg-[#0A0C10] border border-white/5 rounded-xl p-8 hover:border-[#2F6FED]/50 hover:shadow-lg hover:shadow-[#2F6FED]/5 transition-all duration-300"
-                >
-                  <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight className="text-[#2F6FED]" size={18} />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#F7F8FA] mb-3 font-['Space_Grotesk']">{s.title}</h3>
-                  <p className="text-[#8B93A1] text-sm leading-relaxed">{s.desc}</p>
-                  <a href={s.href} className="absolute inset-0 z-10">
-                    <span className="sr-only">View {s.title} details</span>
-                  </a>
-                </div>
-              ))}
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </div>
 
-        {/* ── Reviews ──────────────────────────────────────────────────── */}
-        <ReviewsSection />
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-snow/30"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+        >
+          <span className="text-[9px] uppercase tracking-widest">Scroll</span>
+          <div className="animate-float">
+            <ChevronDown size={20} />
+          </div>
+        </motion.div>
 
-        {/* ── Gallery ──────────────────────────────────────────────────── */}
-        <SlidingGallery />
+        {/* Vertical brand text (right edge, desktop) */}
+        <div
+          className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center gap-3 text-snow/15"
+          aria-hidden="true"
+        >
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+          <p className="rotate-90 text-[9px] tracking-[0.35em] uppercase whitespace-nowrap font-display">
+            Car Care · Artarmon · Since 2020
+          </p>
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
+        </div>
+      </section>
 
-        {/* ── Location ─────────────────────────────────────────────────── */}
-        <LocationSection />
+      {/* ══════════════════════════════════════════════════════════════════
+          STATS BAR
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="bg-surface border-y border-white/6 py-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/6">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="px-6 py-4 first:pl-0 last:pr-0 text-center sm:text-left"
+              >
+                <p className="text-gradient-gold font-display font-black text-3xl md:text-4xl mb-1">{s.num}</p>
+                <p className="text-mist text-xs uppercase tracking-wider">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          ABOUT + FEATURES
+      ══════════════════════════════════════════════════════════════════ */}
+      <AboutUsSection />
+
+      {/* ══════════════════════════════════════════════════════════════════
+          SERVICES PREVIEW
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 bg-deep">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div>
+              <span className="section-label">What We Offer</span>
+              <div className="flex items-start gap-4 mt-3">
+                <span className="gold-bar" />
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+                  Featured Services
+                </h2>
+              </div>
+            </div>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-gold hover:text-gold-light text-sm font-medium transition-colors shrink-0"
+            >
+              View all services <ArrowRight size={15} />
+            </Link>
+          </div>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {serviceCards.map((s, i) => (
+              <motion.div
+                key={s.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card p-8 relative overflow-hidden group"
+              >
+                {/* Watermark number */}
+                <span
+                  className="absolute -top-2 -right-3 font-display font-black text-8xl select-none pointer-events-none"
+                  style={{ color: "transparent", WebkitTextStroke: "1px rgba(200,145,26,0.1)" }}
+                >
+                  {s.num}
+                </span>
+
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold mb-6 group-hover:bg-gold/20 transition-colors duration-300">
+                  {s.icon}
+                </div>
+
+                <h3 className="font-display font-bold text-xl text-snow mb-3">{s.title}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">{s.desc}</p>
+
+                <Link
+                  to={s.href}
+                  className="inline-flex items-center gap-1.5 text-gold hover:text-gold-light text-xs font-medium uppercase tracking-wider transition-colors"
+                >
+                  Learn More <ArrowRight size={12} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* All services CTA */}
+          <div className="text-center mt-12">
+            <Link to="/services" className="btn-outline text-sm">
+              View All 8 Services <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          FULL-WIDTH BANNER CTA
+      ══════════════════════════════════════════════════════════════════ */}
+      <div className="relative py-20 overflow-hidden bg-surface border-y border-white/6">
+        {/* Diagonal gold glow */}
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, #C8911A, transparent)" }}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
+          <span className="section-label mb-4 block">Ready to Book?</span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-6">
+            Your Car Deserves the Best
+          </h2>
+          <p className="text-mist text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+            Join hundreds of satisfied Sydney car owners. Book your detailing appointment today
+            and experience the Sparkling difference.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-gold text-base px-10 py-4">
+              <Calendar size={18} />
+              Book Now
+            </Link>
+            <Link to="/packages" className="btn-outline text-base px-10 py-4">
+              View Packages <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
       </div>
-    </>
-  );
-};
+
+      {/* ══════════════════════════════════════════════════════════════════
+          REVIEWS
+      ══════════════════════════════════════════════════════════════════ */}
+      <ReviewsSection />
+
+      {/* ══════════════════════════════════════════════════════════════════
+          GALLERY
+      ══════════════════════════════════════════════════════════════════ */}
+      <SlidingGallery />
+
+      {/* ══════════════════════════════════════════════════════════════════
+          LOCATION
+      ══════════════════════════════════════════════════════════════════ */}
+      <LocationSection />
+    </main>
+  </>
+);
 
 export default Home;
