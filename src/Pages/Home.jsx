@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Phone, Calendar, ChevronDown, ArrowRight, Wrench, Droplets, Sparkles } from "lucide-react";
+import { Phone, Calendar, ChevronDown, ArrowRight, Wrench, Droplets, Sparkles, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import ReviewsSection from "../components/ReviewsSection";
@@ -16,7 +16,7 @@ import featuredBg from "@/images/service_img/featured_services_bg.png";
 const serviceCards = [
   {
     num: "01",
-    icon: <Sparkles size={24} />,
+    icon: <Layers size={24} />,
     title: "Ceramic Coating",
     desc: "Years of extreme gloss and paint protection. Hydrophobic, UV resistant, and easier to clean.",
     href: "/services#ceramic-coating",
