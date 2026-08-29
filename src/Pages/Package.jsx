@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench } from "lucide-react";
+import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceBack from "@/images/others/serviceBack.webp";
 import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
@@ -106,7 +106,7 @@ const Package = () => (
               <div className="p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center shrink-0 text-brand">
-                    {key === "ceramicCoating" ? <Sparkles size={24} /> : <Wrench size={24} />}
+                    {key === "ceramicCoating" ? <Layers size={24} /> : <Wrench size={24} />}
                   </div>
                   <div>
                     <h3 className="font-display font-bold text-snow text-2xl mb-1.5">{service.label}</h3>

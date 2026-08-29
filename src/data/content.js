@@ -159,7 +159,7 @@ export const PACKAGES_LIST = [
     description:
       "A quick exterior hand wash, chamois dry and tyre shine — perfect for regular maintenance between details.",
     features: ["Hand Wash & Chamois Dry", "Tyre Shine"],
-    image: "https://i0.wp.com/peaceentqatar.com/wp-content/uploads/2019/07/17545524_140141669847553_5202430352564902303_o-1.jpg?ssl=1",
+    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop",
     tier: "entry",
   },
   {
