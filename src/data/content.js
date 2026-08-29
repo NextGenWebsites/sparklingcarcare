@@ -1,7 +1,7 @@
 // ─── Business Info ────────────────────────────────────────────────────────────
 export const BUSINESS_INFO = {
   name: "Sparkling Car Care",
-  tagline: "Professional Car Detailing in Sydney",
+  tagline: "Ceramic Coating, Scratch & Dent Repair and Car Detailing in Sydney",
   address: "77/81 Reserve Rd, Artarmon NSW 2064",
   phone: "(02) 9438 4988",
   phoneTel: "+61294384988",
@@ -17,27 +17,57 @@ export const BUSINESS_INFO = {
   siteUrl: "https://www.sparklingcarcare.com.au",
 };
 
+// ─── Service Pricing ─────────────────────────────────────────────────────────
+// ✏️  EASY TO UPDATE — Client to replace demo prices with final prices.
+// No component redesign needed — just update the values below.
+export const SERVICE_PRICING = {
+  ceramicCoating: {
+    label: "Ceramic Coating",
+    note: "Includes a full wash, clay bar decontamination, and 1-step polish prep. All applications use professional-grade ceramic products.",
+    disclaimer: "* Prices are indicative. Final quote provided after vehicle inspection.",
+    tiers: [
+      { label: "Hatchback / Small Car",  price: "From $799",   note: "e.g. Toyota Yaris, VW Polo" },
+      { label: "Sedan / Coupe",          price: "From $950",   note: "e.g. Camry, Mazda 3" },
+      { label: "SUV / Wagon / 4WD",      price: "From $1,200", note: "e.g. RAV4, Hilux, X-Trail" },
+      { label: "Prestige / Luxury",      price: "From $1,500", note: "e.g. BMW, Mercedes, Audi" },
+      { label: "2-Year Coating Upgrade", price: "+ $150",      note: "Add-on to any package" },
+    ],
+  },
+  scratchDentRepair: {
+    label: "Scratch & Dent Repair",
+    note: "All repairs use professional paintless dent removal (PDR) techniques or paint-matched touch-up as required. Finished to a seamless OEM standard.",
+    disclaimer: "* Pricing is per panel per defect. Complex damage assessed on inspection.",
+    tiers: [
+      { label: "Minor Surface Scratch",          price: "From $80",  note: "Clear coat only, no paint through" },
+      { label: "Deep Scratch (paint through)",   price: "From $150", note: "Requires paint-matched touch-up" },
+      { label: "Small Dent (no paint damage)",   price: "From $120", note: "PDR — no paint required" },
+      { label: "Small Dent (with paint damage)", price: "From $220", note: "PDR + touch-up" },
+      { label: "Large Dent / Panel Damage",      price: "From $350", note: "Full panel assessment on inspection" },
+    ],
+  },
+};
+
 // ─── Reviews ──────────────────────────────────────────────────────────────────
 export const REVIEWS = [
   {
     id: 1,
     name: "Ben Hoskins",
     rating: 5,
-    text: "I highly recommend these guys! Just picked up my car and it genuinely looks brand new. And when I left it with them it was in a sorry state. Service, attention to detail and value for money all outstanding. Thanks team!",
+    text: "I highly recommend these guys! Just picked up my car and it genuinely looks brand new. Service, attention to detail and value for money all outstanding. Thanks team!",
     date: "3 months ago",
   },
   {
     id: 2,
     name: "Nicole B.",
     rating: 5,
-    text: "Completely satisfied and impressed with the thorough internal and external cleaning done on my car today. Thank you. Nicole Bannister - BDU 73H - Impreza RX.",
+    text: "Completely satisfied and impressed with the thorough internal and external cleaning done on my car today. Thank you.",
     date: "5 months ago",
   },
   {
     id: 3,
     name: "Andrew Met.",
     rating: 5,
-    text: "Wow. Eddie really is amazing at what he does! I took my 21 year old Landcruiser to Eddie for a polish after a large weekend offroad. When I picked up the 4WD at 5pm it was sparkling like a brand new 4WD. Thank you.",
+    text: "Wow. Eddie really is amazing at what he does! My 21 year old Landcruiser looked like a brand new 4WD when I picked it up. Thank you.",
     date: "4 months ago",
   },
   {
@@ -58,7 +88,7 @@ export const REVIEWS = [
     id: 6,
     name: "Jatay",
     rating: 5,
-    text: "These guys do a fantastic job. Inside and out the car looked brand new. Didn't take long and were so easy to deal with. I'll be back again, and will remember to leave the car keys next time!",
+    text: "These guys do a fantastic job. Inside and out the car looked brand new. Didn't take long and were so easy to deal with. I'll be back again!",
     date: "6 months ago",
   },
 ];
@@ -66,66 +96,70 @@ export const REVIEWS = [
 // ─── Services ─────────────────────────────────────────────────────────────────
 export const SERVICES_LIST = [
   {
+    id: "ceramic-coating",
+    title: "Ceramic Coating",
+    description:
+      "Our professional ceramic coating bonds a durable, hydrophobic layer directly to your paint that repels water, dirt, UV rays and chemical contaminants. The result is a deep, mirror-like gloss that stays cleaner for longer and is far easier to maintain than an uncoated car.",
+    featured: true,
+    badge: "New Service",
+  },
+  {
+    id: "scratch-dent-repair",
+    title: "Scratch & Dent Repair",
+    description:
+      "From minor scuffs to deeper scratches and panel dents, our technicians use paintless dent removal (PDR) and precision paint-matched touch-up to restore your car's bodywork to a seamless, factory-quality finish — without the cost of a full panel respray.",
+    featured: true,
+    badge: "New Service",
+  },
+  {
     id: "exterior-detailing",
     title: "Exterior Detailing",
     description:
-      "Our exterior detailing service brings your vehicle's shine back to life. We remove dirt, grime, and contaminants with a thorough wash, followed by hand waxing or machine polishing to protect your paint and enhance gloss.",
+      "A thorough hand wash, clay bar decontamination, machine polish and protective wax restore your paint's depth and shine. We remove embedded fallout, tar spots and light scratches to leave your car looking straight off the showroom floor.",
   },
   {
     id: "interior-detailing",
     title: "Interior Detailing",
     description:
-      "We deep clean every corner of your vehicle's interior, from seats and carpets to dashboards and vents. Whether it's leather, fabric, or plastic, we restore, sanitise, and refresh surfaces to a like-new condition.",
+      "We deep clean every surface inside your vehicle — leather or fabric seats, carpets, headliner, dashboard, vents and door cards. Sanitised, conditioned and refreshed so the inside of your car feels brand new.",
   },
   {
     id: "paint-correction",
     title: "Paint Correction",
     description:
-      "Restore your car's finish with our professional paint correction. We carefully remove swirl marks, scratches, and oxidation to bring out a flawless, high-gloss shine.",
-  },
-  {
-    id: "ceramic-coating",
-    title: "Ceramic Coating",
-    description:
-      "Give your paint long-lasting protection and deep gloss with our professional ceramic coating. This advanced layer bonds to your car's surface, repelling water, dirt, and UV rays while enhancing shine for years.",
+      "Multi-stage machine polishing removes swirl marks, buffer trails, water etching and light scratches from your clear coat, revealing the true depth of your paint. An essential foundation before ceramic coating.",
   },
   {
     id: "odour-removal",
     title: "Odour Removal",
     description:
-      "Say goodbye to stubborn smells with our professional odour removal service. Whether it's smoke, pet, food, or mildew, we target and neutralise the source - not just mask it.",
+      "We target and neutralise stubborn odours at their source — smoke, pet, mildew or food. Using ozone treatment and enzyme-based products, we leave your cabin genuinely fresh and odour-free.",
   },
   {
     id: "headlight-restoration",
     title: "Headlight Restoration",
     description:
-      "Cloudy, yellow headlights can reduce both visibility and the look of your vehicle. Our headlight restoration service clears up foggy lenses and protects them, improving nighttime driving safety.",
+      "Oxidised and yellowed headlights are sanded, machine-polished and UV-sealed to restore crystal clarity, dramatically improving night visibility and giving your vehicle a much cleaner, newer appearance.",
   },
   {
     id: "engine-bay-wash",
     title: "Engine Bay Wash",
     description:
-      "A clean engine bay not only looks impressive but also helps with maintenance and spotting issues early. We carefully degrease and rinse your engine compartment, taking care not to damage sensitive components.",
-  },
-  {
-    id: "minor-dent-removal",
-    title: "Minor Dent Removal",
-    description:
-      "Got a dent or ding? Our minor dent removal service targets those small imperfections without needing a full panel respray. Using precision techniques, we restore your vehicle's smooth finish quickly and affordably.",
+      "A professionally degreased and detailed engine bay not only looks impressive but makes it far easier to spot leaks, worn components and maintenance issues. We protect sensitive electronics throughout the process.",
   },
 ];
 
 // ─── Packages ─────────────────────────────────────────────────────────────────
+// ✏️  Wash/detail package pricing — easy to update.
 export const PACKAGES_LIST = [
   {
     id: "express-wash",
     title: "Express Wash",
     price: "$30 Sedan / $40 SUV",
     description:
-      "A quick and efficient exterior clean, including a hand wash, chamois dry, and tyre shine to give your car a refreshed look.",
-    features: ["Wash Exterior and Chamois", "Tyre Shine"],
-    image:
-      "https://i0.wp.com/peaceentqatar.com/wp-content/uploads/2019/07/17545524_140141669847553_5202430352564902303_o-1.jpg?ssl=1",
+      "A quick exterior hand wash, chamois dry and tyre shine — perfect for regular maintenance between details.",
+    features: ["Hand Wash & Chamois Dry", "Tyre Shine"],
+    image: "https://i0.wp.com/peaceentqatar.com/wp-content/uploads/2019/07/17545524_140141669847553_5202430352564902303_o-1.jpg?ssl=1",
     tier: "entry",
   },
   {
@@ -133,10 +167,9 @@ export const PACKAGES_LIST = [
     title: "Basic Wash",
     price: "$40 Sedan / $50 SUV",
     description:
-      "Includes everything in the Express Wash plus an interior vacuum to remove dust and debris, keeping both the inside and outside of your car looking neat.",
-    features: ["Wash Exterior and Chamois", "Interior Vacuum", "Tyre Shine"],
-    image:
-      "https://media.istockphoto.com/id/826875544/photo/high-pressure-washing-car-outdoors.jpg?s=612x612&w=0&k=20&c=VWs9auj2wJpOEXSe4ZC5XVHFCOpOHIbkFHLnZY2-Q1M=",
+      "Express Wash plus a full interior vacuum to keep your cabin neat and your exterior gleaming.",
+    features: ["Hand Wash & Chamois Dry", "Interior Vacuum", "Tyre Shine"],
+    image: "https://media.istockphoto.com/id/826875544/photo/high-pressure-washing-car-outdoors.jpg?s=612x612&w=0&k=20&c=VWs9auj2wJpOEXSe4ZC5XVHFCOpOHIbkFHLnZY2-Q1M=",
     tier: "entry",
   },
   {
@@ -144,16 +177,15 @@ export const PACKAGES_LIST = [
     title: "Standard Wash",
     price: "$60 Sedan / $70 SUV",
     description:
-      "A thorough clean that covers the exterior, interior vacuuming, window cleaning, and trim wipe-down, ensuring a polished and well-maintained look inside and out.",
+      "A thorough exterior and interior clean including window polishing and trim wipe-down.",
     features: [
-      "Wash Exterior and Chamois",
+      "Hand Wash & Chamois Dry",
       "Interior Vacuum",
       "Windows Cleaned",
-      "Wipe Down Trims",
+      "Trim Wipe-Down",
       "Tyre Shine",
     ],
-    image:
-      "https://shop.rikecool.com.sg/wp-content/uploads/2023/09/car-wash-detailing-station_1303-22319.jpg",
+    image: "https://shop.rikecool.com.sg/wp-content/uploads/2023/09/car-wash-detailing-station_1303-22319.jpg",
     tier: "mid",
   },
   {
@@ -161,17 +193,16 @@ export const PACKAGES_LIST = [
     title: "Deluxe Wash",
     price: "$132 Sedan / $165 SUV",
     description:
-      "A premium wash package that includes everything in the Standard Wash, plus a professional hand polish to restore shine and enhance your vehicle's appearance.",
+      "Everything in Standard Wash plus a hand machine polish to restore your paint's lustre.",
     features: [
-      "Wash Exterior and Chamois",
+      "Hand Wash & Chamois Dry",
       "Interior Vacuum",
       "Windows Cleaned",
-      "Wipe Down Trims",
+      "Trim Wipe-Down",
       "Tyre Shine",
-      "Hand Polish",
+      "Hand Machine Polish",
     ],
-    image:
-      "https://www.jalopnik.com/jalopnik/images/b5b2550c72d99e5dcb0bbd70c28a1495.jpg",
+    image: "https://www.jalopnik.com/jalopnik/images/b5b2550c72d99e5dcb0bbd70c28a1495.jpg",
     tier: "mid",
     popular: true,
   },
@@ -180,10 +211,9 @@ export const PACKAGES_LIST = [
     title: "Mini Detail",
     price: "$198 Sedan / $250 SUV",
     description:
-      "A deep cleaning package that combines the Standard Wash with a high-quality hand polish and an engine bay wash, ensuring a spotless and glossy finish.",
-    features: ["Standard Wash +", "Hand Polish", "Engine Bay Wash"],
-    image:
-      "https://www.momscardetailing.com/wp-content/uploads/2025/03/104202763_1708027612681300_7224795719929665443_n-1-rotated.jpg",
+      "Standard Wash with a full machine polish and engine bay wash for a head-to-toe refresh.",
+    features: ["Standard Wash", "Machine Polish", "Engine Bay Wash"],
+    image: "https://www.momscardetailing.com/wp-content/uploads/2025/03/104202763_1708027612681300_7224795719929665443_n-1-rotated.jpg",
     tier: "premium",
   },
   {
@@ -191,15 +221,14 @@ export const PACKAGES_LIST = [
     title: "Full Detail",
     price: "$298 Sedan / $350 SUV",
     description:
-      "The ultimate detailing service, featuring a Standard Wash, engine bay wash, deep interior shampooing, and a two-step paint correction to remove imperfections and restore your car's paint to a flawless shine.",
+      "The ultimate detailing package — Standard Wash, engine bay, interior shampoo and a two-step paint correction for a flawless showroom finish.",
     features: [
-      "Standard Wash +",
+      "Standard Wash",
       "Engine Bay Wash",
-      "Shampoo Interior",
-      "Two Step Paint Correction",
+      "Interior Shampoo",
+      "Two-Step Paint Correction",
     ],
-    image:
-      "https://www.cartoys.com/cdn/shop/files/Car_detailing_ServiceSection_512x300_2dd1ef7e-4b4d-45aa-90f5-650d299dd56e.jpg?v=1694798075&width=512",
+    image: "https://www.cartoys.com/cdn/shop/files/Car_detailing_ServiceSection_512x300_2dd1ef7e-4b4d-45aa-90f5-650d299dd56e.jpg?v=1694798075&width=512",
     tier: "premium",
   },
 ];
