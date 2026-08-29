@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 import ServiceBack from "@/images/others/serviceBack.webp";
-import { PACKAGES_LIST, BUSINESS_INFO } from "../data/content";
+import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
 
 /* Tier configuration */
 const tierConfig = {
@@ -79,7 +79,73 @@ const Package = () => (
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="section-label block mb-4">Choose Your Package</span>
+          <span className="section-label block mb-4">Specialist Services</span>
+          <div className="flex items-center justify-center gap-4">
+            <span className="gold-bar" style={{ height: 32 }} />
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+              Protection & Repair
+            </h2>
+            <span className="gold-bar" style={{ height: 32 }} />
+          </div>
+        </motion.div>
+
+        {/* Specialist Pricing Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-32">
+          {Object.entries(SERVICE_PRICING).map(([key, service], i) => (
+            <motion.div
+              key={key}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-surface border border-white/6 rounded-xl overflow-hidden shadow-2xl relative"
+            >
+              {/* Premium accent bar */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-50" />
+              
+              <div className="p-8">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0 text-gold">
+                    {key === "ceramicCoating" ? <Sparkles size={24} /> : <Wrench size={24} />}
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-snow text-2xl mb-1.5">{service.label}</h3>
+                    <p className="text-mist text-sm leading-relaxed">{service.note}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  {service.tiers.map((tier) => (
+                    <div key={tier.label} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 group">
+                      <div>
+                        <p className="text-snow text-sm font-medium group-hover:text-gold transition-colors">{tier.label}</p>
+                        <p className="text-ghost text-xs mt-0.5">{tier.note}</p>
+                      </div>
+                      <span className="font-mono text-gold font-bold text-right shrink-0 ml-4">{tier.price}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <p className="text-[10px] text-mist/60 italic">{service.disclaimer}</p>
+                  <Link to="/contact" className="btn-outline text-xs px-5 py-2">
+                    Enquire Now
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── Detailing Packages ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="section-label block mb-4">Wash & Detail Packages</span>
           <div className="flex items-center justify-center gap-4">
             <span className="gold-bar" style={{ height: 32 }} />
             <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">

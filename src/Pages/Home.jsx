@@ -14,24 +14,24 @@ import { BUSINESS_INFO } from "../data/content";
 const serviceCards = [
   {
     num: "01",
-    icon: <Droplets size={24} />,
-    title: "Exterior Detailing",
-    desc: "Showroom shine from a full hand wash, clay bar, machine polish and protective wax.",
-    href: "/services#exterior-detailing",
+    icon: <Sparkles size={24} />,
+    title: "Ceramic Coating",
+    desc: "Years of extreme gloss and paint protection. Hydrophobic, UV resistant, and easier to clean.",
+    href: "/services#ceramic-coating",
   },
   {
     num: "02",
     icon: <Wrench size={24} />,
-    title: "Paint Correction",
-    desc: "Remove swirl marks, scratches and oxidation to reveal a flawless factory finish.",
-    href: "/services#paint-correction",
+    title: "Scratch & Dent Repair",
+    desc: "Seamlessly repair minor scratches, scuffs, and panel dents without a full respray.",
+    href: "/services#scratch-dent-repair",
   },
   {
     num: "03",
-    icon: <Sparkles size={24} />,
-    title: "Ceramic Coating",
-    desc: "Years of paint protection, hydrophobic water repellency, and an unreal gloss.",
-    href: "/services#ceramic-coating",
+    icon: <Droplets size={24} />,
+    title: "Premium Detailing",
+    desc: "From paint correction to deep interior cleaning, we restore your vehicle to showroom condition.",
+    href: "/services#exterior-detailing",
   },
 ];
 
@@ -46,10 +46,10 @@ const stats = [
 const Home = () => (
   <>
     <Helmet>
-      <title>Car Detailing Artarmon Sydney | Sparkling Car Care</title>
+      <title>Ceramic Coating & Paint Repair Sydney | Sparkling Car Care</title>
       <meta
         name="description"
-        content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today - (02) 9438 4988."
+        content="Sydney's specialists in Ceramic Coating, Scratch & Dent Repair, and Premium Car Detailing. Expert paint correction and detailing in Artarmon. Book today - (02) 9438 4988."
       />
       <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
     </Helmet>
@@ -66,7 +66,7 @@ const Home = () => (
             <source type="image/webp" srcSet="/hero-1280.webp 1280w" sizes="100vw" />
             <img
               src="/hero-1280.webp"
-              alt="Premium car detailing in Artarmon Sydney"
+              alt="Ceramic coating and scratch repair in Artarmon Sydney"
               fetchPriority="high"
               decoding="sync"
               className="w-full h-full object-cover object-center"
@@ -94,13 +94,12 @@ const Home = () => (
 
               {/* Heading */}
               <h1 className="font-display font-black text-snow mb-6" style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.04 }}>
-                Professionally<br />
-                <span className="text-gradient-gold">Detailed.</span>
+                Protect & <br />
+                <span className="text-gradient-gold">Restore.</span>
               </h1>
 
               <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
-                Premium car detailing services that restore your vehicle to showroom condition.
-                Trusted by hundreds of Sydney drivers - book your appointment today.
+                Sydney's specialists in professional Ceramic Coating, seamless Scratch & Dent Repair, and Premium Detailing. Flawless finishes, guaranteed.
               </p>
 
               <div className="flex flex-wrap gap-3">
