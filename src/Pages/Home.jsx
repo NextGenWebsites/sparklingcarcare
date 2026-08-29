@@ -10,6 +10,8 @@ import LocationSection from "../components/LocationSection";
 import AboutUsSection from "../components/AboutUsSection";
 import { BUSINESS_INFO } from "../data/content";
 
+import featuredBg from "@/images/service_img/featured_services_bg.png";
+
 /* ── Service preview data ───────────────────────────────────────────────── */
 const serviceCards = [
   {
@@ -173,8 +175,21 @@ const Home = () => (
       {/* ══════════════════════════════════════════════════════════════════
           SERVICES PREVIEW
       ══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 bg-deep">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <section className="py-24 bg-deep relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={featuredBg}
+            alt="Premium Detailing Background"
+            className="w-full h-full object-cover opacity-30 mix-blend-screen"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* Fades to blend with surrounding sections */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/80 to-deep/40" /> */}
+          <div className="absolute inset-0 bg-gradient-to-b from-deep to-transparent opacity-80" />
+        </div>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
             <div>
