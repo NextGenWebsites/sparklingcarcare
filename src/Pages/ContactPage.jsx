@@ -265,7 +265,7 @@ const ContactPage = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Sparkling Car Care — 77/81 Reserve Rd, Artarmon NSW 2064"
+              title="Sparkling Car Care - 77/81 Reserve Rd, Artarmon NSW 2064"
               className="w-full h-full"
             />
           </motion.div>

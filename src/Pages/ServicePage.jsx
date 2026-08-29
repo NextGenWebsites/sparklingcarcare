@@ -15,11 +15,11 @@ import ServiceBack          from "@/images/others/serviceBack.webp";
 import { BUSINESS_INFO }    from "../data/content";
 
 const services = [
-  { id: "exterior-detailing",  num: "01", title: "Exterior Detailing",    img: carWashImg,            desc: "We bring your vehicle's shine back to life with a thorough wash, clay bar treatment, hand polish and protective wax. More than a wash — a full rejuvenation of your car's outer appearance.", flip: false },
-  { id: "interior-detailing",  num: "02", title: "Interior Detailing",    img: "https://www.thedetailingexperts.com.au/wp-content/uploads/2022/04/Mass-blog-header-template-01-2.png", desc: "Deep clean every surface — seats, carpets, dashboards and vents. We restore, sanitise and refresh leather, fabric and plastic surfaces to a like-new condition.", flip: true },
+  { id: "exterior-detailing",  num: "01", title: "Exterior Detailing",    img: carWashImg,            desc: "We bring your vehicle's shine back to life with a thorough wash, clay bar treatment, hand polish and protective wax. More than a wash - a full rejuvenation of your car's outer appearance.", flip: false },
+  { id: "interior-detailing",  num: "02", title: "Interior Detailing",    img: "https://www.thedetailingexperts.com.au/wp-content/uploads/2022/04/Mass-blog-header-template-01-2.png", desc: "Deep clean every surface - seats, carpets, dashboards and vents. We restore, sanitise and refresh leather, fabric and plastic surfaces to a like-new condition.", flip: true },
   { id: "paint-correction",    num: "03", title: "Paint Correction",      img: paint_correction,      desc: "Carefully remove swirl marks, scratches and oxidation using machine polishing techniques. The result is a flawless, mirror-like finish that transforms any car.", flip: false },
   { id: "ceramic-coating",     num: "04", title: "Ceramic Coating",       img: ceramicCoatingImg,     desc: "Bond a durable hydrophobic layer to your paintwork that repels water, dirt and UV rays. Fewer washes, better gloss, and lasting protection for years to come.", flip: true },
-  { id: "odour-removal",       num: "05", title: "Odour Removal",         img: shampoo_carpet,        desc: "Neutralise stubborn smells at the source — smoke, pet, food or mildew. We don't mask odours, we eliminate them, leaving your cabin smelling genuinely fresh.", flip: false },
+  { id: "odour-removal",       num: "05", title: "Odour Removal",         img: shampoo_carpet,        desc: "Neutralise stubborn smells at the source - smoke, pet, food or mildew. We don't mask odours, we eliminate them, leaving your cabin smelling genuinely fresh.", flip: false },
   { id: "headlight-restoration",num:"06", title: "Headlight Restoration", img: headlight_restoration, desc: "Restore cloudy or yellowed lenses to crystal clarity, improving nighttime visibility and giving your car that clean, looked-after appearance.", flip: true },
   { id: "engine-bay-wash",     num: "07", title: "Engine Bay Wash",       img: engineBayWash,         desc: "A clean engine bay makes maintenance easier and helps spot issues early. We carefully degrease and rinse the compartment without harming sensitive components.", flip: false },
   { id: "minor-dent-removal",  num: "08", title: "Minor Dent Removal",    img: car_dent_removal,      desc: "Precision dent removal without a full panel respray. We restore smooth bodywork quickly and affordably, targeting small imperfections that spoil the look.", flip: true },
@@ -72,7 +72,7 @@ const ServicePage = () => (
       <div className="bg-surface border-b border-white/6 py-8">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
           <p className="text-mist leading-relaxed max-w-2xl text-sm md:text-base">
-            From a quick refresh to a full transformation — we offer eight professional detailing services
+            From a quick refresh to a full transformation - we offer eight professional detailing services
             tailored to any vehicle, any condition, any budget.
           </p>
           <div className="shrink-0">

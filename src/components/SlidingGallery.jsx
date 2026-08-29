@@ -35,7 +35,7 @@ import Img31 from "../images/gallery/IMG_8060.webp";
 import Img32 from "../images/gallery/IMG_9149.webp";
 
 const rowOne = [
-  { id:1,  src: Img7,  alt: "Car detailing Artarmon — exterior polish" },
+  { id:1,  src: Img7,  alt: "Car detailing Artarmon - exterior polish" },
   { id:2,  src: Img14, alt: "Interior car cleaning Sydney" },
   { id:3,  src: Img21, alt: "Paint correction results" },
   { id:4,  src: Img3,  alt: "Professional hand wash Sydney" },

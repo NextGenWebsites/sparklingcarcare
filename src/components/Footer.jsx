@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-14">
 
-          {/* Brand — 4 cols */}
+          {/* Brand - 4 cols */}
           <div className="md:col-span-4 space-y-6">
             <Link to="/" className="flex items-center gap-3">
               <img src="/logo.png" alt="Sparkling Car Care" className="h-14 w-14 rounded-full object-cover ring-1 ring-gold/30" />
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links — 2 cols */}
+          {/* Quick Links - 2 cols */}
           <div className="md:col-span-2">
             <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Navigate</h3>
             <ul className="space-y-3">
@@ -66,7 +66,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services — 3 cols */}
+          {/* Services - 3 cols */}
           <div className="md:col-span-3">
             <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Services</h3>
             <ul className="space-y-3">
@@ -87,7 +87,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact — 3 cols */}
+          {/* Contact - 3 cols */}
           <div className="md:col-span-3">
             <h3 className="font-display font-bold text-snow text-sm uppercase tracking-widest mb-5">Contact</h3>
             <ul className="space-y-4">

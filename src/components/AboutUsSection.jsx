@@ -7,7 +7,7 @@ const features = [
   { icon: <MapPin size={22} />, title: "Locally Owned", desc: "Artarmon-based, Sydney-proud. Part of the community since day one." },
   { icon: <Wrench size={22} />, title: "Expert Detailers", desc: "Experienced professionals passionate about delivering flawless results." },
   { icon: <Shield size={22} />, title: "Premium Products", desc: "Professional-grade chemicals and equipment for lasting protection." },
-  { icon: <Eye size={22} />, title: "Meticulous Finish", desc: "Every inch treated with obsessive care — nothing is overlooked." },
+  { icon: <Eye size={22} />, title: "Meticulous Finish", desc: "Every inch treated with obsessive care - nothing is overlooked." },
   { icon: <Leaf size={22} />, title: "Eco Conscious", desc: "Water-efficient methods and biodegradable products where possible." },
   { icon: <Clock size={22} />, title: "Reliable & On-Time", desc: "We respect your schedule and deliver on our promises, every time." },
 ];
@@ -37,7 +37,7 @@ const AboutUsSection = () => {
             <p className="text-mist leading-relaxed mb-6 max-w-md">
               At Sparkling Car Care, we're a locally run detailing studio in Artarmon dedicated to
               restoring and protecting your car inside and out. Whether it's a deep interior clean,
-              flawless exterior finish, or specialised paint correction — we treat every vehicle as
+              flawless exterior finish, or specialised paint correction - we treat every vehicle as
               if it were our own.
             </p>
             <p className="text-mist leading-relaxed mb-10 max-w-md">

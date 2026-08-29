@@ -49,7 +49,7 @@ const Home = () => (
       <title>Car Detailing Artarmon Sydney | Sparkling Car Care</title>
       <meta
         name="description"
-        content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today — (02) 9438 4988."
+        content="Premium car detailing in Artarmon, Sydney. Expert exterior & interior detailing, paint correction, ceramic coating & more. Book today - (02) 9438 4988."
       />
       <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
     </Helmet>
@@ -77,7 +77,7 @@ const Home = () => (
           <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/30 to-transparent" />
         </div>
 
-        {/* Content — anchored bottom-left */}
+        {/* Content - anchored bottom-left */}
         <div className="relative z-10 flex-1 flex flex-col justify-end">
           <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 pb-20 md:pb-28">
             <motion.div
@@ -100,7 +100,7 @@ const Home = () => (
 
               <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
                 Premium car detailing services that restore your vehicle to showroom condition.
-                Trusted by hundreds of Sydney drivers — book your appointment today.
+                Trusted by hundreds of Sydney drivers - book your appointment today.
               </p>
 
               <div className="flex flex-wrap gap-3">

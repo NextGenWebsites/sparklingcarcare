@@ -29,7 +29,7 @@ const LocationSection = () => (
       </motion.div>
 
       <div className="grid lg:grid-cols-5 gap-6 items-stretch">
-        {/* Info card — 2/5 */}
+        {/* Info card - 2/5 */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -97,7 +97,7 @@ const LocationSection = () => (
           </a>
         </motion.div>
 
-        {/* Map — 3/5 */}
+        {/* Map - 3/5 */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -113,7 +113,7 @@ const LocationSection = () => (
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Sparkling Car Care — 77/81 Reserve Rd, Artarmon NSW 2064"
+            title="Sparkling Car Care - 77/81 Reserve Rd, Artarmon NSW 2064"
             className="w-full h-full"
           />
         </motion.div>
