@@ -3,14 +3,6 @@ import { motion } from "framer-motion";
 import { Clock, Wrench, Shield, Eye, Leaf, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const features = [
-  { icon: <MapPin size={22} />, title: "Locally Owned", desc: "Artarmon-based, Sydney-proud. Part of the community since day one." },
-  { icon: <Wrench size={22} />, title: "Expert Detailers", desc: "Experienced professionals passionate about delivering flawless results." },
-  { icon: <Shield size={22} />, title: "Premium Products", desc: "Professional-grade chemicals and equipment for lasting protection." },
-  { icon: <Eye size={22} />, title: "Meticulous Finish", desc: "Every inch treated with obsessive care - nothing is overlooked." },
-  { icon: <Leaf size={22} />, title: "Eco Conscious", desc: "Water-efficient methods and biodegradable products where possible." },
-  { icon: <Clock size={22} />, title: "Reliable & On-Time", desc: "We respect your schedule and deliver on our promises, every time." },
-];
 
 const AboutUsSection = () => {
   return (
@@ -81,27 +73,7 @@ const AboutUsSection = () => {
           </motion.div>
         </div>
 
-        {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card p-6 flex gap-4 items-start"
-            >
-              <div className="w-10 h-10 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
-                {f.icon}
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-snow mb-1.5">{f.title}</h3>
-                <p className="text-mist text-sm leading-relaxed">{f.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+
       </div>
     </section>
   );
