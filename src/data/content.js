@@ -112,9 +112,9 @@ export const SERVICES_LIST = [
   },
   {
     id: "scratch-dent-repair",
-    title: "Scratch & Dent Repair",
+    title: "Scratch, Dent & Paint Repair",
     description:
-      "From minor scuffs to deeper scratches and panel dents, our technicians use paintless dent removal (PDR) and precision paint-matched touch-up to restore your car's bodywork to a seamless, factory-quality finish - without the cost of a full panel respray.",
+      "From minor scuffs to deeper scratches and panel dents, our technicians offer comprehensive bodywork restoration. We provide professional paintwork and full panel resprays to return your car's exterior to a seamless, factory-quality finish.",
     featured: true,
     badge: "New Service",
   },

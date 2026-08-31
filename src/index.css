@@ -6,8 +6,8 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 @theme {
-  /* Backgrounds */
-  --color-deep:    #12151C;
+  /* Backgrounds */ #12151C
+  --color-deep:    #12151C77;
   --color-surface: #1C1F26;
   --color-raised:  #242935;
   --color-overlay: #151821;

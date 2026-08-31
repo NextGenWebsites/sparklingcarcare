@@ -25,8 +25,8 @@ const serviceCards = [
   {
     num: "02",
     icon: <Wrench size={24} />,
-    title: "Scratch & Dent Repair",
-    desc: "Seamlessly repair minor scratches, scuffs, and panel dents without a full respray.",
+    title: "Scratch, Dent & Paint Repair",
+    desc: "Comprehensive bodywork restoration including precision paintwork and full panel respraying.",
     href: "/services#scratch-dent-repair",
   },
   {
