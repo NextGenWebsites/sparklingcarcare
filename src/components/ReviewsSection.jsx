@@ -80,7 +80,7 @@ const ReviewsSection = () => (
               <Star key={i} size={18} className="fill-gold text-brand -ml-0.5" />
             ))}
           </div>
-          <span className="text-snow font-display font-bold">5.0</span>
+          <span className="text-snow font-display font-bold">4.3</span>
           <span className="text-mist text-sm">· Google Reviews</span>
         </div>
       </div>

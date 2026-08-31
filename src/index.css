@@ -7,10 +7,10 @@
 /* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 @theme {
   /* Backgrounds */
-  --color-deep:    #0A0C10;
-  --color-surface: #14161B;
-  --color-raised:  #1A1E27;
-  --color-overlay: #0D1018;
+  --color-deep:    #12151C;
+  --color-surface: #1C1F26;
+  --color-raised:  #242935;
+  --color-overlay: #151821;
 
   /* Brand Accent */
   --color-brand:       #2F6FED;
@@ -36,7 +36,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background-color: #0A0C10;
+    background-color: #12151C;
     color: #F7F8FA;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@
   }
 
   ::-webkit-scrollbar       { width: 5px; }
-  ::-webkit-scrollbar-track { background: #0A0C10; }
+  ::-webkit-scrollbar-track { background: #12151C; }
   ::-webkit-scrollbar-thumb { background: #2F6FED; border-radius: 3px; }
 }
 
@@ -126,7 +126,7 @@
     gap: 0.5rem;
     background: linear-gradient(90deg, #2F6FED, #6092F3, #2F6FED);
     background-size: 200% auto;
-    color: #0A0C10;
+    color: #12151C;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     padding: 0.9rem 2rem;
@@ -190,7 +190,7 @@
 
   /* Card base */
   .card {
-    background: #14161B;
+    background: #1C1F26;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;

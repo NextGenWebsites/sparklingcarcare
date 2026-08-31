@@ -1,3 +1,10 @@
+import expressWashImg from "../images/packages/express-wash.jpeg";
+import basicWashImg from "../images/packages/basic-wash.jpeg";
+import standardWashImg from "../images/packages/standard-wash.jpeg";
+import deluxeWashImg from "../images/packages/deluxe-wash.jpeg";
+import miniDetailImg from "../images/packages/mini-detail.jpeg";
+import fullDetailImg from "../images/packages/full-detail.jpeg";
+
 // ─── Business Info ────────────────────────────────────────────────────────────
 export const BUSINESS_INFO = {
   name: "Sparkling Car Care",
@@ -18,8 +25,8 @@ export const BUSINESS_INFO = {
 };
 
 // ─── Service Pricing ─────────────────────────────────────────────────────────
-// ✏️  EASY TO UPDATE — Client to replace demo prices with final prices.
-// No component redesign needed — just update the values below.
+// ✏️  EASY TO UPDATE - Client to replace demo prices with final prices.
+// No component redesign needed - just update the values below.
 export const SERVICE_PRICING = {
   ceramicCoating: {
     label: "Ceramic Coating",
@@ -40,7 +47,7 @@ export const SERVICE_PRICING = {
     tiers: [
       { label: "Minor Surface Scratch",          price: "From $80",  note: "Clear coat only, no paint through" },
       { label: "Deep Scratch (paint through)",   price: "From $150", note: "Requires paint-matched touch-up" },
-      { label: "Small Dent (no paint damage)",   price: "From $120", note: "PDR — no paint required" },
+      { label: "Small Dent (no paint damage)",   price: "From $120", note: "PDR - no paint required" },
       { label: "Small Dent (with paint damage)", price: "From $220", note: "PDR + touch-up" },
       { label: "Large Dent / Panel Damage",      price: "From $350", note: "Full panel assessment on inspection" },
     ],
@@ -107,7 +114,7 @@ export const SERVICES_LIST = [
     id: "scratch-dent-repair",
     title: "Scratch & Dent Repair",
     description:
-      "From minor scuffs to deeper scratches and panel dents, our technicians use paintless dent removal (PDR) and precision paint-matched touch-up to restore your car's bodywork to a seamless, factory-quality finish — without the cost of a full panel respray.",
+      "From minor scuffs to deeper scratches and panel dents, our technicians use paintless dent removal (PDR) and precision paint-matched touch-up to restore your car's bodywork to a seamless, factory-quality finish - without the cost of a full panel respray.",
     featured: true,
     badge: "New Service",
   },
@@ -121,7 +128,7 @@ export const SERVICES_LIST = [
     id: "interior-detailing",
     title: "Interior Detailing",
     description:
-      "We deep clean every surface inside your vehicle — leather or fabric seats, carpets, headliner, dashboard, vents and door cards. Sanitised, conditioned and refreshed so the inside of your car feels brand new.",
+      "We deep clean every surface inside your vehicle - leather or fabric seats, carpets, headliner, dashboard, vents and door cards. Sanitised, conditioned and refreshed so the inside of your car feels brand new.",
   },
   {
     id: "paint-correction",
@@ -133,7 +140,7 @@ export const SERVICES_LIST = [
     id: "odour-removal",
     title: "Odour Removal",
     description:
-      "We target and neutralise stubborn odours at their source — smoke, pet, mildew or food. Using ozone treatment and enzyme-based products, we leave your cabin genuinely fresh and odour-free.",
+      "We target and neutralise stubborn odours at their source - smoke, pet, mildew or food. Using ozone treatment and enzyme-based products, we leave your cabin genuinely fresh and odour-free.",
   },
   {
     id: "headlight-restoration",
@@ -150,16 +157,16 @@ export const SERVICES_LIST = [
 ];
 
 // ─── Packages ─────────────────────────────────────────────────────────────────
-// ✏️  Wash/detail package pricing — easy to update.
+// ✏️  Wash/detail package pricing - easy to update.
 export const PACKAGES_LIST = [
   {
     id: "express-wash",
     title: "Express Wash",
     price: "$30 Sedan / $40 SUV",
     description:
-      "A quick exterior hand wash, chamois dry and tyre shine — perfect for regular maintenance between details.",
+      "A quick exterior hand wash, chamois dry and tyre shine - perfect for regular maintenance between details.",
     features: ["Hand Wash & Chamois Dry", "Tyre Shine"],
-    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop",
+    image: expressWashImg,
     tier: "entry",
   },
   {
@@ -169,7 +176,7 @@ export const PACKAGES_LIST = [
     description:
       "Express Wash plus a full interior vacuum to keep your cabin neat and your exterior gleaming.",
     features: ["Hand Wash & Chamois Dry", "Interior Vacuum", "Tyre Shine"],
-    image: "https://media.istockphoto.com/id/826875544/photo/high-pressure-washing-car-outdoors.jpg?s=612x612&w=0&k=20&c=VWs9auj2wJpOEXSe4ZC5XVHFCOpOHIbkFHLnZY2-Q1M=",
+    image: basicWashImg,
     tier: "entry",
   },
   {
@@ -185,7 +192,7 @@ export const PACKAGES_LIST = [
       "Trim Wipe-Down",
       "Tyre Shine",
     ],
-    image: "https://shop.rikecool.com.sg/wp-content/uploads/2023/09/car-wash-detailing-station_1303-22319.jpg",
+    image: standardWashImg,
     tier: "mid",
   },
   {
@@ -202,7 +209,7 @@ export const PACKAGES_LIST = [
       "Tyre Shine",
       "Hand Machine Polish",
     ],
-    image: "https://www.jalopnik.com/jalopnik/images/b5b2550c72d99e5dcb0bbd70c28a1495.jpg",
+    image: deluxeWashImg,
     tier: "mid",
     popular: true,
   },
@@ -213,7 +220,7 @@ export const PACKAGES_LIST = [
     description:
       "Standard Wash with a full machine polish and engine bay wash for a head-to-toe refresh.",
     features: ["Standard Wash", "Machine Polish", "Engine Bay Wash"],
-    image: "https://www.momscardetailing.com/wp-content/uploads/2025/03/104202763_1708027612681300_7224795719929665443_n-1-rotated.jpg",
+    image: miniDetailImg,
     tier: "premium",
   },
   {
@@ -221,14 +228,14 @@ export const PACKAGES_LIST = [
     title: "Full Detail",
     price: "$298 Sedan / $350 SUV",
     description:
-      "The ultimate detailing package — Standard Wash, engine bay, interior shampoo and a two-step paint correction for a flawless showroom finish.",
+      "The ultimate detailing package - Standard Wash, engine bay, interior shampoo and a two-step paint correction for a flawless showroom finish.",
     features: [
       "Standard Wash",
       "Engine Bay Wash",
       "Interior Shampoo",
       "Two-Step Paint Correction",
     ],
-    image: "https://www.cartoys.com/cdn/shop/files/Car_detailing_ServiceSection_512x300_2dd1ef7e-4b4d-45aa-90f5-650d299dd56e.jpg?v=1694798075&width=512",
+    image: fullDetailImg,
     tier: "premium",
   },
 ];
