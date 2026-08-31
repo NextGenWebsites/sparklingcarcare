@@ -40,8 +40,8 @@ const serviceCards = [
 
 /* ── Trust stats ────────────────────────────────────────────────────────── */
 const stats = [
-  { num: "500+", label: "Satisfied Customers" },
-  { num: "5★",   label: "Google Rating" },
+  { num: "30+", label: "Years Experience" },
+  { num: "4.2★",   label: "Google Rating" },
   { num: "8+",   label: "Expert Services" },
   { num: "100%", label: "Satisfaction Guaranteed" },
 ];
