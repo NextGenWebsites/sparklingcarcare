@@ -72,7 +72,7 @@ const Home = () => (
             decoding="sync"
             className="w-full h-full object-cover object-center"
           />
-          {/* Layered overlays: bottom-heavy, slight warm tint */}
+     
           <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/60 to-deep/20" />
           <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/30 to-transparent" />
         </div>
@@ -128,17 +128,7 @@ const Home = () => (
           </div>
         </motion.div>
 
-        {/* Vertical brand text (right edge, desktop) */}
-        <div
-          className="absolute right-8 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center gap-3 text-snow/15"
-          aria-hidden="true"
-        >
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-          <p className="rotate-90 text-[9px] tracking-[0.35em] uppercase whitespace-nowrap font-display">
-            Car Care · Artarmon · Since 2020
-          </p>
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-        </div>
+       
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════
