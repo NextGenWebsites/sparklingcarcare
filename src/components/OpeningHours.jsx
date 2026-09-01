@@ -51,11 +51,11 @@ const OpeningHours = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between bg-brand px-4 py-2.5">
-              <div className="flex items-center gap-2 text-deep">
+              <div className="flex items-center gap-2 text-black">
                 <Clock size={13} />
                 <span className="font-display font-bold text-xs uppercase tracking-widest">Hours</span>
               </div>
-              <button onClick={() => setShow(false)} className="text-deep/70 hover:text-deep transition-colors">
+              <button onClick={() => setShow(false)} className="text-black/70 hover:text-black transition-colors">
                 <X size={14} />
               </button>
             </div>
@@ -72,7 +72,7 @@ const OpeningHours = () => {
                   }`}
                 >
                   <span>{item.day}</span>
-                  <span className={item.h === "Closed" ? "text-ghost" : ""}>{item.h}</span>
+                  <span className={item.h === "Closed" ? "text-black" : ""}>{item.h}</span>
                 </div>
               ))}
             </div>
@@ -87,16 +87,16 @@ const OpeningHours = () => {
         whileTap={{ scale: 0.97 }}
         className={`flex items-center gap-2.5 rounded-xl px-4 py-3 shadow-xl border transition-colors duration-200 ${
           status.open
-            ? "bg-brand border-brand text-deep"
+            ? "bg-brand border-brand text-black"
             : "bg-surface border-white/10 text-snow hover:border-brand/40"
         }`}
         aria-expanded={show}
         aria-label="Toggle opening hours"
       >
-        <Clock size={15} className={status.open ? "text-deep/80" : "text-brand"} />
+        <Clock size={15} className={status.open ? "text-black/80" : "text-brand"} />
         <div className="text-left">
-          <p className="font-display font-bold text-xs leading-none">{status.label}</p>
-          <p className={`text-[10px] mt-0.5 ${status.open ? "text-deep/60" : "text-ghost"}`}>
+          <p className="font-display font-bold text-xs leading-none">{status.label}</p> 
+          <p className={`text-[10px] mt-0.5 ${status.open ? "text-black/60" : "text-ghost"}`}>
             {show ? "Hide hours" : "See hours"}
           </p>
         </div>
