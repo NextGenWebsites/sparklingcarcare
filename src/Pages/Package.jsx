@@ -61,7 +61,7 @@ const Package = () => (
       </div>
 
       {/* ── Pricing notice ───────────────────────────────────────────── */}
-      <div className="bg-surface border-b border-white/6 py-5">
+      <div className="bg-surface py-5">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
           <Clock size={14} className="text-brand shrink-0" />
           <p className="text-mist text-sm">
@@ -233,7 +233,7 @@ const Package = () => (
       </div>
 
       {/* ── Process section ──────────────────────────────────────────── */}
-      <div className="relative border-y border-white/6 py-24 overflow-hidden">
+      <div className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={processBg} alt="Our detailing process" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-deep/85" />

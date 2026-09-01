@@ -61,7 +61,7 @@ const ReviewCard = ({ review }) => (
 );
 
 const ReviewsSection = () => (
-  <section className="py-20 bg-deep border-y border-white/5 overflow-hidden">
+  <section className="py-20 bg-deep overflow-hidden">
     {/* Header */}
     <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 mb-14">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">

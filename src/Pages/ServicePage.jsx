@@ -70,7 +70,7 @@ const ServicePage = () => (
       </div>
 
       {/* ── Intro strip ──────────────────────────────────────────────── */}
-      <div className="bg-surface border-b border-white/6 py-8">
+      <div className="bg-surface py-8">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
           <p className="text-mist leading-relaxed max-w-2xl text-sm md:text-base">
             From a quick refresh to a full transformation - we offer eight professional detailing services
@@ -130,7 +130,7 @@ const ServicePage = () => (
       </div>
 
       {/* ── Book CTA strip ───────────────────────────────────────────── */}
-      <div className="relative border-t border-white/6 py-32 overflow-hidden">
+      <div className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={ctaBg} alt="Ready to transform your vehicle" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/80 to-deep/30" />

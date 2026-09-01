@@ -8,7 +8,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-overlay border-t border-white/5">
+    <footer className="bg-overlay">
       {/* Gold rule */}
       <div className="brand-rule" />
 

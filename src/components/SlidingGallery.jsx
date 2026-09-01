@@ -103,7 +103,7 @@ const Row = ({ images, dir = "left" }) => {
 };
 
 const SlidingGallery = () => (
-  <section className="py-20 bg-surface border-y border-white/5 overflow-hidden">
+  <section className="py-20 bg-surface overflow-hidden">
     <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 mb-14">
       <div className="flex flex-col sm:flex-row sm:items-end gap-6 sm:justify-between">
         <div>
