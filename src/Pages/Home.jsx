@@ -134,7 +134,7 @@ const Home = () => (
       {/* ══════════════════════════════════════════════════════════════════
           STATS BAR
       ══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-surface py-10">
+      <section className="bg-gradient-to-b from-deep to-surface py-10">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/6">
             {stats.map((s, i) => (
@@ -255,7 +255,7 @@ const Home = () => (
       {/* ══════════════════════════════════════════════════════════════════
           FULL-WIDTH BANNER CTA
       ══════════════════════════════════════════════════════════════════ */}
-      <div className="relative py-20 overflow-hidden bg-surface">
+      <div className="relative py-20 overflow-hidden bg-gradient-to-b from-deep to-surface">
         {/* Diagonal gold glow */}
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
