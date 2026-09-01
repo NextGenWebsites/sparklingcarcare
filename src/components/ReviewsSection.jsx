@@ -77,10 +77,10 @@ const ReviewsSection = () => (
         <div className="flex items-center gap-3 shrink-0">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={18} className="fill-gold text-brand -ml-0.5" />
+              <Star key={i} size={18} className="fill-gold text-yellow-500 -ml-0.5" />
             ))}
           </div>
-          <span className="text-snow font-display font-bold">4.3</span>
+          <span className="text-snow font-display font-bold">4.2</span>
           <span className="text-mist text-sm">· Google Reviews</span>
         </div>
       </div>

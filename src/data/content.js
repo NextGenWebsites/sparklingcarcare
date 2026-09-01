@@ -33,11 +33,8 @@ export const SERVICE_PRICING = {
     note: "Includes a full wash, clay bar decontamination, and 1-step polish prep. All applications use professional-grade ceramic products.",
     disclaimer: "* Prices are indicative. Final quote provided after vehicle inspection.",
     tiers: [
-      { label: "Hatchback / Small Car",  price: "From $799",   note: "e.g. Toyota Yaris, VW Polo" },
-      { label: "Sedan / Coupe",          price: "From $950",   note: "e.g. Camry, Mazda 3" },
-      { label: "SUV / Wagon / 4WD",      price: "From $1,200", note: "e.g. RAV4, Hilux, X-Trail" },
-      { label: "Prestige / Luxury",      price: "From $1,500", note: "e.g. BMW, Mercedes, Audi" },
-      { label: "2-Year Coating Upgrade", price: "+ $150",      note: "Add-on to any package" },
+      { label: "Hatchback / Sedan", price: "$550", note: "e.g. Yaris, Golf, Camry, Mazda 3" },
+      { label: "SUV / 4x4",         price: "$750", note: "e.g. RAV4, Hilux, X-Trail" },
     ],
   },
   scratchDentRepair: {

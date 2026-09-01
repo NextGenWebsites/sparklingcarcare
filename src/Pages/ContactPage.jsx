@@ -8,9 +8,9 @@ import ReviewBack from "../images/background/review_back.jpg";
 import { BUSINESS_INFO } from "../data/content";
 
 const services = [
-  "Exterior Detailing", "Interior Detailing", "Paint Correction",
+  "Scratch & Dent Repair", "Exterior Detailing", "Interior Detailing", "Paint Correction",
   "Ceramic Coating", "Headlight Restoration", "Engine Bay Wash",
-  "Odour Removal", "Minor Dent Removal",
+  "Odour Removal",
 ];
 
 const socialLinks = [
@@ -200,6 +200,15 @@ const ContactPage = () => {
                       <option value="">Select a service…</option>
                       {services.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
+                    {data.service === "Scratch & Dent Repair" && (
+                      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mt-4">
+                        <div className="bg-brand/10 border border-brand/20 p-4 rounded-lg">
+                          <p className="text-sm text-snow leading-relaxed text-center">
+                            For an accurate quote, please email us directly with photos of the damage to <a href={`mailto:${BUSINESS_INFO.email}?subject=Scratch & Dent Repair Quote`} className="text-brand font-medium hover:underline">{BUSINESS_INFO.email}</a>, or continue with the form below and we will contact you.
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-5">

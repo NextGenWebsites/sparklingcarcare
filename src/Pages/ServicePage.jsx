@@ -133,8 +133,9 @@ const ServicePage = () => (
       <div className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={ctaBg} alt="Ready to transform your vehicle" className="w-full h-full object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/80 to-deep/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-deep/90 via-deep/40 to-transparent" />
+          <div className="absolute inset-0 bg-deep/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/90 to-deep/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep via-deep/60 to-deep/20" />
         </div>
         
         <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
@@ -142,7 +143,7 @@ const ServicePage = () => (
           <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-5">
             Ready to Transform Your Vehicle?
           </h2>
-          <p className="text-mist mb-10 text-lg max-w-lg mx-auto leading-relaxed">
+          <p className="text-white mb-10 text-lg max-w-lg mx-auto leading-relaxed">
             Book your appointment today and experience our premium detailing services in Artarmon.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
