@@ -1,135 +1,293 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import {
-  Phone,
-  Calendar,
-  ChevronRight,
-  // Star, MapPin, Car, Droplets, CheckCircle, ArrowRight, SprayCan
-} from "lucide-react";
-
-import ReviewBack from "../images/background/review_back.jpg";
+import { Phone, Calendar, ChevronDown, ArrowRight, Wrench, Droplets, Sparkles, Layers } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import ReviewsSection from "../components/ReviewsSection";
 import SlidingGallery from "../components/SlidingGallery";
-import LocationSection from "../components/LocationSection"; 
+import LocationSection from "../components/LocationSection";
 import AboutUsSection from "../components/AboutUsSection";
+import { BUSINESS_INFO } from "../data/content";
 
-const Home = () => {
-  const reviews = [
-    { id: 1, name: "Ben Hoskins", rating: 5, text: "I highly recommend these guys! Just picked up my car and it genuinely looks brand new. And when I left it with them it was in a sorry state.Service, attention to detail and value for money all outstanding. Thanks team!" },
-    { id: 2, name: "Nicole B.", rating: 5, text: "Completely satisfied and impressed with the thorough internal and external cleaning done on my car today.   Thank you.  Nicole Bannister -- BDU 73H - Impreza RX - 19/03/2024" },
-    { id: 3, name: "Andrew Met.", rating: 5, text: "Wow. Eddie really is amazing at what he does! I took my 21 year old Landcruiser to Eddie for a polish after a large weekend offroad. When I picked up the 4WD at 5pm it was sparkling like a brand new 4WD. Thank you. Andrew" },
-    { id: 4, name: "Michael Li", rating: 5, text: "Beautiful service. Got the full detail and car came back looking brand new! 10/10 definitely would recommend." },
-    { id: 5, name: "Vanessa Ho", rating: 5, text: "Very lovely service. Worth the money. Went in for a full detail and was very pleased. Definitely coming back!" },
-    { id: 6, name: "Jatay", rating: 5, text: "These guys do a fantastic job. Inside and out the car looked brand new. Didn't take long and were so easy to deal with. I'll be back again, and will remember to leave the car keys next time!" },
-  ];
+import featuredBg from "@/images/background/featured_services_bg.png";
+import heroBg from "@/images/background/hero_bg.png";
 
-  return (
-    <div className="min-h-screen bg-gray-900 font-sans">
-      {/* Hero Section */}
-      <section className="relative h-screen bg-black font-sans overflow-hidden">
-        {/* HERO IMAGE (eager + responsive) */}
+/* ── Service preview data ───────────────────────────────────────────────── */
+const serviceCards = [
+  {
+    num: "01",
+    icon: <Layers size={24} />,
+    title: "Ceramic Coating",
+    desc: "Years of extreme gloss and paint protection. Hydrophobic, UV resistant, and easier to clean.",
+    href: "/services#ceramic-coating",
+  },
+  {
+    num: "02",
+    icon: <Wrench size={24} />,
+    title: "Scratch, Dent & Paint Repair",
+    desc: "Comprehensive bodywork restoration including precision paintwork and full panel respraying.",
+    href: "/services#scratch-dent-repair",
+  },
+  {
+    num: "03",
+    icon: <Droplets size={24} />,
+    title: "Premium Detailing",
+    desc: "From paint correction to deep interior cleaning, we restore your vehicle to showroom condition.",
+    href: "/services#exterior-detailing",
+  },
+];
+
+/* ── Trust stats ────────────────────────────────────────────────────────── */
+const stats = [
+  { num: "30+", label: "Years Experience" },
+  { num: "4.2★",   label: "Google Rating" },
+  { num: "8+",   label: "Expert Services" },
+  { num: "100%", label: "Satisfaction Guaranteed" },
+];
+
+const Home = () => (
+  <>
+    <Helmet>
+      <title>Ceramic Coating & Paint Repair Sydney | Sparkling Car Care</title>
+      <meta
+        name="description"
+        content="Sydney's specialists in Ceramic Coating, Scratch & Dent Repair, and Premium Car Detailing. Expert paint correction and detailing in Artarmon. Book today - (02) 9438 4988."
+      />
+      <link rel="canonical" href="https://www.sparklingcarcare.com.au/" />
+    </Helmet>
+
+    <main className="bg-deep text-snow">
+
+      {/* ══════════════════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="relative h-screen min-h-[640px] flex flex-col overflow-hidden">
+        {/* Background image */}
         <div className="absolute inset-0 z-0">
-          <picture>
-            {/* If/when you add AVIF versions, un-comment this <source> */}
-            {/*
-            <source
-              type="image/avif"
-              srcSet="/hero-768.avif 768w, /hero-1280.avif 1280w, /hero-1920.avif 1920w"
-              sizes="100vw"
-            />
-            */}
-            {/* WebP source; keep 1280 now, add 768/1920 when you have those files */}
-            <source
-              type="image/webp"
-              srcSet={
-                [
-                  // "/hero-768.webp 768w",   // un-comment when file exists
-                  "/hero-1280.webp 1280w",
-                  // "/hero-1920.webp 1920w"  // un-comment when file exists
-                ].join(", ")
-              }
-              sizes="100vw"
-            />
-            <img
-              src="/hero-1280.webp"
-              alt="Luxury car being detailed"
-              width="1920"
-              height="1080"
-              fetchPriority="high"
-              decoding="async"
-              className="w-full h-full object-cover opacity-60"
-            />
-          </picture>
+          <img
+            src={heroBg}
+            alt="Ceramic coating and scratch repair in Artarmon Sydney"
+            fetchPriority="high"
+            decoding="sync"
+            className="w-full h-full object-cover object-center"
+          />
+     
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/60 to-deep/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/30 to-transparent" />
         </div>
 
-        {/* Dark overlay above image */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
+        {/* Content - anchored bottom-left */}
+        <div className="relative z-10 flex-1 flex flex-col justify-end">
+          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-12 pb-20 md:pb-28">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-2xl"
+            >
+              {/* Location pill */}
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-white/8 backdrop-blur border border-white/15 rounded-full text-xs text-snow/80 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+                Artarmon, Sydney NSW
+              </div>
 
-        {/* Hero content */}
-        <div className="relative z-20 flex flex-col items-center justify-center h-full text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center flex flex-col items-center justify-center"
-          >
-            <h1 className="text-5xl xl:text-8xl lg:text-7xl md:text-7xl font-bold mb-4">
-              Professional Car Detailing
-            </h1>
+              {/* Heading */}
+              <h1 className="font-display font-black text-snow mb-6" style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.04 }}>
+                Protect & <br />
+                <span className="text-gradient-brand">Restore</span>
+              </h1>
+              <p className="text-snow/60 text-lg leading-relaxed mb-10 max-w-lg">
+                Sydney's specialists in professional Ceramic Coating, seamless Scratch & Dent Repair, and Premium Detailing. Flawless finishes, guaranteed.
+              </p>
 
-            <p className="text-3xl font-sans mb-8 max-w-2xl py-2 bg-gradient-to-b from-transparent to-[#272231] rounded-bl-[80px] rounded-br-[80px] px-5">
-              Professional detailing services that bring your vehicle back to
-              showroom condition.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="tel:+61294384988"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 bg-white text-black font-bold py-3 px-8 rounded-lg text-xl"
-              >
-                <Phone size={20} />
-                CALL NOW
-              </motion.a>
-
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#1488CC] to-[#2B32B2] text-white font-bold py-3 px-8 rounded-lg text-xl"
-              >
-                <Calendar size={20} />
-                BOOK NOW
-              </motion.a>
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact" className="btn-brand">
+                  <Calendar size={16} />
+                  Book Appointment
+                </Link>
+                <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline">
+                  <Phone size={16} />
+                  {BUSINESS_INFO.phone}
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-snow/30"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
         >
-          <ChevronRight size={30} className="text-white rotate-90" />
+          <span className="text-[9px] uppercase tracking-widest">Scroll</span>
+          <div className="animate-float">
+            <ChevronDown size={20} />
+          </div>
         </motion.div>
+
+       
       </section>
 
-      {/* About / Services */}
+      {/* ══════════════════════════════════════════════════════════════════
+          STATS BAR
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="bg-gradient-to-b from-deep to-surface py-10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/6">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="px-6 py-4 first:pl-0 last:pr-0 text-center sm:text-left"
+              >
+                <p className="text-gradient-brand font-display font-black text-3xl md:text-4xl mb-1">{s.num}</p>
+                <p className="text-mist text-xs uppercase tracking-wider">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          ABOUT + FEATURES
+      ══════════════════════════════════════════════════════════════════ */}
       <AboutUsSection />
 
-      {/* Reviews */}
-      <ReviewsSection reviews={reviews} ReviewBack={ReviewBack} />
-
-      {/* Gallery */}
+      {/* ══════════════════════════════════════════════════════════════════
+          GALLERY
+      ══════════════════════════════════════════════════════════════════ */}
       <SlidingGallery />
 
-      {/* Location */}
+      {/* ══════════════════════════════════════════════════════════════════
+          REVIEWS
+      ══════════════════════════════════════════════════════════════════ */}
+      <ReviewsSection />
+
+      {/* ══════════════════════════════════════════════════════════════════
+          SERVICES PREVIEW
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 bg-deep relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={featuredBg}
+            alt="Premium Detailing Background"
+            className="w-full h-full object-cover opacity-30 mix-blend-screen"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* Fades to blend with surrounding sections */}
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/80 to-deep/40" /> */}
+          <div className="absolute inset-0 bg-gradient-to-b from-deep to-transparent opacity-80" />
+        </div>
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div>
+              <span className="section-label">What We Offer</span>
+              <div className="flex items-start gap-4 mt-3">
+                <span className="brand-bar" />
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+                  Featured Services
+                </h2>
+              </div>
+            </div>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-brand hover:text-brand-light text-sm font-medium transition-colors shrink-0"
+            >
+              View all services <ArrowRight size={15} />
+            </Link>
+          </div>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-3 gap-5">
+            {serviceCards.map((s, i) => (
+              <motion.div
+                key={s.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card p-8 relative overflow-hidden group"
+              >
+                {/* Watermark number */}
+                <span
+                  className="absolute -top-2 -right-3 font-display font-black text-8xl select-none pointer-events-none"
+                  style={{ color: "transparent", WebkitTextStroke: "1px rgba(232 237 245 / 0.1)" }}
+                >
+                  {s.num}
+                </span>
+
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-brand/10 border border-brand/20 flex items-center justify-center text-brand mb-6 group-hover:bg-brand/20 transition-colors duration-300">
+                  {s.icon}
+                </div>
+
+                <h3 className="font-display font-bold text-xl text-snow mb-3">{s.title}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">{s.desc}</p>
+
+                <Link
+                  to={s.href}
+                  className="inline-flex items-center gap-1.5 text-brand hover:text-brand-light text-xs font-medium uppercase tracking-wider transition-colors"
+                >
+                  Learn More <ArrowRight size={12} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* All services CTA */}
+          <div className="text-center mt-12">
+            <Link to="/services" className="btn-outline text-sm">
+              View All 8 Services <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          LOCATION
+      ══════════════════════════════════════════════════════════════════ */}
       <LocationSection />
-    </div>
-  );
-};
+
+      {/* ══════════════════════════════════════════════════════════════════
+          FULL-WIDTH BANNER CTA
+      ══════════════════════════════════════════════════════════════════ */}
+      <div className="relative py-20 overflow-hidden bg-gradient-to-b from-deep to-surface">
+        {/* Diagonal gold glow */}
+        <div
+          className="absolute inset-0 opacity-20 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, #2F6FED, transparent)" }}
+        />
+        <div className="relative z-10 max-w-3xl mx-auto px-5 text-center">
+          <span className="section-label mb-4 block">Ready to Book?</span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-6">
+            Your Car Deserves the Best
+          </h2>
+          <p className="text-mist text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+            Join hundreds of satisfied Sydney car owners. Book your detailing appointment today
+            and experience the Sparkling difference.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-brand text-base px-10 py-4">
+              <Calendar size={18} />
+              Book Now
+            </Link>
+            <Link to="/packages" className="btn-outline text-base px-10 py-4">
+              View Packages <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  </>
+);
 
 export default Home;

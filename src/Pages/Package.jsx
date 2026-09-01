@@ -1,314 +1,389 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Car, Shield, Sparkles, Clock, Award, Star } from "lucide-react";
+import { Check, Sparkles, Shield, Car, ArrowRight, Clock, Wrench, Layers, Droplets } from "lucide-react";
+import { Link } from "react-router-dom";
+import ServiceBack from "@/images/background/pricing_bg.png";
+import processBg   from "@/images/background/pricing_process_bg.png";
+import { PACKAGES_LIST, BUSINESS_INFO, SERVICE_PRICING } from "../data/content";
 
-import ServiceBack from "../images/others/serviceBack.webp";
-const packagePage = () => {
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
+import dentImg1 from "@/images/gallery/IMG_0110.webp";
+import dentImg2 from "@/images/gallery/IMG_0320.webp";
+import dentImg3 from "@/images/gallery/IMG_1212.webp";
+import dentImg4 from "@/images/gallery/IMG_1221.webp";
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
+/* Tier configuration */
+const tierConfig = {
+  entry:   { label: "Essential",  ring: "border-white/10",             badge: "text-mist bg-raised" },
+  mid:     { label: "Popular",    ring: "border-white/15",             badge: "text-snow bg-raised" },
+  premium: { label: "Premium",    ring: "border-brand/50 shadow-brand-glow", badge: "text-deep bg-brand" },
+};
 
-  // Service packages data with added images
-  const servicePackages = [
-    {
-      id: 1,
-      title: "Express Wash:",
-      price: "$30 Sedan / $40 SUV",
-      icon: <Sparkles className="w-8 h-8 text-blue-500" />,
-      description:
-        "A quick and efficient exterior clean, including a hand wash, chamois dry, and tyre shine to give your car a refreshed look.",
-      features: ["Wash Exterior and Chamois", "Tyre Shine"],
-      image:
-        "https://i0.wp.com/peaceentqatar.com/wp-content/uploads/2019/07/17545524_140141669847553_5202430352564902303_o-1.jpg?ssl=1", // Added image path
-    },
-    {
-      id: 2,
-      title: "Basic Wash:",
-      price: "$40 Sedan / $50 SUV",
-      icon: <Sparkles className="w-8 h-8 text-blue-500" />,
-      description:
-        "Includes everything in the Express Wash plus an interior vacuum to remove dust and debris, keeping both the inside and outside of your car looking neat.",
-      features: ["Wash Exterior and Chamois", "Interior Vacuum", "Tyre Shine"],
-      image:
-        "https://media.istockphoto.com/id/826875544/photo/high-pressure-washing-car-outdoors.jpg?s=612x612&w=0&k=20&c=VWs9auj2wJpOEXSe4ZC5XVHFCOpOHIbkFHLnZY2-Q1M=", // Added image path
-    },
-    {
-      id: 3,
-      title: "Standard Wash:",
-      price: "$60 Sedan / $70 SUV",
-      icon: <Sparkles className="w-8 h-8 text-blue-500" />,
-      description:
-        "A thorough clean that covers the exterior, interior vacuuming, window cleaning, and trim wipe-down, ensuring a polished and well-maintained look inside and out.",
-      features: [
-        "Wash Exterior and Chamois",
-        "Interior Vacuum",
-        "Windows Cleaned",
-        "Wipe Down Trims",
-        "Tyre Shine",
-      ],
-      image:
-        "https://shop.rikecool.com.sg/wp-content/uploads/2023/09/car-wash-detailing-station_1303-22319.jpg", // Added image path
-    },
-    {
-      id: 4,
-      title: "Deluxe Wash:",
-      price: "$132 Sedan / $165 SUV",
-      icon: <Shield className="w-8 h-8 text-blue-500" />,
-      description:
-        "A premium wash package that includes everything in the Standard Wash, plus a professional hand polish to restore shine and enhance your vehicle’s appearance.",
-      features: [
-        "Wash Exterior and Chamois",
-        "Interior Vacuum",
-        "Windows Cleaned",
-        "Wipe Down Trims",
-        "Tyre Shine",
-        "Hand Polish",
-      ],
-      image:
-        "https://www.jalopnik.com/jalopnik/images/b5b2550c72d99e5dcb0bbd70c28a1495.jpg", // Added image path
-    },
-    {
-      id: 5,
-      title: "Mini Detail:",
-      price: "$198 Sedan / $250 SUV",
-      icon: <Car className="w-8 h-8 text-blue-500" />,
-      description:
-        "A deep cleaning package that combines the Standard Wash with a high-quality hand polish and an engine bay wash, ensuring a spotless and glossy finish.",
-      features: ["Standard Wash +", "Hand Polish", "Engine Bay Wash"],
-      image:
-        "https://www.momscardetailing.com/wp-content/uploads/2025/03/104202763_1708027612681300_7224795719929665443_n-1-rotated.jpg", // Added image path
-    },
-    {
-      id: 6,
-      title: "Full Detail:",
-      price: "$298 Sedan / $350 SUV",
-      icon: <Car className="w-8 h-8 text-blue-500" />,
-      description:
-        "The ultimate detailing service, featuring a Standard Wash, engine bay wash, deep interior shampooing, and a two-step paint correction to remove imperfections and restore your car’s paint to a flawless shine.",
-      features: [
-        "Standard Wash +",
-        "Engine Bay Wash",
-        "Shampoo Interior",
-        "Two Step Paint Correction ",
-      ],
-      image:
-        "https://www.cartoys.com/cdn/shop/files/Car_detailing_ServiceSection_512x300_2dd1ef7e-4b4d-45aa-90f5-650d299dd56e.jpg?v=1694798075&width=512", // Added image path
-    },
-  ];
+const TierIcon = ({ tier }) => {
+  if (tier === "premium") return <Sparkles size={20} className="text-brand" />;
+  if (tier === "mid")     return <Shield   size={20} className="text-snow" />;
+  return                         <Car      size={20} className="text-mist" />;
+};
+
+const GallerySlider = ({ images }) => {
+  const [idx, setIdx] = React.useState(0);
+  
+  const next = () => setIdx((i) => (i + 1) % images.length);
+  const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen font-sans">
-      {/* Hero Section */}
-      <div className="relative h-96 bg-gray-900 overflow-hidden">
-        <img
-          src={ServiceBack}
-          alt="Car Detailing Hero"
-          className="absolute w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center text-white p-8"
-          >
-            <h1 className="text-7xl font-bold  mb-4 mt-30 ">
-              Professional Car Detailing
-            </h1>
-            <p className="text-2xl mb-8">
-              Restore your vehicle to showroom condition
-            </p>
-            <a href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium cursor-pointer"
-              >
-                Book Now
-              </motion.button>
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Services Introduction */}
-      <div className="container mx-auto px-4 py-16 ">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h2 className="text-4xl font-bold mb-4">Our Detailing Services</h2>
-          <p className="text-gray-600 text-xl">
-            We offer a comprehensive range of car detailing services tailored to
-            meet your needs. From basic cleaning to premium restoration, our
-            skilled technicians deliver exceptional results.
-          </p>
-        </motion.div>
-
-        {/* Service Packages */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {servicePackages.map((pkg) => (
-            <motion.div
-              key={pkg.id}
-              variants={itemVariants}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
-            >
-              {/* Added image section */}
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={pkg.image}
-                  alt={`${pkg.title} Service`}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="bg-blue-100 p-3 rounded-lg">{pkg.icon}</div>
-                  <span className="text-2xl font-bold text-blue-600">
-                    {pkg.price}
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <p className="text-gray-600 mb-6 text-xl">{pkg.description}</p>
-                <ul className="space-y-2 mb-6">
-                  {pkg.features.map((feature, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center text-gray-700 text-xl"
-                    >
-                      <Star className="w-4 h-4 text-blue-500 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Process Section */}
-      <div
-        className="bg-gray-900  py-16"
-        style={{
-          backgroundImage: `url(https://www.raynofilm.com/wp-content/uploads/Car-Detailing-Cost-1.jpg)`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className=" font-bold mb-4 text-6xl bg-gradient-to-l from-transparent to-[#f5af19] p-6 rounded-bl-[80px] rounded-br-[30px] rounded-tl-[30px] rounded-tr-[80px] ">
-              Our Detailing Process
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Car className="w-12 h-12" />,
-                title: "Inspection",
-                description: "Complete evaluation of your vehicle's condition",
-              },
-              {
-                icon: <Clock className="w-12 h-12" />,
-                title: "Preparation",
-                description: "Pre-cleaning and setup of specialized tools",
-              },
-              {
-                icon: <Sparkles className="w-12 h-12" />,
-                title: "Detailing",
-                description: "Thorough cleaning and treatment of all surfaces",
-              },
-              {
-                icon: <Award className="w-12 h-12" />,
-                title: "Quality Check",
-                description: "Final inspection to ensure perfection",
-              },
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-b from-transparent to-[#005AA7] p-6 rounded-xl text-center"
-              >
-                <div className="bg-blue-100/80 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                  {step.icon}
-                </div>
-                <h3 className="text-3xl font-bold mb-2 text-white">
-                  {step.title}
-                </h3>
-                <p className="text-gray-300 text-xl">{step.description}</p>
-              </motion.div>
-            ))}
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-[10px] text-ghost uppercase tracking-widest font-bold">Recent Restorations</p>
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] text-mist font-mono">{String(idx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}</span>
+          <div className="flex gap-1">
+            <button onClick={prev} className="w-6 h-6 border border-white/10 rounded flex items-center justify-center text-mist hover:bg-white/5 transition-colors text-xs">{"<"}</button>
+            <button onClick={next} className="w-6 h-6 border border-white/10 rounded flex items-center justify-center text-mist hover:bg-white/5 transition-colors text-xs">{">"}</button>
           </div>
         </div>
       </div>
-
-      {/* Call to Action */}
-      <div className="bg-gradient-to-r from-[#0f0c29] to-[#24243e] via-[#302b63] text-white py-10">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl font-bold mb-4">
-              Ready to Transform Your Vehicle?
-            </h2>
-            <p className="text-blue-100 mb-8 text-xl">
-              Book your appointment today and experience our premium detailing
-              services.
-            </p>
-
-            <a href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold  cursor-pointer text-lg"
-              >
-                Book an Appointment
-              </motion.button>
-            </a>
-          </motion.div>
-        </div>
+      
+      <div className="aspect-[16/9] rounded-lg border border-dashed border-white/20 p-2 relative overflow-hidden bg-deep/50">
+        <img src={images[idx]} alt="Restoration" className="w-full h-full object-cover rounded-md" />
+      </div>
+      
+      <div className="flex gap-2 justify-center mt-5">
+        {images.map((_, i) => (
+          <div key={i} className={`h-0.5 rounded-full transition-all duration-300 ${i === idx ? 'w-12 bg-brand' : 'w-10 bg-white/10'}`} />
+        ))}
       </div>
     </div>
   );
 };
 
-export default packagePage;
+const processSteps = [
+  { n: "01", icon: <Car size={28} />,    title: "Inspection",     desc: "We assess your vehicle's condition and identify areas needing attention." },
+  { n: "02", icon: <Wrench size={28} />, title: "Preparation",    desc: "Pre-cleaning, product selection and setup of professional equipment." },
+  { n: "03", icon: <Droplets size={28}/>,title: "Detailing",      desc: "Meticulous treatment of every surface, inside and out." },
+  { n: "04", icon: <Check size={28} />,  title: "Quality Check",  desc: "Final inspection to ensure everything meets our premium standard." },
+];
+
+const Package = () => (
+  <>
+    <Helmet>
+      <title>Car Detailing Packages & Pricing | Sparkling Car Care Artarmon</title>
+      <meta name="description" content="Transparent car detailing packages in Artarmon, Sydney. Express Wash from $30, Full Detail from $298. Sedan and SUV pricing available. Book today." />
+      <link rel="canonical" href="https://www.sparklingcarcare.com.au/packages" />
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.sparklingcarcare.com.au/" },
+          { "@type": "ListItem", "position": 2, "name": "Packages", "item": "https://www.sparklingcarcare.com.au/packages" }
+        ]
+      })}</script>
+    </Helmet>
+
+    <div className="bg-deep text-snow">
+
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <div className="relative h-72 md:h-80 overflow-hidden">
+        <img src={ServiceBack} alt="Car detailing packages pricing Artarmon" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/65 to-deep/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep/85 to-transparent" />
+        <div className="relative z-10 flex flex-col justify-end h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pb-12 pt-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="section-label">Pricing</span>
+            <h1 className="text-4xl md:text-6xl font-display font-black text-snow mt-2">
+              Packages & Pricing
+            </h1>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ── Pricing notice ───────────────────────────────────────────── */}
+      <div className="bg-surface py-5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center gap-3">
+          <Clock size={14} className="text-brand shrink-0" />
+          <p className="text-mist text-sm">
+            All prices are indicative and may vary based on vehicle size and condition.
+            <span className="text-brand ml-1 font-medium">We'll confirm your exact quote before starting.</span>
+          </p>
+        </div>
+      </div>
+
+      {/* ── Package grid ─────────────────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="section-label block mb-4">Specialist Services</span>
+          <div className="flex items-center justify-center gap-4">
+            <span className="brand-bar" style={{ height: 32 }} />
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+              Protection & Repair
+            </h2>
+            <span className="brand-bar" style={{ height: 32 }} />
+          </div>
+        </motion.div>
+
+        {/* Specialist Services Custom Layout */}
+        <div className="flex flex-col gap-8 mb-32">
+          
+          {/* 01: Scratch & Dent Repair */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            {/* Top-left corner accent */}
+            <div className="absolute top-0 left-0 w-32 h-1 bg-brand rounded-tl-xl" />
+            <div className="absolute top-0 left-0 w-1 h-32 bg-brand rounded-tl-xl" />
+            
+            {/* Watermark */}
+            {/* <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">01</div> */}
+             
+            <div className="relative z-10 flex flex-col h-full justify-center">
+              <div>
+                <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Custom Quote</p>
+                <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.scratchDentRepair.label}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">
+                  {SERVICE_PRICING.scratchDentRepair.note}
+                </p>
+                <p className="text-mist text-sm leading-relaxed mb-10">
+                  Due to the unique nature of every scratch, dent, and paint defect, we provide custom quotes based on the actual damage.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                <a 
+                  href={`mailto:${BUSINESS_INFO.email}?subject=Scratch & Dent Repair Quote`}
+                  className="bg-brand hover:bg-brand-light text-deep font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider flex-1 flex items-center justify-center"
+                >
+                  Get a Free Quote
+                </a>
+                <a 
+                  href={`tel:${BUSINESS_INFO.phoneTel}`}
+                  className="border border-white/20 hover:border-brand text-snow hover:text-brand font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider flex-1 flex items-center justify-center"
+                >
+                  Call Us
+                </a>
+              </div>
+            </div>
+
+            <div className="relative z-10 w-full h-full flex flex-col justify-center">
+              <GallerySlider images={[dentImg1, dentImg2, dentImg3, dentImg4]} />
+            </div>
+          </motion.div>
+
+          {/* 02: Ceramic Coating */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            {/* Top-left corner accent */}
+            <div className="absolute top-0 left-0 w-32 h-1 bg-brand rounded-tl-xl" />
+            <div className="absolute top-0 left-0 w-1 h-32 bg-brand rounded-tl-xl" />
+            
+            {/* Watermark */}
+            {/* <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">02</div> */}
+            
+            <div className="relative z-10 flex flex-col h-full justify-center">
+              <div>
+                <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Fixed Pricing</p>
+                <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.ceramicCoating.label}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">{SERVICE_PRICING.ceramicCoating.note}</p>
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <p className="text-[10px] text-mist/60 italic leading-tight max-w-[200px]">{SERVICE_PRICING.ceramicCoating.disclaimer}</p>
+                <Link to="/contact" className="btn-outline text-xs px-6 py-2.5 whitespace-nowrap text-center">
+                  ENQUIRE NOW
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative z-10 flex flex-col justify-center h-full">
+              <div className="space-y-4">
+                {SERVICE_PRICING.ceramicCoating.tiers.map((tier) => (
+                  <div key={tier.label} className="flex justify-between items-center p-6 border border-white/10 rounded-xl bg-deep/30 group hover:border-brand/30 transition-colors">
+                    <div>
+                      <p className="text-snow text-lg font-bold group-hover:text-brand transition-colors">{tier.label}</p>
+                      <p className="text-ghost text-sm mt-1">{tier.note}</p>
+                    </div>
+                    <span className="font-mono text-brand font-bold text-2xl lg:text-3xl shrink-0 ml-4">{tier.price}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── Detailing Packages ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="section-label block mb-4">Wash & Detail Packages</span>
+          <div className="flex items-center justify-center gap-4">
+            <span className="brand-bar" style={{ height: 32 }} />
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+              Our Detailing Packages
+            </h2>
+            <span className="brand-bar" style={{ height: 32 }} />
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {PACKAGES_LIST.map((pkg, i) => {
+            const tc = tierConfig[pkg.tier];
+            return (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`relative bg-surface border rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 ${tc.ring} ${pkg.popular ? "shadow-lg shadow-brand/10" : ""}`}
+              >
+                {/* Popular banner */}
+                {pkg.popular && (
+                  <div className="bg-brand text-deep text-[10px] font-display font-black uppercase tracking-[0.2em] text-center py-1.5">
+                    ★ Most Popular
+                  </div>
+                )}
+
+                {/* Image */}
+                <div className="h-40 overflow-hidden shrink-0">
+                  <img
+                    src={pkg.image}
+                    alt={`${pkg.title} car detailing Artarmon`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-lg bg-raised border border-white/8 flex items-center justify-center">
+                        <TierIcon tier={pkg.tier} />
+                      </div>
+                      <div>
+                        <p className="font-display font-bold text-snow text-base">{pkg.title}</p>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded font-display uppercase tracking-wider ${tc.badge}`}>
+                          {tc.label}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Price */}
+                  <div className="mb-4 pb-4 border-b border-white/6">
+                    <p className="font-mono text-brand font-bold text-lg">{pkg.price}</p>
+                  </div>
+
+                  <p className="text-mist text-sm leading-relaxed mb-5">{pkg.description}</p>
+
+                  {/* Features */}
+                  <ul className="space-y-2 mb-7 flex-1">
+                    {pkg.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2.5 text-sm text-snow/80">
+                        <Check size={13} className="text-brand shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    to="/contact"
+                    className={pkg.tier === "premium" ? "btn-brand w-full justify-center text-xs" : "btn-outline w-full justify-center text-xs"}
+                  >
+                    Book This Package
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Process section ──────────────────────────────────────────── */}
+      <div className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={processBg} alt="Our detailing process" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-deep/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-deep" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="text-center mb-16">
+            <span className="section-label block mb-3">Our Approach</span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-snow">
+              The Detailing Process
+            </h2>
+          </div>
+
+          {/* Horizontal timeline */}
+          <div className="relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-9 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent" />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {processSteps.map((step, i) => (
+                <motion.div
+                  key={step.n}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  className="flex flex-col items-center text-center relative"
+                >
+                  {/* Number circle */}
+                  <div className="w-16 h-16 rounded-full bg-raised border-2 border-brand/30 flex items-center justify-center text-brand mb-5 relative z-10 hover:border-brand hover:shadow-lg hover:shadow-brand/15 transition-all duration-300">
+                    {step.icon}
+                  </div>
+                  <p className="font-mono text-brand-dim text-xs mb-2 tracking-widest">{step.n}</p>
+                  <h3 className="font-display font-bold text-snow mb-2">{step.title}</h3>
+                  <p className="text-mist text-xs leading-relaxed">{step.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── CTA ──────────────────────────────────────────────────────── */}
+      <div className="py-20">
+        <div className="max-w-3xl mx-auto px-5 text-center">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-snow mb-5">
+            Ready to Get Started?
+          </h2>
+          <p className="text-mist mb-10 text-lg max-w-lg mx-auto">
+            Book your preferred package today. We'll confirm your appointment and prep everything before you arrive.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-brand text-sm px-10 py-4">
+              Book an Appointment <ArrowRight size={16} />
+            </Link>
+            <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="btn-outline text-sm px-10 py-4">
+              {BUSINESS_INFO.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+export default Package;
