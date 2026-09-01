@@ -128,94 +128,98 @@ const Package = () => (
         </motion.div>
 
         {/* Specialist Services Custom Layout */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-32">
+        <div className="flex flex-col gap-8 mb-32">
           
-          {/* 01: Ceramic Coating */}
+          {/* 01: Scratch & Dent Repair */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative flex flex-col"
+            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             {/* Top-left corner accent */}
             <div className="absolute top-0 left-0 w-32 h-1 bg-brand rounded-tl-xl" />
             <div className="absolute top-0 left-0 w-1 h-32 bg-brand rounded-tl-xl" />
             
             {/* Watermark */}
-            <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">01</div>
-            
-            <div className="relative z-10">
-              <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Fixed Pricing</p>
-              <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.ceramicCoating.label}</h3>
-              <p className="text-mist text-sm leading-relaxed max-w-sm mb-12">{SERVICE_PRICING.ceramicCoating.note}</p>
+            {/* <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">01</div> */}
+             
+            <div className="relative z-10 flex flex-col h-full justify-center">
+              <div>
+                <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Custom Quote</p>
+                <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.scratchDentRepair.label}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">
+                  {SERVICE_PRICING.scratchDentRepair.note}
+                </p>
+                <p className="text-mist text-sm leading-relaxed mb-10">
+                  Due to the unique nature of every scratch, dent, and paint defect, we provide custom quotes based on the actual damage.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                <a 
+                  href={`mailto:${BUSINESS_INFO.email}?subject=Scratch & Dent Repair Quote`}
+                  className="bg-brand hover:bg-brand-light text-deep font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider flex-1 flex items-center justify-center"
+                >
+                  Get a Free Quote
+                </a>
+                <a 
+                  href={`tel:${BUSINESS_INFO.phoneTel}`}
+                  className="border border-white/20 hover:border-brand text-snow hover:text-brand font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider flex-1 flex items-center justify-center"
+                >
+                  Call Us
+                </a>
+              </div>
             </div>
 
-            <div className="mt-auto relative z-10">
-              <div className="space-y-4">
-                {SERVICE_PRICING.ceramicCoating.tiers.map((tier) => (
-                  <div key={tier.label} className="flex justify-between items-center py-4 border-t border-white/5 group">
-                    <div>
-                      <p className="text-snow text-base font-bold group-hover:text-brand transition-colors">{tier.label}</p>
-                      <p className="text-ghost text-xs mt-1">{tier.note}</p>
-                    </div>
-                    <span className="font-mono text-brand font-bold text-xl shrink-0 ml-4">{tier.price}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
-                <p className="text-[10px] text-mist/60 italic max-w-[150px] leading-tight">{SERVICE_PRICING.ceramicCoating.disclaimer}</p>
-                <Link to="/contact" className="btn-outline text-xs px-6 py-2.5">
-                  ENQUIRE NOW
-                </Link>
-              </div>
+            <div className="relative z-10 w-full h-full flex flex-col justify-center">
+              <GallerySlider images={[dentImg1, dentImg2, dentImg3, dentImg4]} />
             </div>
           </motion.div>
 
-          {/* 02: Scratch & Dent Repair */}
+          {/* 02: Ceramic Coating */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative flex flex-col"
+            className="bg-surface border border-white/6 rounded-xl p-8 md:p-10 shadow-2xl relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             {/* Top-left corner accent */}
             <div className="absolute top-0 left-0 w-32 h-1 bg-brand rounded-tl-xl" />
             <div className="absolute top-0 left-0 w-1 h-32 bg-brand rounded-tl-xl" />
             
             {/* Watermark */}
-            <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">02</div>
-             
-            <div className="relative z-10 mb-8">
-              <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Custom Quote</p>
-              <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.scratchDentRepair.label}</h3>
-              <p className="text-mist text-sm leading-relaxed mb-6">
-                {SERVICE_PRICING.scratchDentRepair.note}
-              </p>
-              <p className="text-mist text-sm leading-relaxed mb-10">
-                Due to the unique nature of every scratch, dent, and paint defect, we provide custom quotes based on the actual damage.
-              </p>
+            {/* <div className="absolute top-8 right-8 text-6xl font-black text-white/5 select-none pointer-events-none">02</div> */}
+            
+            <div className="relative z-10 flex flex-col h-full justify-center">
+              <div>
+                <p className="text-[10px] text-mist font-bold uppercase tracking-widest mb-3">Fixed Pricing</p>
+                <h3 className="font-display font-bold text-snow text-3xl mb-6">{SERVICE_PRICING.ceramicCoating.label}</h3>
+                <p className="text-mist text-sm leading-relaxed mb-6">{SERVICE_PRICING.ceramicCoating.note}</p>
+              </div>
 
-              <div className="flex flex-col gap-4 max-w-sm">
-                <a 
-                  href={`mailto:${BUSINESS_INFO.email}?subject=Scratch & Dent Repair Quote`}
-                  className="bg-brand hover:bg-brand-light text-deep font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider"
-                >
-                  Get a Free Quote (Email Photos)
-                </a>
-                <a 
-                  href={`tel:${BUSINESS_INFO.phoneTel}`}
-                  className="border border-white/20 hover:border-brand text-snow hover:text-brand font-bold text-[10px] px-6 py-3.5 rounded text-center transition-colors uppercase tracking-wider"
-                >
-                  Call Us: {BUSINESS_INFO.phone}
-                </a>
+              <div className="mt-auto pt-6 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <p className="text-[10px] text-mist/60 italic leading-tight max-w-[200px]">{SERVICE_PRICING.ceramicCoating.disclaimer}</p>
+                <Link to="/contact" className="btn-outline text-xs px-6 py-2.5 whitespace-nowrap text-center">
+                  ENQUIRE NOW
+                </Link>
               </div>
             </div>
 
-            <div className="mt-auto relative z-10">
-              <GallerySlider images={[dentImg1, dentImg2, dentImg3, dentImg4]} />
+            <div className="relative z-10 flex flex-col justify-center h-full">
+              <div className="space-y-4">
+                {SERVICE_PRICING.ceramicCoating.tiers.map((tier) => (
+                  <div key={tier.label} className="flex justify-between items-center p-6 border border-white/10 rounded-xl bg-deep/30 group hover:border-brand/30 transition-colors">
+                    <div>
+                      <p className="text-snow text-lg font-bold group-hover:text-brand transition-colors">{tier.label}</p>
+                      <p className="text-ghost text-sm mt-1">{tier.note}</p>
+                    </div>
+                    <span className="font-mono text-brand font-bold text-2xl lg:text-3xl shrink-0 ml-4">{tier.price}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

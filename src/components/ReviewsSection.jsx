@@ -29,7 +29,7 @@ const ReviewCard = ({ review }) => (
     {/* Stars */}
     <div className="flex gap-0.5 mb-4">
       {[...Array(review.rating)].map((_, i) => (
-        <Star key={i} size={13} className="fill-gold text-brand" />
+        <Star key={i} size={13} className="fill-yellow-500 text-yellow-500" />
       ))}
     </div>
 
@@ -77,7 +77,7 @@ const ReviewsSection = () => (
         <div className="flex items-center gap-3 shrink-0">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={18} className="fill-gold text-yellow-500 -ml-0.5" />
+              <Star key={i} size={18} className="fill-yellow-500 text-yellow-500 -ml-0.5" />
             ))}
           </div>
           <span className="text-snow font-display font-bold">4.2</span>
